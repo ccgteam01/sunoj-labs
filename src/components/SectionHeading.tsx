@@ -14,7 +14,7 @@ const SectionHeading = ({ title, subtitle, center = false }: SectionHeadingProps
     transition={{ duration: 0.5 }}
     className={`mb-12 ${center ? "text-center" : ""}`}
   >
-    <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
+    <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-3" style={{ letterSpacing: '-0.05em' }}>
       {title}
     </h2>
     <div className={`section-divider ${center ? "mx-auto" : ""}`} />

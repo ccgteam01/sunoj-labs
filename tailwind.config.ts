@@ -18,20 +18,16 @@ export default {
   				'Inter',
   				'ui-sans-serif',
   				'system-ui',
-  				'sans-serif',
-  				'Apple Color Emoji',
-  				'Segoe UI Emoji',
-  				'Segoe UI Symbol',
-  				'Noto Color Emoji'
+  				'sans-serif'
   			],
   			heading: [
-  				'IBM Plex Sans',
   				'Inter',
+  				'ui-sans-serif',
   				'system-ui',
   				'sans-serif'
   			],
   			serif: [
-  				'Playfair Display',
+  				'Lora',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
