@@ -6,16 +6,17 @@ import { User, ArrowRight } from "lucide-react";
 
 const doctoralStudents = [
   { name: "Shilpa S.", topic: "Transition Metal Catalysis & Hydroformylation" },
-  { name: "Akhil Changotra", topic: "Noncovalent Interactions in Catalysis" },
-  { name: "Saikat Ghosh", topic: "Enantioselectivity in Desymmetrization" },
+  { name: "Akhil Changotra", topic: "Reactivity of Diazo Compounds & C–H Insertion" },
+  { name: "Saikat Ghosh", topic: "Noncovalent Interactions in Enantioselective Reactions" },
   { name: "Purushothaman A.", topic: "Asymmetric Hydroformylation Mechanisms" },
 ];
 
 const alumniHighlights = [
-  { name: "Dr. Bangaru Bhaskararao", current: "Postdoctoral Fellow", topic: "Cooperative dual catalysis, stereodivergent reactions" },
+  { name: "Dr. Bangaru Bhaskararao", current: "Postdoctoral Researcher", topic: "Cooperative dual catalysis, stereodivergent reactions (JACS 2015, Chem. Sci. 2018)" },
   { name: "Dr. Garima Jindal", current: "Assistant Professor, IISc Bangalore", topic: "Computational catalysis" },
   { name: "Dr. Rositha Kuniyil", current: "Assistant Professor, IIT Palakkad", topic: "CO₂ activation, transition metal catalysis" },
-  { name: "Dr. Dilna B. Sreedhar", current: "Researcher", topic: "Pd-catalyzed allylic amination" },
+  { name: "Dr. Akhil Changotra", current: "Researcher", topic: "Reactivity predictions, DFT methods" },
+  { name: "Dr. Dilna B. Sreedhar", current: "Researcher", topic: "Pd-catalyzed allylic amination, serial ligand catalysis" },
 ];
 
 const People = () => (
@@ -31,7 +32,7 @@ const People = () => (
           </div>
           <h3 className="text-2xl font-heading font-bold text-primary-foreground mb-1">Prof. Raghavan B. Sunoj</h3>
           <p className="text-primary-foreground/70 mb-2">Professor, Department of Chemistry, IIT Bombay</p>
-          <p className="text-primary-foreground/50 text-sm">National Teacher Award 2023 · Shanti Swarup Bhatnagar Prize 2013</p>
+          <p className="text-primary-foreground/50 text-sm">National Teacher Award 2023 · Shanti Swarup Bhatnagar Prize 2013 · J. C. Bose Fellow</p>
         </motion.div>
 
         {/* Current Members */}

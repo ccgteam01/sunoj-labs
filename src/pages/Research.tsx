@@ -7,14 +7,14 @@ const sections = [
   {
     icon: Atom,
     title: "Asymmetric Multi-Catalytic Reactions",
-    desc: "Asymmetric reactions involving transition metal and organo-catalysts are investigated using density functional theory (DFT) methods. We study cooperative, relay, and sequential catalytic strategies for enantioselective synthesis and explore how two or more chiral catalysts work in tandem.",
+    desc: "Asymmetric reactions involving transition metal and organo-catalysts are investigated using density functional theory (DFT) methods. We study cooperative, relay, and sequential catalytic strategies for enantioselective synthesis and explore how two or more chiral catalysts work in tandem to achieve stereodivergent outcomes.",
     focus: ["Cooperative dual catalysis", "Stereodivergent reactions", "Transition state modeling", "Enantioselectivity prediction"],
   },
   {
     icon: FlaskConical,
     title: "Transition Metal Catalysis & C–H Activation",
     desc: "We investigate mechanistic pathways of Pd, Rh, Ir, and Mn catalyzed reactions including C–H activation, cross-coupling, and hydroformylation. Understanding the role of directing groups, ligand effects, and selectivity in these transformations is central to our work.",
-    focus: ["C–H functionalization", "Cross-coupling mechanisms", "Hydroformylation", "Organometallic intermediates"],
+    focus: ["C–H functionalization", "Cross-coupling mechanisms", "Hydroformylation of cyclopropenes", "Organometallic intermediates"],
   },
   {
     icon: Leaf,
@@ -28,6 +28,15 @@ const sections = [
     desc: "We develop unified machine-learning protocols for asymmetric catalysis using molecular descriptors. Our ML approaches provide sustainable models trained on known catalysts to predict enantioselectivity and guide catalyst design for new reactions.",
     focus: ["Molecular descriptors", "Enantioselectivity prediction", "Catalyst screening", "Hybrid DFT + ML workflows"],
   },
+];
+
+const collaborators = [
+  { name: "Prof. Erick M. Carreira", inst: "ETH Zurich, Switzerland", topic: "Noncovalent interactions in enantioselective reactions" },
+  { name: "Prof. Xumu Zhang", inst: "Southern Univ. of Science & Technology (SUSTech), China", topic: "Asymmetric hydroformylation" },
+  { name: "Prof. Debabrata Maiti", inst: "IIT Bombay, India", topic: "meta-C–H activation, directing groups" },
+  { name: "Prof. Xile Hu", inst: "EPFL, Switzerland", topic: "Transition metal catalysis" },
+  { name: "Prof. Huw M. L. Davies", inst: "Emory University, USA", topic: "Diazo compound reactivity" },
+  { name: "Prof. Haridasan B. Singh", inst: "IIT Bombay, India", topic: "Organoselenium & organochalcogen chemistry" },
 ];
 
 const Research = () => (
@@ -65,16 +74,13 @@ const Research = () => (
     {/* Collaborative */}
     <section className="py-24 bg-secondary">
       <div className="container max-w-5xl">
-        <SectionHeading title="Collaborative Research" subtitle="We actively collaborate with experimental groups worldwide to provide computational insights into complex chemical problems." center />
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { name: "Prof. Erick M. Carreira", inst: "ETH Zurich, Switzerland" },
-            { name: "Prof. Debabrata Maiti", inst: "IIT Bombay, India" },
-            { name: "Prof. Xumu Zhang", inst: "Southern University of Science and Technology, China" },
-          ].map((c, i) => (
-            <motion.div key={c.name} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-card rounded-xl p-6 border border-border text-center card-hover">
+        <SectionHeading title="Collaborative Research" subtitle="We actively collaborate with leading experimental and computational groups worldwide." center />
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {collaborators.map((c, i) => (
+            <motion.div key={c.name} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card rounded-xl p-6 border border-border card-hover">
               <h4 className="font-heading font-bold text-foreground mb-1">{c.name}</h4>
-              <p className="text-sm text-muted-foreground">{c.inst}</p>
+              <p className="text-sm text-accent font-medium mb-2">{c.inst}</p>
+              <p className="text-xs text-muted-foreground">{c.topic}</p>
             </motion.div>
           ))}
         </div>

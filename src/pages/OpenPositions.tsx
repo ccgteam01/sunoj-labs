@@ -4,8 +4,8 @@ import SectionHeading from "@/components/SectionHeading";
 import { Mail, GraduationCap, Microscope, BookOpen } from "lucide-react";
 
 const opportunities = [
-  { icon: GraduationCap, title: "PhD Positions (IIT Bombay)", desc: "Through GATE / CSIR-NET / direct PhD admission." },
-  { icon: Microscope, title: "Postdoctoral Fellowships", desc: "Funded positions for independent researchers." },
+  { icon: GraduationCap, title: "PhD Positions (IIT Bombay)", desc: "Through GATE / CSIR-NET / direct PhD admission to the Department of Chemistry." },
+  { icon: Microscope, title: "Postdoctoral Fellowships", desc: "Funded positions for independent researchers in computational chemistry & ML." },
   { icon: BookOpen, title: "Research Internships", desc: "Short-term project-based positions for motivated students." },
 ];
 
@@ -14,7 +14,7 @@ const OpenPositions = () => (
     <section className="py-24 bg-background">
       <div className="container max-w-4xl">
         <SectionHeading
-          title="Join the Sunoj Research Group"
+          title="Join the CCML Group"
           subtitle="We are always interested in highly motivated candidates with backgrounds in organic chemistry, physical chemistry, computational modeling, and data science for chemistry."
         />
 
@@ -43,16 +43,9 @@ const OpenPositions = () => (
           viewport={{ once: true }}
           className="bg-primary rounded-xl p-8 md:p-10 text-center"
         >
-          <h3 className="text-xl font-heading font-bold text-primary-foreground mb-3">
-            How to Apply
-          </h3>
-          <p className="text-primary-foreground/80 mb-6">
-            Email your CV and research interests to:
-          </p>
-          <a
-            href="mailto:sunoj@chem.iitb.ac.in"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors"
-          >
+          <h3 className="text-xl font-heading font-bold text-primary-foreground mb-3">How to Apply</h3>
+          <p className="text-primary-foreground/80 mb-6">Email your CV and research interests to:</p>
+          <a href="mailto:sunoj@chem.iitb.ac.in" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors">
             <Mail size={18} /> sunoj@chem.iitb.ac.in
           </a>
         </motion.div>
