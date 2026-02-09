@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
           <span className="text-lg font-heading font-bold text-primary-foreground tracking-tight">
-            SRG<span className="text-accent font-light ml-1">@ IITB</span>
+            CCML<span className="text-accent font-light ml-1">@ IITB</span>
           </span>
         </Link>
 
