@@ -18,7 +18,7 @@ const heroSlides = [
   },
   {
     image: heroSlide2,
-    tagline: "Curious Catalysts · Machine Learning",
+    tagline: "Computational Chemistry · Machine Learning",
     title: "Machine Learning in Catalysis",
     desc: "A unified ML protocol for asymmetric catalysis — reaction prediction, catalyst screening, and molecular descriptor analysis.",
     link: "/publications",
