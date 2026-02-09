@@ -20,12 +20,12 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-navy-light/30">
-      <div className="container flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center gap-2">
-           <span className="text-lg font-semibold text-primary-foreground" style={{ letterSpacing: '-0.05em' }}>
-             CCML<span className="font-light ml-1">@ IITB</span>
-           </span>
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl bg-background/95 backdrop-blur-md border border-border rounded-2xl shadow-lg">
+      <div className="flex items-center justify-between h-14 px-6">
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <span className="text-lg font-semibold text-primary" style={{ letterSpacing: '-0.05em' }}>
+            CCML<span className="font-light ml-1">@ IITB</span>
+          </span>
         </Link>
 
         {/* Desktop */}
@@ -34,10 +34,10 @@ const Navbar = () => {
             <Link
               key={l.path}
               to={l.path}
-              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+              className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                 location.pathname === l.path
-                  ? "text-accent bg-navy-light/40"
-                  : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-navy-light/20"
+                  ? "text-primary-foreground bg-primary"
+                  : "text-primary/70 hover:text-primary hover:bg-primary/10"
               }`}
             >
               {l.label}
@@ -47,7 +47,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden text-primary-foreground p-2"
+          className="lg:hidden text-primary p-2"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -62,18 +62,18 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-primary border-t border-navy-light/30 overflow-hidden"
+            className="lg:hidden border-t border-border overflow-hidden"
           >
-            <div className="container py-4 flex flex-col gap-1">
+            <div className="px-4 py-3 flex flex-col gap-1">
               {navLinks.map((l) => (
                 <Link
                   key={l.path}
                   to={l.path}
                   onClick={() => setOpen(false)}
-                  className={`px-4 py-2.5 text-sm font-medium rounded-md transition-colors ${
+                  className={`px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
                     location.pathname === l.path
-                      ? "text-accent bg-navy-light/40"
-                      : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-navy-light/20"
+                      ? "text-primary-foreground bg-primary"
+                      : "text-primary/70 hover:text-primary hover:bg-primary/10"
                   }`}
                 >
                   {l.label}
