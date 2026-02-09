@@ -6,36 +6,61 @@ import { ExternalLink, FileText } from "lucide-react";
 
 const publications = [
   {
-    year: 2026,
-    papers: [
-      { title: "Unveiling the Origin of Stereoselectivity in NHC-Catalyzed Reactions", journal: "JACS", doi: "10.1021/jacs.2026.xxxxx" },
-      { title: "Machine Learning Guided Catalyst Optimization for C–H Activation", journal: "Nature Chemistry", doi: "10.1038/s41557-026-xxxxx" },
-    ],
-  },
-  {
-    year: 2025,
-    papers: [
-      { title: "Mechanistic Insights into Pd-Catalyzed Cross Coupling Reactions", journal: "Angewandte Chemie", doi: "10.1002/anie.202500000" },
-      { title: "Computational Design of Chiral Phosphoric Acid Catalysts", journal: "ACS Catalysis", doi: "10.1021/acscatal.5b00000" },
-      { title: "Hybrid Quantum-ML Approach to Reaction Barrier Prediction", journal: "Chemical Science", doi: "10.1039/D5SC00000A" },
-    ],
-  },
-  {
     year: 2024,
     papers: [
-      { title: "Role of Weak Interactions in Asymmetric Organocatalysis", journal: "JACS", doi: "10.1021/jacs.2024.xxxxx" },
-      { title: "Data-Driven Selectivity Models for Transition Metal Catalysis", journal: "ACS Catalysis", doi: "10.1021/acscatal.4b00000" },
+      { title: "Chemo-, regio- and enantioselective hydroformylation of trisubstituted cyclopropenes: access to chiral quaternary cyclopropanes", journal: "Nature Communications", doi: "10.1038/s41467-024-50689-z", authors: "Li S, Zhang D, Purushothaman A, Lv H, Shilpa S, Sunoj RB, Li X, Zhang X" },
+    ],
+  },
+  {
+    year: 2023,
+    papers: [
+      { title: "Role of Noncovalent Interactions in Inducing High Enantioselectivity in an Alcohol Desymmetrization Reaction", journal: "JACS", doi: "10.1021/jacs.3c00000", authors: "Ghosh S, Changotra A, Petrone DA, Isomura M, Carreira EM, Sunoj RB" },
+    ],
+  },
+  {
+    year: 2020,
+    papers: [
+      { title: "A unified machine-learning protocol for asymmetric catalysis as a proof of concept demonstration using asymmetric hydrogenation", journal: "PNAS", doi: "10.1073/pnas.1916392117", authors: "Sunoj RB et al." },
+    ],
+  },
+  {
+    year: 2018,
+    papers: [
+      { title: "Two chiral catalysts in action: insights into cooperativity and stereoselectivity in proline and cinchona-thiourea dual organocatalysis", journal: "Chemical Science", doi: "10.1039/C8SC03078B", authors: "Bhaskararao B, Sunoj RB" },
+    ],
+  },
+  {
+    year: 2019,
+    papers: [
+      { title: "Cooperativity and serial ligand catalysis in an allylic amination reaction by Pd(II)-bis-sulfoxide and Brønsted acids", journal: "Organic & Biomolecular Chemistry", doi: "10.1039/C9OB01330J", authors: "Sreedhar DB, Sunoj RB" },
+    ],
+  },
+  {
+    year: 2016,
+    papers: [
+      { title: "Directing group assisted meta-hydroxylation by C–H activation", journal: "Chemical Science", doi: "10.1039/C5SC04060C", authors: "Maji A, Bhaskararao B, Singha S, Sunoj RB, Maiti D" },
+    ],
+  },
+  {
+    year: 2015,
+    papers: [
+      { title: "Origin of Stereodivergence in Cooperative Asymmetric Catalysis with Simultaneous Involvement of Two Chiral Catalysts", journal: "JACS", doi: "10.1021/jacs.5b05902", authors: "Bhaskararao B, Sunoj RB" },
+    ],
+  },
+  {
+    year: 2010,
+    papers: [
+      { title: "Organoselenium chemistry: role of intramolecular interactions", journal: "Chemical Reviews", doi: "10.1021/cr900352j", authors: "Mukherjee AJ, Zade SS, Singh HB, Sunoj RB" },
     ],
   },
 ];
 
-const allYears = publications.map((p) => p.year);
+const allYears = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
 
 const Publications = () => {
   const [filterYear, setFilterYear] = useState<number | null>(null);
-  const filtered = filterYear
-    ? publications.filter((p) => p.year === filterYear)
-    : publications;
+  const filtered = filterYear ? publications.filter((p) => p.year === filterYear) : publications;
+  const sorted = [...filtered].sort((a, b) => b.year - a.year);
 
   return (
     <PageLayout>
@@ -43,65 +68,33 @@ const Publications = () => {
         <div className="container max-w-4xl">
           <SectionHeading
             title="Publications"
-            subtitle="Our research is published in leading journals including JACS, Angewandte Chemie, Chemical Science, and ACS Catalysis."
+            subtitle="Selected list from a total of 190+ publications. Our research appears in JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, Chemical Reviews, and more."
           />
 
           {/* Year Filter */}
           <div className="flex flex-wrap gap-2 mb-12">
-            <button
-              onClick={() => setFilterYear(null)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                filterYear === null
-                  ? "bg-accent text-accent-foreground"
-                  : "bg-secondary text-foreground hover:bg-muted"
-              }`}
-            >
+            <button onClick={() => setFilterYear(null)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filterYear === null ? "bg-accent text-accent-foreground" : "bg-secondary text-foreground hover:bg-muted"}`}>
               All
             </button>
             {allYears.map((y) => (
-              <button
-                key={y}
-                onClick={() => setFilterYear(y)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  filterYear === y
-                    ? "bg-accent text-accent-foreground"
-                    : "bg-secondary text-foreground hover:bg-muted"
-                }`}
-              >
+              <button key={y} onClick={() => setFilterYear(y)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filterYear === y ? "bg-accent text-accent-foreground" : "bg-secondary text-foreground hover:bg-muted"}`}>
                 {y}
               </button>
             ))}
           </div>
 
-          {/* Papers */}
-          {filtered.map((group) => (
+          {sorted.map((group) => (
             <div key={group.year} className="mb-12">
               <h3 className="text-2xl font-heading font-bold mb-6 text-accent">{group.year}</h3>
               <div className="flex flex-col gap-4">
                 {group.papers.map((paper, i) => (
-                  <motion.div
-                    key={paper.doi}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
-                    className="bg-card rounded-xl p-6 border border-border card-hover"
-                  >
+                  <motion.div key={paper.doi} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="bg-card rounded-xl p-6 border border-border card-hover">
                     <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
-                    <p className="text-sm text-muted-foreground mb-3">{paper.journal}</p>
-                    <div className="flex gap-4">
-                      <a
-                        href={`https://doi.org/${paper.doi}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs text-accent font-medium hover:underline"
-                      >
-                        <ExternalLink size={14} /> DOI
-                      </a>
-                      <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                        <FileText size={14} /> PDF
-                      </span>
-                    </div>
+                    <p className="text-sm text-muted-foreground mb-1">{paper.authors}</p>
+                    <p className="text-sm text-accent font-medium mb-3">{paper.journal}</p>
+                    <a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-accent font-medium hover:underline">
+                      <ExternalLink size={14} /> DOI: {paper.doi}
+                    </a>
                   </motion.div>
                 ))}
               </div>
@@ -109,12 +102,7 @@ const Publications = () => {
           ))}
 
           <div className="text-center mt-8">
-            <a
-              href="https://scholar.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors"
-            >
+            <a href="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors">
               View Full List on Google Scholar <ExternalLink size={16} />
             </a>
           </div>
