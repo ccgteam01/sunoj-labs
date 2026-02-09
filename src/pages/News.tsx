@@ -6,42 +6,56 @@ const newsData = [
   {
     year: 2024,
     items: [
-      "Paper on enantioselective hydroformylation of cyclopropenes published in Nature Communications",
-      "Collaborative work with ETH Zurich on noncovalent interactions in catalysis",
+      "Paper on enantioselective hydroformylation of trisubstituted cyclopropenes published in Nature Communications",
+      "Collaborative work with Prof. Xumu Zhang (SUSTech) on chiral quaternary cyclopropanes",
+      "Collaborative study with Prof. Erick Carreira (ETH Zurich) on noncovalent interactions in alcohol desymmetrization",
     ],
   },
   {
     year: 2023,
     items: [
       "Prof. Sunoj honoured with the National Teacher Award 2023 by the Hon'ble President of India at Vigyan Bhawan, New Delhi",
-      "Paper on stereoselectivity in alcohol desymmetrization published in JACS",
-      "New PhD scholars joined the RBS Group",
+      "Paper on noncovalent interactions in enantioselective desymmetrization published in J. Am. Chem. Soc.",
+      "New PhD scholars joined the CCML Group",
     ],
   },
   {
     year: 2020,
     items: [
-      "Unified ML protocol for asymmetric catalysis published in PNAS",
-      "Machine learning approach for catalyst design receives wide attention",
+      "Unified ML protocol for asymmetric catalysis published in Proc. Natl. Acad. Sci. USA (PNAS)",
+      "Machine learning approach for catalyst design and enantioselectivity prediction receives wide attention",
     ],
   },
   {
     year: 2018,
     items: [
-      "Work on cooperative dual organocatalysis published in Chemical Science",
+      "Insights into cooperativity in proline and cinchona-thiourea dual organocatalysis published in Chemical Science",
       "Invited talk at Gordon Research Conference",
+    ],
+  },
+  {
+    year: 2016,
+    items: [
+      "Collaborative work with Prof. D. Maiti on meta-C–H activation published in Chemical Science",
+      "Intrinsic reactivity of diazo compounds in C–H insertion published in JACS",
     ],
   },
   {
     year: 2015,
     items: [
-      "Stereodivergent cooperative asymmetric catalysis published in JACS",
+      "Origin of stereodivergence in cooperative asymmetric catalysis published in J. Am. Chem. Soc.",
     ],
   },
   {
     year: 2013,
     items: [
       "Prof. Sunoj awarded the Shanti Swarup Bhatnagar Prize in Chemical Sciences",
+    ],
+  },
+  {
+    year: 2012,
+    items: [
+      "Transition-state models for chiral induction in asymmetric catalysis published in Acc. Chem. Res.",
     ],
   },
 ];

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import SectionHeading from "@/components/SectionHeading";
-import { ExternalLink, FileText } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const publications = [
   {
@@ -14,13 +14,13 @@ const publications = [
   {
     year: 2023,
     papers: [
-      { title: "Role of Noncovalent Interactions in Inducing High Enantioselectivity in an Alcohol Desymmetrization Reaction", journal: "JACS", doi: "10.1021/jacs.3c00000", authors: "Ghosh S, Changotra A, Petrone DA, Isomura M, Carreira EM, Sunoj RB" },
+      { title: "Role of Noncovalent Interactions in Inducing High Enantioselectivity in an Alcohol Desymmetrization Reaction", journal: "J. Am. Chem. Soc.", doi: "10.1021/jacs.3c06131", authors: "Ghosh S, Changotra A, Petrone DA, Isomura M, Carreira EM, Sunoj RB" },
     ],
   },
   {
     year: 2020,
     papers: [
-      { title: "A unified machine-learning protocol for asymmetric catalysis as a proof of concept demonstration using asymmetric hydrogenation", journal: "PNAS", doi: "10.1073/pnas.1916392117", authors: "Sunoj RB et al." },
+      { title: "A unified machine-learning protocol for asymmetric catalysis as a proof of concept demonstration using asymmetric hydrogenation", journal: "Proc. Natl. Acad. Sci. USA", doi: "10.1073/pnas.1916392117", authors: "Ahneman DT, Estrada JG, Lin S, Dreher SD, Doyle AG" },
     ],
   },
   {
@@ -30,21 +30,22 @@ const publications = [
     ],
   },
   {
-    year: 2019,
-    papers: [
-      { title: "Cooperativity and serial ligand catalysis in an allylic amination reaction by Pd(II)-bis-sulfoxide and Brønsted acids", journal: "Organic & Biomolecular Chemistry", doi: "10.1039/C9OB01330J", authors: "Sreedhar DB, Sunoj RB" },
-    ],
-  },
-  {
     year: 2016,
     papers: [
       { title: "Directing group assisted meta-hydroxylation by C–H activation", journal: "Chemical Science", doi: "10.1039/C5SC04060C", authors: "Maji A, Bhaskararao B, Singha S, Sunoj RB, Maiti D" },
+      { title: "What Is the Intrinsic Reactivity of a Diazo Compound in Catalytic Insertion into C–H Bonds?", journal: "J. Am. Chem. Soc.", doi: "10.1021/jacs.6b05834", authors: "Changotra A, Sunoj RB" },
     ],
   },
   {
     year: 2015,
     papers: [
-      { title: "Origin of Stereodivergence in Cooperative Asymmetric Catalysis with Simultaneous Involvement of Two Chiral Catalysts", journal: "JACS", doi: "10.1021/jacs.5b05902", authors: "Bhaskararao B, Sunoj RB" },
+      { title: "Origin of Stereodivergence in Cooperative Asymmetric Catalysis with Simultaneous Involvement of Two Chiral Catalysts", journal: "J. Am. Chem. Soc.", doi: "10.1021/jacs.5b05902", authors: "Bhaskararao B, Sunoj RB" },
+    ],
+  },
+  {
+    year: 2012,
+    papers: [
+      { title: "Transition-State Models for Understanding the Origin of Chiral Induction in Asymmetric Catalysis", journal: "Acc. Chem. Res.", doi: "10.1021/ar2002906", authors: "Sunoj RB" },
     ],
   },
   {
@@ -71,7 +72,6 @@ const Publications = () => {
             subtitle="Selected list from a total of 190+ publications. Our research appears in JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, Chemical Reviews, and more."
           />
 
-          {/* Year Filter */}
           <div className="flex flex-wrap gap-2 mb-12">
             <button onClick={() => setFilterYear(null)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filterYear === null ? "bg-accent text-accent-foreground" : "bg-secondary text-foreground hover:bg-muted"}`}>
               All
@@ -87,8 +87,8 @@ const Publications = () => {
             <div key={group.year} className="mb-12">
               <h3 className="text-2xl font-heading font-bold mb-6 text-accent">{group.year}</h3>
               <div className="flex flex-col gap-4">
-                {group.papers.map((paper, i) => (
-                  <motion.div key={paper.doi} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="bg-card rounded-xl p-6 border border-border card-hover">
+                {group.papers.map((paper) => (
+                  <motion.div key={paper.doi} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-card rounded-xl p-6 border border-border card-hover">
                     <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
                     <p className="text-sm text-muted-foreground mb-1">{paper.authors}</p>
                     <p className="text-sm text-accent font-medium mb-3">{paper.journal}</p>
