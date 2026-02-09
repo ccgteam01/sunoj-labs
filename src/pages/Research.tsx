@@ -1,26 +1,32 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import SectionHeading from "@/components/SectionHeading";
-import { Atom, Leaf, BrainCircuit } from "lucide-react";
+import { Atom, Leaf, BrainCircuit, FlaskConical } from "lucide-react";
 
 const sections = [
   {
     icon: Atom,
-    title: "Mechanistic Pathways in Organic Chemistry",
-    desc: "We investigate reaction mechanisms at the molecular level, enabling deeper understanding of reactivity and selectivity in modern organic synthesis.",
-    focus: ["Transition states", "Stereoselectivity", "Reactive intermediates"],
+    title: "Asymmetric Multi-Catalytic Reactions",
+    desc: "Asymmetric reactions involving transition metal and organo-catalysts are investigated using density functional theory (DFT) methods. We study cooperative, relay, and sequential catalytic strategies for enantioselective synthesis and explore how two or more chiral catalysts work in tandem.",
+    focus: ["Cooperative dual catalysis", "Stereodivergent reactions", "Transition state modeling", "Enantioselectivity prediction"],
+  },
+  {
+    icon: FlaskConical,
+    title: "Transition Metal Catalysis & C–H Activation",
+    desc: "We investigate mechanistic pathways of Pd, Rh, Ir, and Mn catalyzed reactions including C–H activation, cross-coupling, and hydroformylation. Understanding the role of directing groups, ligand effects, and selectivity in these transformations is central to our work.",
+    focus: ["C–H functionalization", "Cross-coupling mechanisms", "Hydroformylation", "Organometallic intermediates"],
   },
   {
     icon: Leaf,
-    title: "Catalysis and Sustainable Transformations",
-    desc: "Catalysis remains central to green chemistry. We model catalytic cycles and design strategies for improved efficiency and sustainability.",
-    focus: ["Asymmetric catalysis", "Organometallic systems", "Industrially relevant reactions"],
+    title: "Organocatalysis & Noncovalent Interactions",
+    desc: "We explore how noncovalent interactions — hydrogen bonds, CH–π, lone pair–π, and dispersion forces — control stereoselectivity in organocatalytic reactions. Our studies reveal the crucial role these weak forces play in asymmetric catalysis.",
+    focus: ["Proline catalysis", "Cinchona-thiourea dual catalysis", "Stereoselectivity origins", "Noncovalent interaction analysis"],
   },
   {
     icon: BrainCircuit,
-    title: "Emerging AI in Molecular Discovery",
-    desc: "We explore how machine learning and data-driven tools can complement theoretical chemistry for faster discovery.",
-    focus: ["Reaction prediction", "Catalyst screening", "Hybrid AI + quantum workflows"],
+    title: "Machine Learning in Molecular Discovery",
+    desc: "We develop unified machine-learning protocols for asymmetric catalysis using molecular descriptors. Our ML approaches provide sustainable models trained on known catalysts to predict enantioselectivity and guide catalyst design for new reactions.",
+    focus: ["Molecular descriptors", "Enantioselectivity prediction", "Catalyst screening", "Hybrid DFT + ML workflows"],
   },
 ];
 
@@ -30,19 +36,12 @@ const Research = () => (
       <div className="container max-w-5xl">
         <SectionHeading
           title="Research Areas"
-          subtitle="Our research spans computational mechanistic chemistry, catalysis design, and AI-driven molecular discovery."
+          subtitle="Our research spans computational mechanistic chemistry, transition metal and organocatalysis, and machine learning-driven molecular discovery."
           center
         />
         <div className="flex flex-col gap-12">
           {sections.map((s, i) => (
-            <motion.div
-              key={s.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-card rounded-xl p-8 md:p-10 border border-border card-hover"
-            >
+            <motion.div key={s.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} className="bg-card rounded-xl p-8 md:p-10 border border-border card-hover">
               <div className="flex items-start gap-5">
                 <div className="w-14 h-14 bg-accent/10 text-accent rounded-xl flex items-center justify-center shrink-0">
                   <s.icon size={28} />
@@ -52,16 +51,30 @@ const Research = () => (
                   <p className="text-muted-foreground leading-relaxed mb-5">{s.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {s.focus.map((f) => (
-                      <span
-                        key={f}
-                        className="px-3 py-1.5 bg-secondary text-foreground text-xs font-medium rounded-full"
-                      >
-                        {f}
-                      </span>
+                      <span key={f} className="px-3 py-1.5 bg-secondary text-foreground text-xs font-medium rounded-full">{f}</span>
                     ))}
                   </div>
                 </div>
               </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Collaborative */}
+    <section className="py-24 bg-secondary">
+      <div className="container max-w-5xl">
+        <SectionHeading title="Collaborative Research" subtitle="We actively collaborate with experimental groups worldwide to provide computational insights into complex chemical problems." center />
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { name: "Prof. Erick M. Carreira", inst: "ETH Zurich, Switzerland" },
+            { name: "Prof. Debabrata Maiti", inst: "IIT Bombay, India" },
+            { name: "Prof. Xumu Zhang", inst: "Southern University of Science and Technology, China" },
+          ].map((c, i) => (
+            <motion.div key={c.name} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-card rounded-xl p-6 border border-border text-center card-hover">
+              <h4 className="font-heading font-bold text-foreground mb-1">{c.name}</h4>
+              <p className="text-sm text-muted-foreground">{c.inst}</p>
             </motion.div>
           ))}
         </div>
