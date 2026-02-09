@@ -3,16 +3,36 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Beaker, Leaf, Newspaper, BrainCircuit, Award, ChevronLeft, ChevronRight } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroSlide1 from "@/assets/hero-slide-1.jpg";
+import heroSlide2 from "@/assets/hero-slide-2.jpg";
+import heroSlide3 from "@/assets/hero-slide-3.jpg";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.15, duration: 0.5 },
-  }),
-};
+const heroSlides = [
+  {
+    image: heroSlide1,
+    tagline: "CCML @ IIT Bombay",
+    title: "Asymmetric Multi-Catalytic Reactions",
+    desc: "Cooperative and relay catalytic strategies for enantioselective synthesis using transition metal and organo-catalysts.",
+    link: "/research",
+    linkLabel: "Explore Research",
+  },
+  {
+    image: heroSlide2,
+    tagline: "Curious Catalysts · Machine Learning",
+    title: "Machine Learning in Catalysis",
+    desc: "A unified ML protocol for asymmetric catalysis — reaction prediction, catalyst screening, and molecular descriptor analysis.",
+    link: "/publications",
+    linkLabel: "View Publications",
+  },
+  {
+    image: heroSlide3,
+    tagline: "Mechanisms · Molecules · Innovation",
+    title: "Transition Metal Catalysis & C–H Activation",
+    desc: "Mechanistic understanding of Pd, Rh, Ir-catalyzed transformations, cross-coupling reactions, and sustainable chemistry.",
+    link: "/about",
+    linkLabel: "About Our Group",
+  },
+];
 
 const researchCards = [
   {
@@ -38,24 +58,6 @@ const newsItems = [
   { text: "Machine learning protocol for asymmetric catalysis published in PNAS", year: "2020" },
 ];
 
-const heroSlides = [
-  {
-    tagline: "CCML @ IIT Bombay",
-    title: "Computational Chemistry for Modern Molecular Discovery",
-    desc: "The CCML Group at IIT Bombay explores chemical reactivity, catalysis, and mechanistic pathways using advanced quantum chemical tools and emerging AI/ML approaches.",
-  },
-  {
-    tagline: "Curious Catalysts · Machine Learning",
-    title: "Where Chemistry Meets Theory, Data & Discovery",
-    desc: "We combine computational modeling, mechanistic insights, and machine learning to accelerate molecular innovation and catalyst design.",
-  },
-  {
-    tagline: "Research That Matters",
-    title: "Mechanisms. Molecules. Meaningful Innovation.",
-    desc: "From asymmetric catalysis to AI-driven reaction prediction — pushing the frontiers of what computational chemistry can achieve.",
-  },
-];
-
 const Index = () => {
   const [current, setCurrent] = useState(0);
 
@@ -63,67 +65,103 @@ const Index = () => {
   const prev = useCallback(() => setCurrent((c) => (c - 1 + heroSlides.length) % heroSlides.length), []);
 
   useEffect(() => {
-    const timer = setInterval(next, 6000);
+    const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
   }, [next]);
 
   return (
   <PageLayout>
-    {/* Hero Carousel */}
-    <section className="relative min-h-[85vh] flex items-center">
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 hero-overlay" />
-      </div>
+    {/* Hero — Full-screen image carousel */}
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Background images */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <img
+            src={heroSlides[current].image}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/50" />
+        </motion.div>
+      </AnimatePresence>
 
-      <div className="container relative z-10 py-20">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl"
-          >
-            <p className="text-accent font-medium text-sm uppercase tracking-widest mb-4">
-              {heroSlides[current].tagline}
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-tight mb-6">
-              {heroSlides[current].title}
-            </h1>
-            <p className="text-primary-foreground/80 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
-              {heroSlides[current].desc}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/research" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors">
-                Explore Our Research <ArrowRight size={18} />
+      {/* Content overlay */}
+      <div className="relative z-10 h-full flex flex-col justify-end pb-24 md:pb-32">
+        <div className="container">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`content-${current}`}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="max-w-3xl"
+            >
+              <p className="text-accent font-medium text-xs uppercase tracking-[0.25em] mb-4">
+                {heroSlides[current].tagline}
+              </p>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.1] mb-5">
+                {heroSlides[current].title}
+              </h1>
+              <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
+                {heroSlides[current].desc}
+              </p>
+              <Link
+                to={heroSlides[current].link}
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors"
+              >
+                {heroSlides[current].linkLabel} <ArrowRight size={18} />
               </Link>
-              <Link to="/publications" className="inline-flex items-center gap-2 px-6 py-3 border border-primary-foreground/30 text-primary-foreground font-semibold rounded-lg hover:bg-primary-foreground/10 transition-colors">
-                View Publications
-              </Link>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-        {/* Carousel Controls */}
-        <div className="flex items-center gap-4 mt-10">
-          <button onClick={prev} className="w-10 h-10 rounded-full border border-primary-foreground/30 text-primary-foreground flex items-center justify-center hover:bg-primary-foreground/10 transition-colors" aria-label="Previous slide">
-            <ChevronLeft size={20} />
-          </button>
-          <div className="flex gap-2">
+        {/* Navigation */}
+        <div className="container mt-10 flex items-center justify-between">
+          <div className="flex items-center gap-3">
             {heroSlides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-8 bg-accent" : "w-2 bg-primary-foreground/40"}`}
+                className="relative h-1 overflow-hidden rounded-full transition-all duration-300"
+                style={{ width: i === current ? 48 : 24 }}
                 aria-label={`Go to slide ${i + 1}`}
-              />
+              >
+                <span className="absolute inset-0 bg-white/30 rounded-full" />
+                {i === current && (
+                  <motion.span
+                    className="absolute inset-0 bg-accent rounded-full origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: 5, ease: "linear" }}
+                  />
+                )}
+              </button>
             ))}
           </div>
-          <button onClick={next} className="w-10 h-10 rounded-full border border-primary-foreground/30 text-primary-foreground flex items-center justify-center hover:bg-primary-foreground/10 transition-colors" aria-label="Next slide">
-            <ChevronRight size={20} />
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={prev}
+              className="w-11 h-11 rounded-full border border-white/25 text-white flex items-center justify-center hover:bg-white/10 transition-colors"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={next}
+              className="w-11 h-11 rounded-full border border-white/25 text-white flex items-center justify-center hover:bg-white/10 transition-colors"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </section>
