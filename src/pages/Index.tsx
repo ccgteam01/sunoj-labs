@@ -107,8 +107,8 @@ const Index = () => {
               <p className="text-accent font-medium text-xs uppercase tracking-[0.25em] mb-4">
                 {heroSlides[current].tagline}
               </p>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-[1.1] mb-5">
-                {heroSlides[current].title}
+               <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] mb-5" style={{ letterSpacing: '-0.05em' }}>
+                 {heroSlides[current].title}
               </h1>
               <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
                 {heroSlides[current].desc}
@@ -170,7 +170,7 @@ const Index = () => {
     <section className="py-24 bg-background">
       <div className="container">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-3">Research Highlights</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-3" style={{ letterSpacing: '-0.05em' }}><span className="font-serif italic">Research</span> Highlights</h2>
           <div className="section-divider mx-auto" />
         </motion.div>
         <div className="grid md:grid-cols-3 gap-8">
@@ -179,7 +179,7 @@ const Index = () => {
               <div className="w-12 h-12 bg-accent/10 text-accent rounded-lg flex items-center justify-center mb-5">
                 <card.icon size={24} />
               </div>
-              <h3 className="text-xl font-heading font-bold mb-3">{card.title}</h3>
+              <h3 className="text-xl font-semibold mb-3" style={{ letterSpacing: '-0.05em' }}>{card.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{card.desc}</p>
             </motion.div>
           ))}
@@ -207,7 +207,7 @@ const Index = () => {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <h2 className="text-3xl font-heading font-bold mb-3">Latest News & Achievements</h2>
+              <h2 className="text-3xl font-semibold mb-3" style={{ letterSpacing: '-0.05em' }}>Latest <span className="font-serif italic">News</span> & Achievements</h2>
               <div className="section-divider mb-8" />
             </motion.div>
             <div className="flex flex-col gap-4">
@@ -228,7 +228,7 @@ const Index = () => {
 
           {/* CTA */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-card rounded-xl p-10 border border-border">
-            <h3 className="text-2xl font-heading font-bold mb-4">Interested in joining our group?</h3>
+            <h3 className="text-2xl font-semibold mb-4" style={{ letterSpacing: '-0.05em' }}>Interested in <span className="font-serif italic">joining</span> our group?</h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
               We welcome motivated students and postdoctoral researchers passionate about computational chemistry and molecular science.
             </p>

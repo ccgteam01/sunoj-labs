@@ -23,9 +23,9 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-navy-light/30">
       <div className="container flex items-center justify-between h-16">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-lg font-heading font-bold text-primary-foreground tracking-tight">
-            CCML<span className="text-accent font-light ml-1">@ IITB</span>
-          </span>
+           <span className="text-lg font-semibold text-primary-foreground" style={{ letterSpacing: '-0.05em' }}>
+             CCML<span className="font-light ml-1">@ IITB</span>
+           </span>
         </Link>
 
         {/* Desktop */}

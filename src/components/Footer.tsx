@@ -6,7 +6,7 @@ const Footer = () => (
     <div className="container py-16">
       <div className="grid md:grid-cols-3 gap-12">
         <div>
-          <h3 className="text-lg font-heading font-bold mb-4">CCML Group</h3>
+          <h3 className="text-lg font-semibold mb-4" style={{ letterSpacing: '-0.05em' }}>CCML Group</h3>
           <p className="text-primary-foreground/70 text-sm leading-relaxed">
             Computational Chemistry & Machine Learning
             <br />
