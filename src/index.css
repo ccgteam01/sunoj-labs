@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -15,7 +17,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 216 50% 15%;
 
-    --primary: 216 80% 15%;
+    --primary: 227 53% 45%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 25% 96%;
@@ -24,7 +26,7 @@
     --muted: 220 20% 95%;
     --muted-foreground: 216 15% 45%;
 
-    --accent: 221 83% 53%;
+    --accent: 207 48% 48%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -50,6 +52,8 @@
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 216 60% 25%;
     --sidebar-ring: 221 83% 53%;
+    --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+    --font-mono: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 
   .dark {
@@ -80,6 +84,8 @@
     --sidebar-accent-foreground: 0 0% 95%;
     --sidebar-border: 216 40% 18%;
     --sidebar-ring: 221 83% 53%;
+    --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, Times New Roman, Times, serif;
+    --font-mono: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 }
 
