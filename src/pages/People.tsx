@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { User, ArrowRight } from "lucide-react";
 import { usePeople } from "@/hooks/use-sanity";
@@ -28,10 +29,16 @@ const People = () => {
 
   return (
     <PageLayout>
+      <PageHero
+        tagline="CCML Group"
+        title="Our Team"
+        description="Meet the researchers driving innovation in computational chemistry and machine learning at IIT Bombay."
+        ctaText="Join Our Team"
+        ctaLink="/positions"
+        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
+      />
       <section className="py-24 bg-background">
         <div className="container max-w-5xl">
-          <SectionHeading title="Our Team" center />
-
           {pi && (
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-primary rounded-xl p-8 md:p-10 text-center mb-16">
               <div className="w-20 h-20 bg-accent/20 text-accent rounded-full flex items-center justify-center mx-auto mb-4">

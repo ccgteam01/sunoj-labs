@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { Atom, Leaf, BrainCircuit, FlaskConical } from "lucide-react";
 import { useResearchAreas, useCollaborators } from "@/hooks/use-sanity";
@@ -28,13 +29,16 @@ const Research = () => {
 
   return (
     <PageLayout>
+      <PageHero
+        tagline="Computational Chemistry · Machine Learning"
+        title="Research Areas"
+        description="Our research spans computational mechanistic chemistry, transition metal and organocatalysis, and machine learning-driven molecular discovery."
+        ctaText="View Publications"
+        ctaLink="/publications"
+        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
+      />
       <section className="py-24 bg-background">
         <div className="container max-w-5xl">
-          <SectionHeading
-            title="Research Areas"
-            subtitle="Our research spans computational mechanistic chemistry, transition metal and organocatalysis, and machine learning-driven molecular discovery."
-            center
-          />
           <div className="flex flex-col gap-12">
             {sections.map((s: any, i: number) => {
               const IconComponent = iconMap[s.icon] || Atom;

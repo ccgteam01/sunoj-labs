@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { ExternalLink } from "lucide-react";
 import { usePublications } from "@/hooks/use-sanity";
@@ -37,13 +38,16 @@ const Publications = () => {
 
   return (
     <PageLayout>
+      <PageHero
+        tagline="190+ Publications"
+        title="Publications"
+        description="Our research appears in leading journals including JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, and Chemical Reviews."
+        ctaText="Google Scholar Profile"
+        ctaLink="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en"
+        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
+      />
       <section className="py-24 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading
-            title="Publications"
-            subtitle="Selected list from a total of 190+ publications. Our research appears in JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, Chemical Reviews, and more."
-          />
-
           <div className="flex flex-wrap gap-2 mb-12">
             <button onClick={() => setFilterYear(null)} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filterYear === null ? "bg-accent text-accent-foreground" : "bg-secondary text-foreground hover:bg-muted"}`}>
               All

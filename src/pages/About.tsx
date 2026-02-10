@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { BookOpen, FlaskConical, Cpu, Sparkles, Award, GraduationCap } from "lucide-react";
 import { useAboutPage } from "@/hooks/use-sanity";
@@ -57,6 +58,12 @@ const About = () => {
 
   return (
     <PageLayout>
+      <PageHero
+        tagline="CCML Group · IIT Bombay"
+        title="About the Group"
+        description="The CCML Group focuses on understanding chemical reactivity through computational modeling, mechanistic exploration, and machine learning-driven molecular discovery."
+        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
+      />
       <section className="py-24 bg-background">
         <div className="container max-w-4xl">
           <SectionHeading title="About the Group" />

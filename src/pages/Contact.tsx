@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import SectionHeading from "@/components/SectionHeading";
+import PageHero from "@/components/PageHero";
 import { Mail, MapPin, ExternalLink } from "lucide-react";
 import { useContactInfo } from "@/hooks/use-sanity";
 
@@ -10,17 +10,22 @@ const fallbackContact = {
   googleScholarUrl: "https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en",
   githubUrl: "https://github.com/Sunojlab",
   officialWebsiteUrl: "https://www.chem.iitb.ac.in/~sunoj/",
-  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.8580600855957!2d72.91378687508377!3d19.130027982084895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7f393a5b7cf%3A0x1c8e0a0ad7539c8d!2sIIT%20Bombay!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
-};
+  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d426.0536574630531!2d72.9174189614062!3d19.130447145577058!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7f46befb6e3%3A0xedc173862dc9f4e3!2sDepartment%20of%20Chemistry%2C%20IIT%20Bombay!5e0!3m2!1sen!2sin!4v1770665742966!5m2!1sen!2sin"
+}
 
 const Contact = () => {
   const { data: contact } = useContactInfo(fallbackContact);
 
   return (
     <PageLayout>
+      <PageHero
+        tagline="Get in Touch"
+        title="Contact Us"
+        description="Connect with the CCML Group at IIT Bombay. We welcome inquiries about research collaborations, publications, and open positions."
+        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
+      />
       <section className="py-24 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="Contact Us" center />
           <div className="grid md:grid-cols-2 gap-12">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <h3 className="text-xl font-heading font-bold mb-6">Get in Touch</h3>

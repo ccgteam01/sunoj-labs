@@ -72,7 +72,7 @@ const Index = () => {
   return (
   <PageLayout>
     {/* Hero — Full-screen image carousel */}
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden bg-black">
       {/* Background images */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -80,7 +80,7 @@ const Index = () => {
           initial={{ opacity: 0, scale: 1.08 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <img
@@ -93,7 +93,7 @@ const Index = () => {
       </AnimatePresence>
 
       {/* Content overlay */}
-      <div className="relative z-10 h-full flex flex-col justify-end pb-24 md:pb-32">
+      <div className="relative z-10 h-full flex flex-col justify-end mt-16 pb-24 md:pb-32">
         <div className="container">
           <AnimatePresence mode="wait">
             <motion.div
@@ -101,10 +101,10 @@ const Index = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
               className="max-w-3xl"
             >
-              <p className="text-accent font-medium text-xs uppercase tracking-[0.25em] mb-4">
+              <p className="text-white font-medium text-xs uppercase tracking-[0.25em] mb-4">
                 {heroSlides[current].tagline}
               </p>
                <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] mb-5" style={{ letterSpacing: '-0.05em' }}>
@@ -170,17 +170,17 @@ const Index = () => {
     <section className="py-24 bg-background">
       <div className="container">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-3" style={{ letterSpacing: '-0.05em' }}><span className="font-serif italic">Research</span> Highlights</h2>
+          <h2 className="text-5xl md:text-6xl font-semibold mb-3" style={{ letterSpacing: '-0.05em' }}><span className="font-serif italic">Research</span> Highlights</h2>
           <div className="section-divider mx-auto" />
         </motion.div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 max-w-screen-lg mx-auto">
           {researchCards.map((card, i) => (
-            <motion.div key={card.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} className="bg-card rounded-xl p-8 border border-border card-hover">
-              <div className="w-12 h-12 bg-accent/10 text-accent rounded-lg flex items-center justify-center mb-5">
+            <motion.div key={card.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} className="bg-primary rounded-xl p-8 border border-border card-hover aspect-square flex flex-col justify-between">
+              <h3 className="text-xl font-semibold mb-3 text-white" style={{ letterSpacing: '-0.05em' }}>{card.title}</h3>
+              {/* <div className="w-12 h-12 bg-accent/10 text-white rounded-lg flex items-center justify-center mb-5">
                 <card.icon size={24} />
-              </div>
-              <h3 className="text-xl font-semibold mb-3" style={{ letterSpacing: '-0.05em' }}>{card.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{card.desc}</p>
+              </div> */}
+              <p className="text-[#ffffffb3] font-medium leading-relaxed" style={{ lineHeight: '1.2' }}>{card.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -188,13 +188,13 @@ const Index = () => {
     </section>
 
     {/* Quote */}
-    <section className="py-20 bg-primary">
+    <section className="py-20 ">
       <div className="container">
         <motion.blockquote initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center">
-          <p className="text-xl md:text-2xl text-primary-foreground/90 italic leading-relaxed mb-6">
-            "Mechanistic understanding is the bridge between chemical intuition and molecular innovation."
+          <p className="text-2xl md:text-5xl font-semibold text-primary leading-relaxed mb-6" style={{ letterSpacing: '-0.05em' }}>
+            "<span className="font-serif italic">Mechanistic understanding</span> is the bridge between <span className="font-serif italic">chemical intuition</span> and <span className="font-serif italic">molecular innovation</span>."
           </p>
-          <cite className="text-primary-foreground/60 text-sm font-medium not-italic">
+          <cite className="text-primary/60 text-sm font-medium not-italic">
             — CCML Group, IIT Bombay
           </cite>
         </motion.blockquote>
@@ -202,7 +202,7 @@ const Index = () => {
     </section>
 
     {/* Awards + News */}
-    <section className="py-24 bg-secondary">
+    <section className="py-24 bg-background">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>

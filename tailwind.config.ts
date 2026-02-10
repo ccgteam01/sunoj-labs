@@ -27,7 +27,7 @@ export default {
   				'sans-serif'
   			],
   			serif: [
-  				'Lora',
+  				'IBM Plex Serif',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
