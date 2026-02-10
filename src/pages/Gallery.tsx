@@ -14,13 +14,16 @@ const fallbackGallery = [
 ];
 
 const Gallery = () => {
-  const { data: items } = useGallery(fallbackGallery);
+  const { data: items, isLoading, error, isError } = useGallery(fallbackGallery);
+
+  console.log('Gallery Debug:', { items, isLoading, error, isError });
 
   return (
     <PageLayout>
       <section className="py-24 bg-background">
         <div className="container max-w-5xl">
           <SectionHeading title="Group Life" subtitle="A glimpse into our research environment, conferences, collaborations, and group activities." center />
+          {isError && <div className="text-red-500 mb-4">Error: {error?.message}</div>}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item: any, i: number) => (
               <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="aspect-[4/3] bg-secondary rounded-xl border border-border flex flex-col items-center justify-center gap-3 card-hover overflow-hidden">

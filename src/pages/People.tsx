@@ -46,7 +46,10 @@ const People = () => {
               </div>
               <h3 className="text-2xl font-heading font-bold text-primary-foreground mb-1">{pi.name}</h3>
               <p className="text-primary-foreground/70 mb-2">{pi.topic}</p>
-              <p className="text-primary-foreground/50 text-sm">{pi.currentPosition}</p>
+              <p className="text-primary-foreground/50 text-sm mb-6">{pi.currentPosition}</p>
+              <Link to="/professor" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
+                See More Details <ArrowRight size={18} />
+              </Link>
             </motion.div>
           )}
 

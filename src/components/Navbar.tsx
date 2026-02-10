@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo_blue.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -22,10 +23,9 @@ const Navbar = () => {
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl bg-background/95 backdrop-blur-md border border-border rounded-2xl shadow-lg">
       <div className="flex items-center justify-between h-14 px-6">
+        
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <span className="text-lg font-semibold text-primary" style={{ letterSpacing: '-0.05em' }}>
-            CCML<span className="font-light ml-1">@ IITB</span>
-          </span>
+          <img src={logo} alt="CCML @ IITB" className="h-12 w-auto" />
         </Link>
 
         {/* Desktop */}

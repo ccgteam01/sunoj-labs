@@ -5,10 +5,18 @@ import * as queries from "@/lib/sanity-queries";
 function useSanityQuery<T>(key: string, query: string, fallback: T) {
   return useQuery<T>({
     queryKey: ["sanity", key],
-    queryFn: () => sanityClient.fetch<T>(query),
-    initialData: fallback,
-    staleTime: 1000 * 60 * 5, // 5 min cache
-    retry: 1,
+    queryFn: async () => {
+      try {
+        const data = await sanityClient.fetch<T>(query);
+        return data && Array.isArray(data) && data.length > 0 ? data : fallback;
+      } catch (error) {
+        console.error(`Sanity fetch error for ${key}:`, error);
+        return fallback;
+      }
+    },
+    placeholderData: fallback,
+    staleTime: 1000 * 60 * 5,
+    retry: false,
   });
 }
 

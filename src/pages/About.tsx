@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
-import { BookOpen, FlaskConical, Cpu, Sparkles, Award, GraduationCap } from "lucide-react";
+import { BookOpen, FlaskConical, Cpu, Sparkles, Award, GraduationCap, ArrowRight } from "lucide-react";
 import { useAboutPage } from "@/hooks/use-sanity";
 
 const iconMap: Record<string, any> = {
@@ -121,7 +122,7 @@ const About = () => {
             </div>
 
             <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Selected Awards & Honors</h4>
-            <div className="grid sm:grid-cols-2 gap-2">
+            <div className="grid sm:grid-cols-2 gap-2 mb-6">
               {data.awards.map((a: string) => (
                 <div key={a} className="flex items-center gap-2 text-sm">
                   <Award size={14} className="text-gold shrink-0" />
@@ -129,6 +130,9 @@ const About = () => {
                 </div>
               ))}
             </div>
+            <Link to="/professor" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
+              See More Details <ArrowRight size={18} />
+            </Link>
           </motion.div>
         </div>
       </section>
