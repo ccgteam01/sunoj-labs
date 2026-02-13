@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import SectionHeading from "@/components/SectionHeading";
-import { Mail, GraduationCap, Microscope, BookOpen } from "lucide-react";
+import { Mail, GraduationCap, Microscope, BookOpen, ChevronRight } from "lucide-react";
 import { useOpportunities } from "@/hooks/use-sanity";
 
 const iconMap: Record<string, any> = { GraduationCap, Microscope, BookOpen };
@@ -39,8 +39,11 @@ const OpenPositions = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-primary rounded-xl p-8 md:p-10 text-center">
             <h3 className="text-xl font-heading font-bold text-primary-foreground mb-3">How to Apply</h3>
             <p className="text-primary-foreground/80 mb-6">Email your CV and research interests to:</p>
-            <a href="mailto:sunoj@chem.iitb.ac.in" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors">
-              <Mail size={18} /> sunoj@chem.iitb.ac.in
+            <a href="mailto:sunoj@chem.iitb.ac.in" className="inline-flex items-center gap-2 px-4 py-2 bg-white text-accent font-semibold rounded-full shadow-lg hover:bg-white/90 transition-colors text-lg group tracking-tighter">
+              sunoj@chem.iitb.ac.in
+              <div className="bg-accent rounded-full text-white p-2 transition-transform group-hover:translate-x-1">
+                <ChevronRight size={25} />
+              </div>
             </a>
           </motion.div>
         </div>

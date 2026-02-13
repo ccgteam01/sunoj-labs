@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
-import { Atom, Leaf, BrainCircuit, FlaskConical } from "lucide-react";
+import { Atom, Leaf, BrainCircuit, FlaskConical, Server, Code } from "lucide-react";
 import { useResearchAreas, useCollaborators } from "@/hooks/use-sanity";
 
 const iconMap: Record<string, any> = { Atom, FlaskConical, Leaf, BrainCircuit };
@@ -37,7 +37,7 @@ const Research = () => {
         ctaLink="/publications"
         bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
       />
-      <section className="py-24 bg-background">
+      <section id="specifics" className="py-24 bg-background">
         <div className="container max-w-5xl">
           <div className="flex flex-col gap-12">
             {sections.map((s: any, i: number) => {
@@ -65,7 +65,16 @@ const Research = () => {
         </div>
       </section>
 
-      <section className="py-24 bg-secondary">
+      <section id="general" className="py-24 bg-secondary">
+        <div className="container max-w-5xl">
+          <SectionHeading title="General Research" subtitle="Overview of our research activities" center />
+          <div className="prose prose-lg max-w-none text-muted-foreground">
+            <p>Content coming soon...</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="collaborative" className="py-24 bg-background">
         <div className="container max-w-5xl">
           <SectionHeading title="Collaborative Research" subtitle="We actively collaborate with leading experimental and computational groups worldwide." center />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -76,6 +85,38 @@ const Research = () => {
                 <p className="text-xs text-muted-foreground">{c.topic}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="resources" className="py-24 bg-secondary">
+        <div className="container max-w-4xl">
+          <SectionHeading title="Resources" subtitle="Computational infrastructure and software tools" center />
+          <div className="space-y-8">
+            <div className="bg-card rounded-xl p-8 border border-border">
+              <div className="flex items-center gap-3 mb-4">
+                <Server className="text-primary" size={28} />
+                <h3 className="text-2xl font-semibold">Hardware</h3>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                We use IIT Bombay supercomputing facility (<a href="http://spacetime.iitb.ac.in" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">http://spacetime.iitb.ac.in</a>) besides a few true 64-bit Itanium 2 servers.
+              </p>
+            </div>
+
+            <div className="bg-card rounded-xl p-8 border border-border">
+              <div className="flex items-center gap-3 mb-4">
+                <Code className="text-primary" size={28} />
+                <h3 className="text-2xl font-semibold">Software</h3>
+              </div>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>• Gaussian 09 (Linda TCP)</li>
+                <li>• CPMD</li>
+                <li>• GAMESS</li>
+                <li>• AOMIX</li>
+                <li>• NBO 5.0</li>
+                <li>• AIM 2000</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>

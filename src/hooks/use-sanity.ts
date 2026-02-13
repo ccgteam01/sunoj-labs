@@ -8,7 +8,9 @@ function useSanityQuery<T>(key: string, query: string, fallback: T) {
     queryFn: async () => {
       try {
         const data = await sanityClient.fetch<T>(query);
-        return data && Array.isArray(data) && data.length > 0 ? data : fallback;
+        if (data === null || data === undefined) return fallback;
+        if (Array.isArray(data) && data.length === 0) return fallback;
+        return data;
       } catch (error) {
         console.error(`Sanity fetch error for ${key}:`, error);
         return fallback;
@@ -48,8 +50,8 @@ export function useOpportunities(fallback: any[]) {
   return useSanityQuery("opportunities", queries.OPPORTUNITIES_QUERY, fallback);
 }
 
-export function useGallery(fallback: any[]) {
-  return useSanityQuery("gallery", queries.GALLERY_QUERY, fallback);
+export function useAlbums(fallback: any[]) {
+  return useSanityQuery("albums", queries.ALBUMS_QUERY, fallback);
 }
 
 export function useContactInfo(fallback: any) {
@@ -62,4 +64,12 @@ export function useAboutPage(fallback: any) {
 
 export function useSiteSettings(fallback: any) {
   return useSanityQuery("siteSettings", queries.SITE_SETTINGS_QUERY, fallback);
+}
+
+export function useCourses() {
+  return useSanityQuery("courses", queries.COURSES_QUERY, []);
+}
+
+export function useLectures() {
+  return useSanityQuery("lectures", queries.LECTURES_QUERY, []);
 }

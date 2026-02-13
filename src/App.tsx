@@ -9,6 +9,10 @@ import About from "./pages/About";
 import Research from "./pages/Research";
 import People from "./pages/People";
 import Publications from "./pages/Publications";
+import Academic from "./pages/Academic";
+import Courses from "./pages/Courses";
+import Lectures from "./pages/Lectures";
+import Seminars from "./pages/Seminars";
 import News from "./pages/News";
 import OpenPositions from "./pages/OpenPositions";
 import Gallery from "./pages/Gallery";
@@ -32,6 +36,10 @@ const App = () => (
           <Route path="/people" element={<People />} />
           <Route path="/professor" element={<ProfessorProfile />} />
           <Route path="/publications" element={<Publications />} />
+          <Route path="/academic" element={<Academic />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/lectures" element={<Lectures />} />
+          <Route path="/seminars" element={<Seminars />} />
           <Route path="/news" element={<News />} />
           <Route path="/positions" element={<OpenPositions />} />
           <Route path="/gallery" element={<Gallery />} />

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ChevronRight } from "lucide-react";
 import { usePublications } from "@/hooks/use-sanity";
 
 const fallbackPublications = [
@@ -78,8 +78,11 @@ const Publications = () => {
           ))}
 
           <div className="text-center mt-8">
-            <a href="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors">
-              View Full List on Google Scholar <ExternalLink size={16} />
+            <a href="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-white text-accent font-semibold rounded-full shadow-lg hover:bg-white/90 transition-colors text-lg group tracking-tighter">
+              View Full List on Google Scholar
+              <div className="bg-accent rounded-full text-white p-2 transition-transform group-hover:translate-x-1">
+                <ChevronRight size={25} />
+              </div>
             </a>
           </div>
         </div>

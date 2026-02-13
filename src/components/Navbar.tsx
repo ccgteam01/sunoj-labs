@@ -1,23 +1,42 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo_blue.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
-  { label: "Research", path: "/research" },
+  { 
+    label: "Research", 
+    path: "/research",
+    dropdown: [
+      { label: "Specifics", path: "/research#specifics" },
+      { label: "General", path: "/research#general" },
+      { label: "Collaborative", path: "/research#collaborative" },
+      { label: "Resources", path: "/research#resources" },
+    ]
+  },
   { label: "People", path: "/people" },
   { label: "Publications", path: "/publications" },
+  { 
+    label: "Academic", 
+    path: "/academic",
+    dropdown: [
+      { label: "Courses", path: "/courses" },
+      { label: "Lectures", path: "/lectures" },
+      { label: "Seminars", path: "/seminars" },
+    ]
+  },
   { label: "News", path: "/news" },
-  { label: "Open Positions", path: "/positions" },
   { label: "Gallery", path: "/gallery" },
   { label: "Contact", path: "/contact" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [researchOpen, setResearchOpen] = useState(false);
+  const [academicOpen, setAcademicOpen] = useState(false);
   const location = useLocation();
 
   return (
@@ -30,19 +49,47 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="hidden lg:flex items-center gap-1">
-          {navLinks.map((l) => (
-            <Link
-              key={l.path}
-              to={l.path}
-              className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                location.pathname === l.path
-                  ? "text-primary-foreground bg-primary"
-                  : "text-primary/70 hover:text-primary hover:bg-primary/10"
-              }`}
-            >
-              {l.label}
-            </Link>
-          ))}
+          {navLinks.map((l) => {
+            const isOpen = l.label === "Research" ? researchOpen : l.label === "Academic" ? academicOpen : false;
+            const setIsOpen = l.label === "Research" ? setResearchOpen : l.label === "Academic" ? setAcademicOpen : () => {};
+            const isActive = l.label === "Research" ? location.pathname.startsWith('/research') : l.label === "Academic" ? location.pathname.startsWith('/academic') : location.pathname === l.path;
+            
+            return l.dropdown ? (
+              <div key={l.path} className="relative" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+                <button className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors flex items-center gap-1 ${
+                  isActive
+                    ? "text-primary-foreground bg-primary"
+                    : "text-primary/70 hover:text-primary hover:bg-primary/10"
+                }`}>
+                  {l.label}
+                  <ChevronDown size={16} />
+                </button>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="absolute top-full mt-1 bg-background border border-border rounded-lg shadow-lg py-1 min-w-[160px]">
+                      {l.dropdown.map((item) => (
+                        <Link key={item.path} to={item.path} className="block px-4 py-2 text-sm text-primary/70 hover:text-primary hover:bg-primary/10">
+                          {item.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <Link
+                key={l.path}
+                to={l.path}
+                className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                  location.pathname === l.path
+                    ? "text-primary-foreground bg-primary"
+                    : "text-primary/70 hover:text-primary hover:bg-primary/10"
+                }`}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Mobile toggle */}
@@ -65,20 +112,41 @@ const Navbar = () => {
             className="lg:hidden border-t border-border overflow-hidden"
           >
             <div className="px-4 py-3 flex flex-col gap-1">
-              {navLinks.map((l) => (
-                <Link
-                  key={l.path}
-                  to={l.path}
-                  onClick={() => setOpen(false)}
-                  className={`px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
-                    location.pathname === l.path
-                      ? "text-primary-foreground bg-primary"
-                      : "text-primary/70 hover:text-primary hover:bg-primary/10"
-                  }`}
-                >
-                  {l.label}
-                </Link>
-              ))}
+              {navLinks.map((l) => {
+                const isOpen = l.label === "Research" ? researchOpen : l.label === "Academic" ? academicOpen : false;
+                const setIsOpen = l.label === "Research" ? setResearchOpen : l.label === "Academic" ? setAcademicOpen : () => {};
+                
+                return l.dropdown ? (
+                  <div key={l.path}>
+                    <button onClick={() => setIsOpen(!isOpen)} className="w-full px-4 py-2.5 text-sm font-medium rounded-lg transition-colors text-primary/70 hover:text-primary hover:bg-primary/10 flex items-center justify-between">
+                      {l.label}
+                      <ChevronDown size={16} className={isOpen ? "rotate-180" : ""} />
+                    </button>
+                    {isOpen && (
+                      <div className="pl-4 mt-1 space-y-1">
+                        {l.dropdown.map((item) => (
+                          <Link key={item.path} to={item.path} onClick={() => setOpen(false)} className="block px-4 py-2 text-sm text-primary/60 hover:text-primary">
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={l.path}
+                    to={l.path}
+                    onClick={() => setOpen(false)}
+                    className={`px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                      location.pathname === l.path
+                        ? "text-primary-foreground bg-primary"
+                        : "text-primary/70 hover:text-primary hover:bg-primary/10"
+                    }`}
+                  >
+                    {l.label}
+                  </Link>
+                );
+              })}
             </div>
           </motion.div>
         )}

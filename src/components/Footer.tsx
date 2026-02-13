@@ -64,8 +64,8 @@ const Footer = () => (
       
       <div className="text-center mb-4 mt-8 md:mt-0">
         <Link to="/" className="inline-block">
-          <div className="text-4xl sm:text-6xl md:text-8xl lg:text-[250px] font-semibold text-white/90 hover:text-white transition-colors" style={{ letterSpacing: '-0.1em' }}>CCML Group</div>
-          <div className="text-sm sm:text-base md:text-xl text-white/70" style={{ letterSpacing: '-0.05em' }}>Computational Chemistry and Machine Learning Group</div>
+          <div className="text-4xl sm:text-6xl md:text-8xl lg:text-[250px] font-semibold text-white/90 hover:text-white transition-colors -tracking-widest" >RBS Group</div>
+          {/* <div className="text-sm sm:text-base md:text-xl text-white/70 tracking-tighter">Computational Chemistry and Machine Learning Group</div> */}
         </Link>
       </div>
 

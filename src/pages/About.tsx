@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
-import { BookOpen, FlaskConical, Cpu, Sparkles, Award, GraduationCap, ArrowRight } from "lucide-react";
+import { BookOpen, FlaskConical, Cpu, Sparkles, Award, GraduationCap, ChevronRight } from "lucide-react";
 import { useAboutPage } from "@/hooks/use-sanity";
 
 const iconMap: Record<string, any> = {
@@ -130,8 +130,11 @@ const About = () => {
                 </div>
               ))}
             </div>
-            <Link to="/professor" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
-              See More Details <ArrowRight size={18} />
+            <Link to="/professor" className="inline-flex items-center gap-2 px-4 py-2 bg-white text-accent font-semibold rounded-full shadow-lg hover:bg-white/90 transition-colors text-lg group tracking-tighter">
+              See More Details
+              <div className="bg-accent rounded-full text-white p-2 transition-transform group-hover:translate-x-1">
+                <ChevronRight size={25} />
+              </div>
             </Link>
           </motion.div>
         </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
-import { User, ArrowRight } from "lucide-react";
+import { User, ArrowRight, ChevronRight } from "lucide-react";
 import { usePeople } from "@/hooks/use-sanity";
 
 const fallbackPeople = [
@@ -47,8 +47,11 @@ const People = () => {
               <h3 className="text-2xl font-heading font-bold text-primary-foreground mb-1">{pi.name}</h3>
               <p className="text-primary-foreground/70 mb-2">{pi.topic}</p>
               <p className="text-primary-foreground/50 text-sm mb-6">{pi.currentPosition}</p>
-              <Link to="/professor" className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-medium hover:bg-accent/90 transition-colors">
-                See More Details <ArrowRight size={18} />
+              <Link to="/professor" className="inline-flex items-center gap-2 px-4 py-2 bg-white text-accent font-semibold rounded-full shadow-lg hover:bg-white/90 transition-colors text-lg group tracking-tighter">
+                See More Details
+                <div className="bg-accent rounded-full text-white p-2 transition-transform group-hover:translate-x-1">
+                  <ChevronRight size={25} />
+                </div>
               </Link>
             </motion.div>
           )}

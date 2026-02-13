@@ -1,45 +1,63 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import SectionHeading from "@/components/SectionHeading";
-import { Camera } from "lucide-react";
-import { useGallery } from "@/hooks/use-sanity";
+import AlbumCover from "@/components/AlbumCover";
+import AlbumCarousel from "@/components/AlbumCarousel";
+import { useAlbums } from "@/hooks/use-sanity";
 
-const fallbackGallery = [
-  { caption: "Group photo at IIT Bombay campus" },
-  { caption: "Lab computational workstations" },
-  { caption: "Conference presentation at ACS 2025" },
-  { caption: "Group retreat – Lonavala 2026" },
-  { caption: "Poster session highlights" },
-  { caption: "Collaboration visit to Max Planck Institute" },
+const fallbackAlbums = [
+  {
+    _id: "1",
+    title: "Lab Events",
+    description: "Team gatherings and celebrations",
+    photos: [
+      "https://cdn.sanity.io/images/m2fbgni0/production/392ffb473a5a29be068a84ca60d9c69f32ee5b7f-618x410.jpg",
+      "https://cdn.sanity.io/images/m2fbgni0/production/1087ec51543631a75ecb63a45e4a9c064dab8796-618x410.jpg",
+      "https://cdn.sanity.io/images/m2fbgni0/production/9ef8e259acb8b87d2672e4d67ed618ec61dc6baf-620x465.jpg",
+    ],
+  },
+  {
+    _id: "2",
+    title: "Conferences",
+    description: "Research presentations and networking",
+    photos: [
+      "https://cdn.sanity.io/images/m2fbgni0/production/f10e49c4f6d5c5b53ac682534b32e508d58f9ce6-620x465.jpg",
+    ],
+  },
 ];
 
 const Gallery = () => {
-  const { data: items, isLoading, error, isError } = useGallery(fallbackGallery);
-
-  console.log('Gallery Debug:', { items, isLoading, error, isError });
+  const { data: albums } = useAlbums(fallbackAlbums);
+  const [selectedAlbum, setSelectedAlbum] = useState<any>(null);
 
   return (
     <PageLayout>
       <section className="py-24 bg-background">
-        <div className="container max-w-5xl">
+        <div className="container max-w-6xl">
           <SectionHeading title="Group Life" subtitle="A glimpse into our research environment, conferences, collaborations, and group activities." center />
-          {isError && <div className="text-red-500 mb-4">Error: {error?.message}</div>}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((item: any, i: number) => (
-              <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="aspect-[4/3] bg-secondary rounded-xl border border-border flex flex-col items-center justify-center gap-3 card-hover overflow-hidden">
-                {item.imageUrl ? (
-                  <img src={item.imageUrl} alt={item.caption} className="w-full h-full object-cover" />
-                ) : (
-                  <>
-                    <Camera size={32} className="text-muted-foreground/40" />
-                    <p className="text-sm text-muted-foreground text-center px-4">{item.caption}</p>
-                  </>
-                )}
-              </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {albums.map((album: any) => (
+              <AlbumCover
+                key={album._id}
+                photos={album.photos}
+                title={album.title}
+                onClick={() => setSelectedAlbum(album)}
+              />
             ))}
           </div>
         </div>
       </section>
+
+      <AnimatePresence>
+        {selectedAlbum && (
+          <AlbumCarousel
+            photos={selectedAlbum.photos}
+            title={selectedAlbum.title}
+            onClose={() => setSelectedAlbum(null)}
+          />
+        )}
+      </AnimatePresence>
     </PageLayout>
   );
 };

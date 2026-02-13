@@ -30,8 +30,9 @@ export const OPPORTUNITIES_QUERY = `*[_type == "opportunity"] | order(order asc)
   title, description, icon
 }`;
 
-export const GALLERY_QUERY = `*[_type == "galleryItem"] | order(order asc) {
-  caption, "imageUrl": image.asset->url
+export const ALBUMS_QUERY = `*[_type == "album"] | order(order asc) {
+  _id, title, description,
+  "photos": photos[].asset->url
 }`;
 
 export const CONTACT_QUERY = `*[_type == "contactInfo"][0] {
@@ -48,5 +49,9 @@ export const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0] {
 }`;
 
 export const COURSES_QUERY = `*[_type == "course"] | order(order asc) {
-  title
+  _id, code, name, order
+}`;
+
+export const LECTURES_QUERY = `*[_type == "lecture"] | order(order asc) {
+  _id, title, type, order
 }`;

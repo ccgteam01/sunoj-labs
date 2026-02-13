@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 interface PageHeroProps {
   tagline?: string;
@@ -38,9 +38,8 @@ const PageHero = ({ tagline, title, description, ctaText, ctaLink, bgImage }: Pa
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-6xl md:text-7xl lg:text-8xl font-semibold mb-6"
+            className="text-6xl md:text-7xl lg:text-8xl font-semibold mb-6 tracking-tighter"
             style={{
-              letterSpacing: '-0.05em',
               backgroundImage: 'linear-gradient(180deg, hsl(var(--primary)), #354faeb3',
               WebkitTextFillColor: 'transparent',
               WebkitBackgroundClip: 'text',
@@ -66,9 +65,12 @@ const PageHero = ({ tagline, title, description, ctaText, ctaLink, bgImage }: Pa
             >
               <Link
                 to={ctaLink}
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-lg hover:bg-accent/90 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter"
               >
-                {ctaText} <ArrowRight size={18} />
+                {ctaText}
+                <div className="bg-white rounded-full text-accent p-2 transition-transform group-hover:translate-x-1">
+                  <ChevronRight size={25} />
+                </div>
               </Link>
             </motion.div>
           )}
