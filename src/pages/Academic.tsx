@@ -179,7 +179,9 @@ const Academic = () => {
 
       <section id="courses" className="py-24 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="Courses Taught" />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
+            Courses <span className="font-serif italic">Taught</span>
+          </h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {courses.map((course, i) => (
               <motion.div
@@ -197,9 +199,11 @@ const Academic = () => {
         </div>
       </section>
 
-      <section id="invited" className="py-24 bg-secondary">
+      <section id="invited" className="py-24 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="Invited Lectures" />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
+            Invited <span className="font-serif italic">Lectures</span>
+          </h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -217,7 +221,9 @@ const Academic = () => {
 
       <section className="py-24 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="Public Lectures" />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
+            Public <span className="font-serif italic">Lectures</span>
+          </h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -233,9 +239,11 @@ const Academic = () => {
         </div>
       </section>
 
-      <section id="seminars" className="py-24 bg-secondary">
+      <section id="seminars" className="py-24 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="Group Seminars" />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
+            Group <span className="font-serif italic">Seminars</span>
+          </h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

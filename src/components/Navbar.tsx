@@ -6,7 +6,6 @@ import logo from "@/assets/logo_blue.png";
 
 const navLinks = [
   { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
   { 
     label: "Research", 
     path: "/research",
@@ -17,7 +16,15 @@ const navLinks = [
       { label: "Resources", path: "/research#resources" },
     ]
   },
-  { label: "People", path: "/people" },
+  { 
+    label: "Group", 
+    path: "/group",
+    dropdown: [
+      { label: "Prof RBS", path: "/prof-rbs" },
+      { label: "Co-Workers", path: "/co-workers" },
+      { label: "Alumni", path: "/alumni" },
+    ]
+  },
   { label: "Publications", path: "/publications" },
   { 
     label: "Academic", 
@@ -36,6 +43,7 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [researchOpen, setResearchOpen] = useState(false);
+  const [groupOpen, setGroupOpen] = useState(false);
   const [academicOpen, setAcademicOpen] = useState(false);
   const location = useLocation();
 
@@ -50,9 +58,9 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((l) => {
-            const isOpen = l.label === "Research" ? researchOpen : l.label === "Academic" ? academicOpen : false;
-            const setIsOpen = l.label === "Research" ? setResearchOpen : l.label === "Academic" ? setAcademicOpen : () => {};
-            const isActive = l.label === "Research" ? location.pathname.startsWith('/research') : l.label === "Academic" ? location.pathname.startsWith('/academic') : location.pathname === l.path;
+            const isOpen = l.label === "Research" ? researchOpen : l.label === "Group" ? groupOpen : l.label === "Academic" ? academicOpen : false;
+            const setIsOpen = l.label === "Research" ? setResearchOpen : l.label === "Group" ? setGroupOpen : l.label === "Academic" ? setAcademicOpen : () => {};
+            const isActive = l.label === "Research" ? location.pathname.startsWith('/research') : l.label === "Group" ? (location.pathname.startsWith('/prof-rbs') || location.pathname.startsWith('/co-workers') || location.pathname.startsWith('/alumni')) : l.label === "Academic" ? location.pathname.startsWith('/academic') : location.pathname === l.path;
             
             return l.dropdown ? (
               <div key={l.path} className="relative" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
@@ -113,8 +121,8 @@ const Navbar = () => {
           >
             <div className="px-4 py-3 flex flex-col gap-1">
               {navLinks.map((l) => {
-                const isOpen = l.label === "Research" ? researchOpen : l.label === "Academic" ? academicOpen : false;
-                const setIsOpen = l.label === "Research" ? setResearchOpen : l.label === "Academic" ? setAcademicOpen : () => {};
+                const isOpen = l.label === "Research" ? researchOpen : l.label === "Group" ? groupOpen : l.label === "Academic" ? academicOpen : false;
+                const setIsOpen = l.label === "Research" ? setResearchOpen : l.label === "Group" ? setGroupOpen : l.label === "Academic" ? setAcademicOpen : () => {};
                 
                 return l.dropdown ? (
                   <div key={l.path}>

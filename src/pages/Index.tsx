@@ -10,6 +10,7 @@ import {
   Award,
   ChevronLeft,
   ChevronRight,
+  FileText,
 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
@@ -47,17 +48,17 @@ const researchCards = [
   {
     icon: Beaker,
     title: "Asymmetric Multi-Catalytic Reactions",
-    desc: "Asymmetric reactions involving transition metal and organo-catalysts, cooperative and relay catalytic strategies for enantioselective synthesis.",
+    desc: "Asymmetric reactions involving transition metal catalysts and organocatalysts. Origin of enantioselectivity and catalyst design principles.",
   },
   {
     icon: Leaf,
-    title: "Transition Metal Catalysis",
-    desc: "C–H activation, cross-coupling reactions, and mechanistic understanding of Pd, Rh, Ir, and other transition metal catalyzed transformations.",
+    title: "Mechanistic Studies on C-H Bond Activation",
+    desc: "Role of additives and solvents in catalytic processes. Rational modifications to catalysts and substrates for enhanced performance.",
   },
   {
     icon: BrainCircuit,
     title: "Machine Learning in Catalysis",
-    desc: "A unified machine-learning protocol for asymmetric catalysis, reaction prediction, and catalyst screening using molecular descriptors.",
+    desc: "Prediction of reaction outcome using computational methods. Artificial intelligence (AI)-enabled catalyst design and optimization.",
   },
 ];
 
@@ -73,6 +74,35 @@ const newsItems = [
   {
     text: "Machine learning protocol for asymmetric catalysis published in PNAS",
     year: "2020",
+  },
+];
+
+const recentPublications = [
+  {
+    title:
+      "Chemo-, regio- and enantioselective hydroformylation of trisubstituted cyclopropenes",
+    journal: "Nature Communications",
+    year: "2024",
+    imageUrl:
+      "https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif",
+    doi: "10.1038/s41467-024-50689-z",
+  },
+  {
+    title:
+      "Role of Noncovalent Interactions in Inducing High Enantioselectivity",
+    journal: "J. Am. Chem. Soc.",
+    year: "2023",
+    imageUrl:
+      "https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif",
+    doi: "10.1021/jacs.3c06131",
+  },
+  {
+    title: "A unified machine-learning protocol for asymmetric catalysis",
+    journal: "Proc. Natl. Acad. Sci. USA",
+    year: "2020",
+    imageUrl:
+      "https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif",
+    doi: "10.1073/pnas.1916392117",
   },
 ];
 
@@ -194,20 +224,20 @@ const Index = () => {
       </section>
 
       {/* Research Highlights */}
-      <section className="py-24 bg-background">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
           >
             <h2 className="text-5xl md:text-6xl font-semibold mb-3 tracking-tighter">
-              <span className="font-serif italic">Research</span> Highlights
+              <span className="font-serif italic">Research</span> Interests
             </h2>
             <div className="section-divider mx-auto" />
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-screen-lg mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-lg mx-auto">
             {researchCards.map((card, i) => (
               <motion.div
                 key={card.title}
@@ -215,28 +245,129 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="bg-primary rounded-xl p-8 border border-border card-hover aspect-square flex flex-col justify-between"
+                className="bg-primary rounded-xl p-6 sm:p-8 border border-border card-hover flex flex-col min-h-[280px] sm:min-h-[320px]"
               >
-                <h3 className="text-xl font-semibold mb-3 text-white tracking-tighter">
+                <div className="bg-background rounded-full p-3 sm:p-4 mb-3 sm:mb-4 w-fit">
+                  <card.icon className="text-accent" size={28} />
+                </div>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white tracking-tighter">
                   {card.title}
                 </h3>
-                {/* <div className="w-12 h-12 bg-accent/10 text-white rounded-lg flex items-center justify-center mb-5">
-                <card.icon size={24} />
-              </div> */}
-                <p
-                  className="text-[#ffffffb3] font-medium leading-relaxed"
-                  style={{ lineHeight: "1.2" }}
-                >
-                  {card.desc}
-                </p>
+                <p className="text-sm sm:text-base text-white/70 leading-relaxed">{card.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Recent Publications & News */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+        <div className="container">
+          <div className="grid lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-8">
+            {/* Recent Publications - 2/3 on large screens */}
+            <div className="lg:col-span-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mb-6 sm:mb-8"
+              >
+                <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tighter">
+                  Recent <span className="font-serif italic">Publications</span>
+                </h2>
+                <div className="section-divider" />
+              </motion.div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {recentPublications.map((pub, i) => (
+                  <motion.a
+                    key={pub.doi}
+                    href={`https://doi.org/${pub.doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="bg-card rounded-xl border border-border overflow-hidden card-hover flex flex-col"
+                  >
+                    <img
+                      src={pub.imageUrl}
+                      alt={pub.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="p-5 flex flex-col flex-1">
+                      <span className="text-xs font-medium text-accent mb-2">
+                        {pub.year}
+                      </span>
+                      <h3 className="font-semibold text-foreground mb-2 line-clamp-2 leading-snug">
+                        {pub.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-auto">
+                        {pub.journal}
+                      </p>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+              <div className="mt-6 sm:mt-8">
+                <Link
+                  to="/publications"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter"
+                >
+                  View All Publications
+                  <div className="bg-white rounded-full text-accent p-2 transition-transform group-hover:translate-x-1">
+                    <ArrowRight size={20} />
+                  </div>
+                </Link>{" "}
+              </div>
+            </div>
+
+            {/* Latest News - 1/3 on large screens */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mb-6 sm:mb-8"
+              >
+                <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tighter">
+                  Latest <span className="font-serif italic">News</span>
+                </h2>
+                <div className="section-divider" />
+              </motion.div>
+              <div className="flex flex-col gap-6">
+                {newsItems.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="bg-card rounded-xl p-6 border border-border card-hover"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="bg-accent/10 rounded-full p-2 mt-1">
+                        <Newspaper className="text-accent" size={20} />
+                      </div>
+                      <div className="flex-1">
+                        <span className="text-xs font-medium text-accent">
+                          {item.year}
+                        </span>
+                        <p className="text-foreground mt-1 leading-relaxed">
+                          {item.text}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Quote */}
-      <section className="py-20 ">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="container">
           <motion.blockquote
             initial={{ opacity: 0 }}
@@ -260,55 +391,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Awards + News */}
-      <section className="py-24 bg-background">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-semibold mb-3 tracking-tighter">
-              Latest <span className="font-serif italic">News</span> &
-              Achievements
-            </h2>
-            <div className="section-divider mb-8" />
-          </motion.div>
-          <div className="flex flex-col gap-4">
-            {newsItems.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-3"
-              >
-                {i === 0 ? (
-                  <Award size={18} className="text-gold mt-1 shrink-0" />
-                ) : (
-                  <Newspaper size={18} className="text-accent mt-1 shrink-0" />
-                )}
-                <div>
-                  <p className="text-foreground">{item.text}</p>
-                  <span className="text-xs text-muted-foreground">
-                    {item.year}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <Link
-            to="/news"
-            className="inline-flex items-center gap-2 mt-6 text-accent font-medium hover:underline"
-          >
-            All News <ArrowRight size={16} />
-          </Link>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="relative min-h-[400px] md:min-h-[500px] w-full w-5/6 mx-auto overflow-hidden mb-12 sm:mb-16 md:mb-24 rounded-xl md:rounded-2xl">
+      <section className="relative min-h-[400px] md:min-h-[500px] w-[90%] mx-auto overflow-hidden mb-12 sm:mb-16 md:mb-24 rounded-xl md:rounded-2xl">
         <img
           src="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68ad9dd3f880ff51227d29cd_cta_banner-min.webp"
           alt=""
@@ -331,7 +415,7 @@ const Index = () => {
             </p>
 
             <Link
-              to="/positions"
+              to="/contact#positions"
               className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-white text-accent font-semibold rounded-full shadow-lg hover:bg-white/90 transition-colors text-base sm:text-lg group tracking-tighter"
             >
               Open Positions

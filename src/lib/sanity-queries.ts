@@ -26,32 +26,15 @@ export const NEWS_QUERY = `*[_type == "newsItem"] | order(year desc, order asc) 
   text, year
 }`;
 
-export const OPPORTUNITIES_QUERY = `*[_type == "opportunity"] | order(order asc) {
-  title, description, icon
-}`;
-
 export const ALBUMS_QUERY = `*[_type == "album"] | order(order asc) {
   _id, title, description,
   "photos": photos[].asset->url
-}`;
-
-export const CONTACT_QUERY = `*[_type == "contactInfo"][0] {
-  email, address, googleScholarUrl, githubUrl, officialWebsiteUrl, mapEmbedUrl
-}`;
-
-export const ABOUT_PAGE_QUERY = `*[_type == "aboutPage"][0] {
-  groupDescription, researchAreas, publicationSummary,
-  piName, piTitle, piBio, education, interests, awards, coursesTaught
-}`;
-
-export const SITE_SETTINGS_QUERY = `*[_type == "siteSettings"][0] {
-  groupName, groupFullName, tagline, quote, quoteAttribution
 }`;
 
 export const COURSES_QUERY = `*[_type == "course"] | order(order asc) {
   _id, code, name, order
 }`;
 
-export const LECTURES_QUERY = `*[_type == "lecture"] | order(order asc) {
+export const LECTURES_QUERY = `*[_type == "lecture"] | order(order desc) {
   _id, title, type, order
 }`;

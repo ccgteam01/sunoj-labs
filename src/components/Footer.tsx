@@ -41,7 +41,9 @@ const Footer = () => (
           <h4 className="text-white font-semibold mb-2 text-sm md:text-base">Contact</h4>
           <div className="flex flex-col gap-1">
             <div className="text-white/90">
-              <div className="font-semibold text-white mb-1 text-sm md:text-base">IIT Bombay:</div>
+              <div className="font-semibold text-white mb-1 text-sm md:text-base flex items-center gap-2">
+                The RBS Group
+              </div>
               <p className="text-xs md:text-sm">Room 418-A, 3rd Floor, Dept. of Chemistry, IIT Bombay, Powai, Mumbai 400076</p>
             </div>
           </div>

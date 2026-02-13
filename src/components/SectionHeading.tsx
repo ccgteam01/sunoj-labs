@@ -14,12 +14,12 @@ const SectionHeading = ({ title, subtitle, center = false }: SectionHeadingProps
     transition={{ duration: 0.5 }}
     className={`mb-12 ${center ? "text-center" : ""}`}
   >
-    <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-3 tracking-tighter">
+    <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tighter">
       {title}
     </h2>
     <div className={`section-divider ${center ? "mx-auto" : ""}`} />
     {subtitle && (
-      <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
+      <p className={`mt-4 text-muted-foreground max-w-2xl leading-relaxed ${center ? "mx-auto" : ""}`}>
         {subtitle}
       </p>
     )}

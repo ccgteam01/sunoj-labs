@@ -46,24 +46,8 @@ export function useNews(fallback: any[]) {
   return useSanityQuery("news", queries.NEWS_QUERY, fallback);
 }
 
-export function useOpportunities(fallback: any[]) {
-  return useSanityQuery("opportunities", queries.OPPORTUNITIES_QUERY, fallback);
-}
-
 export function useAlbums(fallback: any[]) {
   return useSanityQuery("albums", queries.ALBUMS_QUERY, fallback);
-}
-
-export function useContactInfo(fallback: any) {
-  return useSanityQuery("contact", queries.CONTACT_QUERY, fallback);
-}
-
-export function useAboutPage(fallback: any) {
-  return useSanityQuery("aboutPage", queries.ABOUT_PAGE_QUERY, fallback);
-}
-
-export function useSiteSettings(fallback: any) {
-  return useSanityQuery("siteSettings", queries.SITE_SETTINGS_QUERY, fallback);
 }
 
 export function useCourses() {

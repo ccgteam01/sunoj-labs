@@ -23,6 +23,7 @@ const fallbackAlbums = [
     description: "Research presentations and networking",
     photos: [
       "https://cdn.sanity.io/images/m2fbgni0/production/f10e49c4f6d5c5b53ac682534b32e508d58f9ce6-620x465.jpg",
+      
     ],
   },
 ];
@@ -35,7 +36,11 @@ const Gallery = () => {
     <PageLayout>
       <section className="py-24 bg-background">
         <div className="container max-w-6xl">
-          <SectionHeading title="Group Life" subtitle="A glimpse into our research environment, conferences, collaborations, and group activities." center />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
+             <span className="font-serif italic">Group Life</span>
+          </h2>
+          <p className="text-center text-muted-foreground mb-8">A glimpse into our research environment, conferences, collaborations, and group activities.</p>
+          
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {albums.map((album: any) => (
               <AlbumCover

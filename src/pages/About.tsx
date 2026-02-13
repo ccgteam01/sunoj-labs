@@ -4,13 +4,12 @@ import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { BookOpen, FlaskConical, Cpu, Sparkles, Award, GraduationCap, ChevronRight } from "lucide-react";
-import { useAboutPage } from "@/hooks/use-sanity";
 
 const iconMap: Record<string, any> = {
   FlaskConical, BookOpen, Cpu, Sparkles,
 };
 
-const fallbackData = {
+const data = {
   groupDescription: "The CCML Group (Computational Chemistry & Machine Learning) at the Department of Chemistry, IIT Bombay focuses on understanding chemical reactivity through computational modeling and mechanistic exploration. Located on the 3rd floor, Room No. 418-A, our group has been at the forefront of computational organic chemistry research in India.",
   researchAreas: [
     "Asymmetric multi-catalytic reactions",
@@ -55,8 +54,6 @@ const fallbackData = {
 };
 
 const About = () => {
-  const { data } = useAboutPage(fallbackData);
-
   return (
     <PageLayout>
       <PageHero

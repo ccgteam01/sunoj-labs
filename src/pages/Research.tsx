@@ -4,23 +4,22 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { Atom, Leaf, BrainCircuit, FlaskConical, Server, Code } from "lucide-react";
 import { useResearchAreas, useCollaborators } from "@/hooks/use-sanity";
+import generalResearch from "@/assets/gen-res.jpg";
 
 const iconMap: Record<string, any> = { Atom, FlaskConical, Leaf, BrainCircuit };
 
 const fallbackSections = [
-  { icon: "Atom", title: "Asymmetric Multi-Catalytic Reactions", description: "Asymmetric reactions involving transition metal and organo-catalysts are investigated using density functional theory (DFT) methods. We study cooperative, relay, and sequential catalytic strategies for enantioselective synthesis and explore how two or more chiral catalysts work in tandem to achieve stereodivergent outcomes.", focusAreas: ["Cooperative dual catalysis", "Stereodivergent reactions", "Transition state modeling", "Enantioselectivity prediction"] },
-  { icon: "FlaskConical", title: "Transition Metal Catalysis & C–H Activation", description: "We investigate mechanistic pathways of Pd, Rh, Ir, and Mn catalyzed reactions including C–H activation, cross-coupling, and hydroformylation. Understanding the role of directing groups, ligand effects, and selectivity in these transformations is central to our work.", focusAreas: ["C–H functionalization", "Cross-coupling mechanisms", "Hydroformylation of cyclopropenes", "Organometallic intermediates"] },
-  { icon: "Leaf", title: "Organocatalysis & Noncovalent Interactions", description: "We explore how noncovalent interactions — hydrogen bonds, CH–π, lone pair–π, and dispersion forces — control stereoselectivity in organocatalytic reactions. Our studies reveal the crucial role these weak forces play in asymmetric catalysis.", focusAreas: ["Proline catalysis", "Cinchona-thiourea dual catalysis", "Stereoselectivity origins", "Noncovalent interaction analysis"] },
-  { icon: "BrainCircuit", title: "Machine Learning in Molecular Discovery", description: "We develop unified machine-learning protocols for asymmetric catalysis using molecular descriptors. Our ML approaches provide sustainable models trained on known catalysts to predict enantioselectivity and guide catalyst design for new reactions.", focusAreas: ["Molecular descriptors", "Enantioselectivity prediction", "Catalyst screening", "Hybrid DFT + ML workflows"] },
+  { icon: "Atom", title: "Asymmetric Multi-Catalytic Reactions", description: "Asymmetric reactions involving transition metal catalysts and organocatalysts. Origin of enantioselectivity and catalyst design.", focusAreas: ["Cooperative dual catalysis", "Stereodivergent reactions", "Transition state modeling", "Enantioselectivity prediction"] },
+  { icon: "FlaskConical", title: "Mechanistic Studies on C-H Bond Activation Reaction", description: "Role of additives and solvents. Rational modifications to catalysts and substrates.", focusAreas: ["C–H functionalization", "Cross-coupling mechanisms", "Hydroformylation of cyclopropenes", "Organometallic intermediates"] },
+  { icon: "BrainCircuit", title: "Machine Learning in Catalysis", description: "Prediction of reaction outcome. Artificial intelligence (AI)-enabled catalyst design.", focusAreas: ["Molecular descriptors", "Enantioselectivity prediction", "Catalyst screening", "Hybrid DFT + ML workflows"] },
 ];
 
 const fallbackCollaborators = [
-  { name: "Prof. Erick M. Carreira", institution: "ETH Zurich, Switzerland", topic: "Noncovalent interactions in enantioselective reactions" },
-  { name: "Prof. Xumu Zhang", institution: "Southern Univ. of Science & Technology (SUSTech), China", topic: "Asymmetric hydroformylation" },
-  { name: "Prof. Debabrata Maiti", institution: "IIT Bombay, India", topic: "meta-C–H activation, directing groups" },
-  { name: "Prof. Xile Hu", institution: "EPFL, Switzerland", topic: "Transition metal catalysis" },
-  { name: "Prof. Huw M. L. Davies", institution: "Emory University, USA", topic: "Diazo compound reactivity" },
-  { name: "Prof. Haridasan B. Singh", institution: "IIT Bombay, India", topic: "Organoselenium & organochalcogen chemistry" },
+  { name: "Prof. D. Maiti", institution: "Indian Institute of Technology Bombay", topic: "Mechanistic Studies on Palladium Catalyzed C-H Bond Activation Reactions" },
+  { name: "Prof. Sivaguru Jayaraman", institution: "North Dakota State University, USA", topic: "Chiral induction in photoexcited molecules and reactivity" },
+  { name: "Prof. Dean F. Toste", institution: "University of California Berkeley, USA", topic: "Chiral Counterions in Chiral Induction in C-C Bond Forming Reactions" },
+  { name: "Prof. Anat Milo", institution: "Ben-Gurion University of the Negev, Israel", topic: "Design of Catalysts for Asymmetric Reactions" },
+  { name: "Prof. Jeremy Harvey", institution: "KU Leuven Belgium", topic: "Toward Accurate Estimates of Reaction Energetics" },
 ];
 
 const Research = () => {
@@ -65,18 +64,26 @@ const Research = () => {
         </div>
       </section>
 
-      <section id="general" className="py-24 bg-secondary">
+      <section id="general" className="py-24 bg-background">
         <div className="container max-w-5xl">
-          <SectionHeading title="General Research" subtitle="Overview of our research activities" center />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
+            General <span className="font-serif italic">Research</span>
+          </h2>
+          <p className="text-center text-muted-foreground mb-8">Overview of our research activities</p>
+          
           <div className="prose prose-lg max-w-none text-muted-foreground">
-            <p>Content coming soon...</p>
-          </div>
+  <img src={generalResearch} alt="General Research" className="w-full rounded-lg" />
+</div>
+
         </div>
       </section>
 
       <section id="collaborative" className="py-24 bg-background">
         <div className="container max-w-5xl">
-          <SectionHeading title="Collaborative Research" subtitle="We actively collaborate with leading experimental and computational groups worldwide." center />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
+            Collaborative <span className="font-serif italic">Research</span>
+          </h2>
+          <p className="text-center text-muted-foreground mb-8">We actively collaborate with leading experimental and computational groups worldwide.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {collaborators.map((c: any, i: number) => (
               <motion.div key={c.name} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card rounded-xl p-6 border border-border card-hover">
@@ -89,9 +96,12 @@ const Research = () => {
         </div>
       </section>
 
-      <section id="resources" className="py-24 bg-secondary">
+      <section id="resources" className="py-24 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="Resources" subtitle="Computational infrastructure and software tools" center />
+          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
+            <span className="font-serif italic">Resources</span>
+          </h2>
+          <p className="text-center text-muted-foreground mb-8">Computational infrastructure and software tools</p>
           <div className="space-y-8">
             <div className="bg-card rounded-xl p-8 border border-border">
               <div className="flex items-center gap-3 mb-4">

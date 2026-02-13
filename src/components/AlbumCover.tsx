@@ -24,7 +24,7 @@ const AlbumCover = ({ photos, title, onClick }: AlbumCoverProps) => {
             className="absolute inset-0 bg-white rounded-xl shadow-lg overflow-hidden border border-border"
             style={{
               zIndex: displayPhotos.length - i,
-              rotate: `${(i - 1) * 3}deg`,
+              rotate: `${(i - 1) * 5}deg`,
               scale: 1 - i * 0.03,
             }}
             whileHover={{ y: -i * 8 }}
@@ -34,7 +34,7 @@ const AlbumCover = ({ photos, title, onClick }: AlbumCoverProps) => {
           </motion.div>
         ))}
       </div>
-      <h3 className="text-lg font-medium text-center group-hover:text-primary transition-colors">{title}</h3>
+      <h3 className="text-lg font-semibold text-center group-hover:text-primary transition-colors">{title}</h3>
     </motion.div>
   );
 };
