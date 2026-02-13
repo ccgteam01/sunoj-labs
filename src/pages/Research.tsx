@@ -36,13 +36,13 @@ const Research = () => {
         ctaLink="/publications"
         bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
       />
-      <section id="specifics" className="py-24 bg-background">
-        <div className="container max-w-5xl">
-          <div className="flex flex-col gap-12">
+      <section id="specifics" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+        <div className="container max-w-5xl px-4 sm:px-6">
+          <div className="flex flex-col gap-6 sm:gap-8 md:gap-12">
             {sections.map((s: any, i: number) => {
               const IconComponent = iconMap[s.icon] || Atom;
               return (
-                <motion.div key={s.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} className="bg-card rounded-xl p-8 md:p-10 border border-border card-hover">
+                <motion.div key={s.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.5 }} className="bg-card rounded-xl p-5 sm:p-6 md:p-8 lg:p-10 border border-border card-hover">
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-accent/10 text-accent rounded-xl flex items-center justify-center shrink-0">
                       <IconComponent size={28} />
@@ -64,12 +64,12 @@ const Research = () => {
         </div>
       </section>
 
-      <section id="general" className="py-24 bg-background">
-        <div className="container max-w-5xl">
+      <section id="general" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+        <div className="container max-w-5xl px-4 sm:px-6">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
             General <span className="font-serif italic">Research</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-8">Overview of our research activities</p>
+          <p className="text-center text-muted-foreground mb-6 sm:mb-8">Overview of our research activities</p>
           
           <div className="prose prose-lg max-w-none text-muted-foreground">
   <img src={generalResearch} alt="General Research" className="w-full rounded-lg" />
@@ -78,15 +78,15 @@ const Research = () => {
         </div>
       </section>
 
-      <section id="collaborative" className="py-24 bg-background">
-        <div className="container max-w-5xl">
+      <section id="collaborative" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+        <div className="container max-w-5xl px-4 sm:px-6">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
             Collaborative <span className="font-serif italic">Research</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-8">We actively collaborate with leading experimental and computational groups worldwide.</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <p className="text-center text-muted-foreground mb-6 sm:mb-8">We actively collaborate with leading experimental and computational groups worldwide.</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {collaborators.map((c: any, i: number) => (
-              <motion.div key={c.name} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card rounded-xl p-6 border border-border card-hover">
+              <motion.div key={c.name} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card rounded-xl p-4 sm:p-5 md:p-6 border border-border card-hover">
                 <h4 className="font-heading font-bold text-foreground mb-1">{c.name}</h4>
                 <p className="text-sm text-accent font-medium mb-2">{c.institution || c.inst}</p>
                 <p className="text-xs text-muted-foreground">{c.topic}</p>
@@ -96,14 +96,14 @@ const Research = () => {
         </div>
       </section>
 
-      <section id="resources" className="py-24 bg-background">
-        <div className="container max-w-4xl">
+      <section id="resources" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+        <div className="container max-w-4xl px-4 sm:px-6">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
             <span className="font-serif italic">Resources</span>
           </h2>
-          <p className="text-center text-muted-foreground mb-8">Computational infrastructure and software tools</p>
-          <div className="space-y-8">
-            <div className="bg-card rounded-xl p-8 border border-border">
+          <p className="text-center text-muted-foreground mb-6 sm:mb-8">Computational infrastructure and software tools</p>
+          <div className="space-y-6 sm:space-y-8">
+            <div className="bg-card rounded-xl p-5 sm:p-6 md:p-8 border border-border">
               <div className="flex items-center gap-3 mb-4">
                 <Server className="text-primary" size={28} />
                 <h3 className="text-2xl font-semibold">Hardware</h3>
@@ -113,7 +113,7 @@ const Research = () => {
               </p>
             </div>
 
-            <div className="bg-card rounded-xl p-8 border border-border">
+            <div className="bg-card rounded-xl p-5 sm:p-6 md:p-8 border border-border">
               <div className="flex items-center gap-3 mb-4">
                 <Code className="text-primary" size={28} />
                 <h3 className="text-2xl font-semibold">Software</h3>

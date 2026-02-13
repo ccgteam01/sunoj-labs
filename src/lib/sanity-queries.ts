@@ -38,3 +38,16 @@ export const COURSES_QUERY = `*[_type == "course"] | order(order asc) {
 export const LECTURES_QUERY = `*[_type == "lecture"] | order(order desc) {
   _id, title, type, order
 }`;
+
+export const COWORKERS_QUERY = `*[_type == "coworker"] | order(order asc) {
+  name, type, bsc, msc, degree, research, email,
+  "imageUrl": image.asset->url
+}`;
+
+export const ALUMNI_QUERY = `*[_type == "alumni"] | order(no asc) {
+  no, name, position, award
+}`;
+
+export const AWARDS_QUERY = `*[_type == "award"] | order(order asc) {
+  text, year
+}`;

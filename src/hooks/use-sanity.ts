@@ -38,6 +38,18 @@ export function usePeople(fallback: any[]) {
   return useSanityQuery("people", queries.PEOPLE_QUERY, fallback);
 }
 
+export function useCoworkers(fallback: any[]) {
+  return useSanityQuery("coworkers", queries.COWORKERS_QUERY, fallback);
+}
+
+export function useAlumni(fallback: any[]) {
+  return useSanityQuery("alumni", queries.ALUMNI_QUERY, fallback);
+}
+
+export function useAwards(fallback: any[]) {
+  return useSanityQuery("awards", queries.AWARDS_QUERY, fallback);
+}
+
 export function usePublications(fallback: any[]) {
   return useSanityQuery("publications", queries.PUBLICATIONS_QUERY, fallback);
 }

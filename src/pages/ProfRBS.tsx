@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
-import SectionHeading from "@/components/SectionHeading";
 import { Award, GraduationCap, Mail, Phone, MapPin } from "lucide-react";
 import sunojImage from "@/assets/sunoj-sir.jpg";
+import { useAwards } from "@/hooks/use-sanity";
 
 const ProfRBS = () => {
+  const { data: awards } = useAwards([]);
   return (
     <PageLayout>
       <PageHero
@@ -165,47 +166,10 @@ const ProfRBS = () => {
             </h2>
             <div className="bg-card rounded-xl p-8 border border-border">
               <div className="space-y-4">
-                {[
-                  "National Award to Teachers (Higher Education), 2023.",
-                  "Associate Editor, The Journal of Organic Chemistry, a leading journal published by the American Chemical Society (2023-till date).",
-                  "Member of the Editorial Advisory Board of Journal of Computational Chemistry, published by Wiley (2025-till date).",
-                  "Member of the Editorial Advisory Board of 'Chem', a flagship journal published by Cell press (2023-till date).",
-                  "Fellow of the National Academy of Sciences, India. 2021.",
-                  "Member of the Editorial Board of 'Chemical Society Reviews', a flagship journal published by the Royal Society of Chemistry (2021-till date).",
-                  "Prof. S.C. Bhattacharya Award for Excellence in Pure Sciences, IIT Bombay (2020).",
-                  "Member of IUPAC Subcommittee on Structural and Mechanistic Chemistry, (2020-)",
-                  "Shanti Swarup Bhatnagar Prize in Chemical Sciences 2019.",
-                  "Elected Member of Board of the Asia Pacific Association of Theoretical and Computational Chemists (APATCC), (2019-)",
-                  "Member of the Editorial Advisory Board of 'Chemical Science', a flagship journal of the Royal Society of Chemistry (June 2019-2021).",
-                  "Editorial Board, 'WIREs Computational Molecular Science', a leading journal, published by Wiley (2018-2023).",
-                  "Member of the Editorial Advisory Board of 'ACS Catalysis', a leading journal, published by the American Chemical Society (2018-2022).",
-                  "IIT Bombay Research Award, 2017.",
-                  "Prof. S. P. Sukhatme Excellence in Teaching Award, IIT Bombay, 2017.",
-                  "Organizing Chair, 8th Asia Pacific Conference of Theoretical and Computational Chemistry, IIT Bombay, 2017.",
-                  "Institute Chair Professor, June 2017- June 2020.; Class of 1998 Chair in Quantum Computing (July 2020-June 2023); Google Cloud Chair Professor (June 2024-June 2027).",
-                  "The 30th Annual Charles A. Coulson Lecture, The Center for Computational Quantum Chemistry and Department of Chemistry, University of Georgia, Athens, GA, USA (February, 2017).",
-                  "Member of the Editorial Advisory Board of 'Organic Letters', a leading journal published by the American Chemical Society (Since 2017).",
-                  "Fellow of the Indian Academy of Sciences, Bangalore, 2017.",
-                  "A.V. Ramarao Research Foundation Prize Lecture, Javaharlal Nehru Center for Advanced Scientific Research (JNCASR), Bangalore, 2017.",
-                  "Fellow of the Royal Society of Chemistry (leaders in the field), 2015.",
-                  "Member of the Editorial Advisory Board, Resonance - Journal of Science Education, Published jointly by the Indian Academy of Sciences and Springer, 2013-2018.",
-                  "Elected to the board of World Association of Theoretical and Computational Chemists (WATOC), 2014.",
-                  "Chemical Research Society of India Bronze Medal (2014) in Recognition of the Contributions to Research in Chemistry.",
-                  "A.V. Ramarao Research Foundation Young Scientist Award 2011.",
-                  "Industrial Research and Consultancy (IRCC-IIT Bombay) Best Research Paper Award 2011",
-                  "IIT Bombay 'Excellence in Teaching' Award 2009.",
-                  "National Academy of Sciences India Young Scientist Platinum Jubilee Award 2008.",
-                  "IIT Bombay Young Investigator Award 2006.",
-                  "Associateship of the Indian Academy of Sciences (IAS) Bangalore, 2006.",
-                  "Indian National Science Academy (INSA) Medal for Young Scientist, 2006.",
-                  "Chemical Research Society of India (CRSI) Young Scientist Award 2006",
-                  "Best PhD thesis award, 2001, Department of Organic Chemistry, Indian Institute of Science, Bangalore.",
-                  "Gold Medallist in M. Sc. (Chemistry), 1996, University of Kerala.",
-                  "K. R. Krishna Iyer Memorial Gold medal for outstanding academic achievements for the year 1996, University of Kerala.",
-                ].map((award, i) => (
+                {awards.map((award: any, i: number) => (
                   <div key={i} className="flex items-start gap-3">
                     <Award size={16} className="text-gold shrink-0 mt-1" />
-                    <p className="text-foreground text-sm">{award}</p>
+                    <p className="text-foreground text-sm">{award.text}</p>
                   </div>
                 ))}
               </div>

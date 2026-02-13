@@ -224,13 +224,13 @@ const Index = () => {
       </section>
 
       {/* Research Highlights */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+      <section className="py-24 bg-background">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12 md:mb-16"
+            className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-6xl font-semibold mb-3 tracking-tighter">
               <span className="font-serif italic">Research</span> Interests
@@ -261,16 +261,16 @@ const Index = () => {
       </section>
 
       {/* Recent Publications & News */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+      <section className="py-24 bg-background">
         <div className="container">
-          <div className="grid lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {/* Recent Publications - 2/3 on large screens */}
             <div className="lg:col-span-2">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-6 sm:mb-8"
+                className="mb-8"
               >
                 <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tighter">
                   Recent <span className="font-serif italic">Publications</span>
@@ -309,7 +309,7 @@ const Index = () => {
                   </motion.a>
                 ))}
               </div>
-              <div className="mt-6 sm:mt-8">
+              <div className="mt-8">
                 <Link
                   to="/publications"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter"
@@ -328,7 +328,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-6 sm:mb-8"
+                className="mb-8"
               >
                 <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tighter">
                   Latest <span className="font-serif italic">News</span>
@@ -367,7 +367,7 @@ const Index = () => {
       </section>
 
       {/* Quote */}
-      <section className="py-12 sm:py-16 md:py-20 bg-background">
+      <section className="py-20 bg-background">
         <div className="container">
           <motion.blockquote
             initial={{ opacity: 0 }}

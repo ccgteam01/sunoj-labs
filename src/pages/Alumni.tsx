@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
+import { useAlumni } from "@/hooks/use-sanity";
 
 const alumni = [
   { no: 1, name: "Dr. Mahendra P. Patil", position: "Faculty member, DAE, Mumbai", award: "Ely Lilly Asia Outstanding Thesis Award, 2009" },
@@ -69,6 +70,7 @@ const alumni = [
 ];
 
 const Alumni = () => {
+  const { data: alumni } = useAlumni([]);
   return (
     <PageLayout>
       <PageHero
