@@ -1,21 +1,17 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
-import SectionHeading from "@/components/SectionHeading";
 
 const Seminars = () => {
   return (
     <PageLayout>
-      <PageHero
-        tagline="CCML Group · IIT Bombay"
-        title="Group Seminars"
-        description="View our group seminars calendar and upcoming events."
-        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
-      />
-
-      <section className="py-24 bg-background">
+      <section className="pt-32 pb-12 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="Seminars Calendar" />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter">Group Seminars</h1>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
+        <div className="container max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -1,8 +1,6 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
-import SectionHeading from "@/components/SectionHeading";
 import { ExternalLink, ChevronRight, FileText, Search } from "lucide-react";
 import { usePublications } from "@/hooks/use-sanity";
 
@@ -147,15 +145,14 @@ const Publications = () => {
 
   return (
     <PageLayout>
-      <PageHero
-        tagline="190+ Publications"
-        title="Publications"
-        description="Our research appears in leading journals including JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, and Chemical Reviews."
-        ctaText="Google Scholar Profile"
-        ctaLink="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en"
-        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
-      />
-      <section className="py-24 bg-background">
+      <section className="pt-32 pb-12 bg-background">
+        <div className="container max-w-5xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter mb-2">Publications</h1>
+          <p className="text-lg text-muted-foreground">Our research appears in leading journals including JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, and Chemical Reviews.</p>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
         <div className="container max-w-5xl">
           {/* Search Bar */}
           <div className="mb-8">

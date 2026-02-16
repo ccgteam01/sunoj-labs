@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
 import { useAlumni } from "@/hooks/use-sanity";
 
 const alumni = [
@@ -73,13 +72,13 @@ const Alumni = () => {
   const { data: alumni } = useAlumni([]);
   return (
     <PageLayout>
-      <PageHero
-        tagline="CCML Group"
-        title="Alumni"
-        description="Our alumni have moved on to leading roles in academia, industry, and global research institutes worldwide."
-        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
-      />
-      <section className="py-24 bg-background">
+      <section className="pt-32 pb-12 bg-background">
+        <div className="container max-w-7xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter">Alumni</h1>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
         <div className="container max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

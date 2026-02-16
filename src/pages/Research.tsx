@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
-import SectionHeading from "@/components/SectionHeading";
 import { Atom, Leaf, BrainCircuit, FlaskConical, Server, Code } from "lucide-react";
 import { useResearchAreas, useCollaborators } from "@/hooks/use-sanity";
 import generalResearch from "@/assets/gen-res.jpg";
@@ -28,14 +26,13 @@ const Research = () => {
 
   return (
     <PageLayout>
-      <PageHero
-        tagline="Computational Chemistry · Machine Learning"
-        title="Research Areas"
-        description="Our research spans computational mechanistic chemistry, transition metal and organocatalysis, and machine learning-driven molecular discovery."
-        ctaText="View Publications"
-        ctaLink="/publications"
-        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
-      />
+      <section className="pt-32 pb-12 bg-background">
+        <div className="container max-w-5xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter mb-2">Research Areas</h1>
+          <p className="text-lg text-muted-foreground">Our research spans computational mechanistic chemistry, transition metal and organocatalysis, and machine learning-driven molecular discovery.</p>
+        </div>
+      </section>
+
       <section id="specifics" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
         <div className="container max-w-5xl px-4 sm:px-6">
           <div className="flex flex-col gap-6 sm:gap-8 md:gap-12">
@@ -67,7 +64,7 @@ const Research = () => {
       <section id="general" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
         <div className="container max-w-5xl px-4 sm:px-6">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
-            General <span className="font-serif italic">Research</span>
+            General Research
           </h2>
           <p className="text-center text-muted-foreground mb-6 sm:mb-8">Overview of our research activities</p>
           
@@ -81,7 +78,7 @@ const Research = () => {
       <section id="collaborative" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
         <div className="container max-w-5xl px-4 sm:px-6">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
-            Collaborative <span className="font-serif italic">Research</span>
+            Collaborative Research
           </h2>
           <p className="text-center text-muted-foreground mb-6 sm:mb-8">We actively collaborate with leading experimental and computational groups worldwide.</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -99,7 +96,7 @@ const Research = () => {
       <section id="resources" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
         <div className="container max-w-4xl px-4 sm:px-6">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
-            <span className="font-serif italic">Resources</span>
+            Resources
           </h2>
           <p className="text-center text-muted-foreground mb-6 sm:mb-8">Computational infrastructure and software tools</p>
           <div className="space-y-6 sm:space-y-8">

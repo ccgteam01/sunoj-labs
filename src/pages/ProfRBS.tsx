@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
 import { Award, GraduationCap, Mail, Phone, MapPin } from "lucide-react";
 import sunojImage from "@/assets/sunoj-sir.jpg";
 import { useAwards } from "@/hooks/use-sanity";
@@ -9,14 +8,14 @@ const ProfRBS = () => {
   const { data: awards } = useAwards([]);
   return (
     <PageLayout>
-      <PageHero
-        tagline="Principal Investigator"
-        title="Prof. Raghavan B. Sunoj"
-        description="Convenor for High Performance Computing @ IITB, and Associate Faculty at Centre for Machine Intelligence and Data Science (C-MInDS)"
-        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
-      />
+      <section className="pt-32 pb-12 bg-background">
+        <div className="container max-w-5xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter mb-2">Prof. Raghavan B. Sunoj</h1>
+          <p className="text-lg text-muted-foreground">Convenor for High Performance Computing @ IITB, and Associate Faculty at Centre for Machine Intelligence and Data Science (C-MInDS)</p>
+        </div>
+      </section>
 
-      <section className="py-24 bg-background">
+      <section className="py-12 bg-background">
         <div className="container max-w-5xl">
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-1">
@@ -55,7 +54,7 @@ const ProfRBS = () => {
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter">
-              <span className="font-serif italic">Academic</span> Background
+              Academic Background
             </h2>
             <div className="bg-card rounded-xl p-4 md:p-8 border border-border">
               {/* Desktop Table */}
@@ -99,7 +98,7 @@ const ProfRBS = () => {
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter">
-              Professional <span className="font-serif italic">Experience</span>
+              Professional Experience
             </h2>
             <div className="bg-card rounded-xl p-4 md:p-8 border border-border">
               {/* Desktop Table */}
@@ -162,7 +161,7 @@ const ProfRBS = () => {
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter">
-              <span className="font-serif italic">Awards</span> and <span className="font-serif italic">Distinctions</span>
+              Awards and Distinctions
             </h2>
             <div className="bg-card rounded-xl p-8 border border-border">
               <div className="space-y-4">

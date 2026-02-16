@@ -10,7 +10,6 @@ import ProfRBS from "./pages/ProfRBS";
 import CoWorkers from "./pages/CoWorkers";
 import Alumni from "./pages/Alumni";
 import Publications from "./pages/Publications";
-import Academic from "./pages/Academic";
 import Courses from "./pages/Courses";
 import Lectures from "./pages/Lectures";
 import Seminars from "./pages/Seminars";
@@ -35,7 +34,6 @@ const App = () => (
           <Route path="/co-workers" element={<CoWorkers />} />
           <Route path="/alumni" element={<Alumni />} />
           <Route path="/publications" element={<Publications />} />
-          <Route path="/academic" element={<Academic />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/lectures" element={<Lectures />} />
           <Route path="/seminars" element={<Seminars />} />

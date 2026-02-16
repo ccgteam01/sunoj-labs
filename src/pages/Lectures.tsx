@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
-import SectionHeading from "@/components/SectionHeading";
 import { useLectures } from "@/hooks/use-sanity";
 
 const Lectures = () => {
@@ -12,16 +10,15 @@ const Lectures = () => {
 
   return (
     <PageLayout>
-      <PageHero
-        tagline="CCML Group · IIT Bombay"
-        title="Lectures"
-        description="Invited and public lectures by Prof. Raghavan B. Sunoj."
-        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
-      />
-
-      <section className="py-24 bg-background">
+      <section className="pt-32 pb-12 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="Invited Lectures" />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter">Lectures</h1>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
+        <div className="container max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-6 tracking-tighter">Invited Lectures</h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,9 +37,9 @@ const Lectures = () => {
         </div>
       </section>
 
-      <section className="py-24 bg-secondary">
+      <section className="py-12 bg-background">
         <div className="container max-w-4xl">
-          <SectionHeading title="Public Lectures" />
+          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-6 tracking-tighter">Public Lectures</h2>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

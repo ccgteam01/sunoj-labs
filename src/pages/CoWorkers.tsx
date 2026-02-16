@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
-import PageHero from "@/components/PageHero";
 import { Mail } from "lucide-react";
 import { useCoworkers } from "@/hooks/use-sanity";
 import { urlFor } from "@/lib/sanity";
@@ -183,17 +182,17 @@ const CoWorkers = () => {
   const undergrads = coworkers.filter((p: any) => p.type === 'undergraduate');
   return (
     <PageLayout>
-      <PageHero
-        tagline="CCML Group"
-        title="Co-Workers"
-        description="Meet our talented researchers working on computational chemistry and machine learning."
-        bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
-      />
-      <section className="py-24 bg-background">
+      <section className="pt-32 pb-12 bg-background">
+        <div className="container max-w-6xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter">Co-Workers</h1>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
         <div className="container max-w-6xl">
           <div className="mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter">
-              Graduate <span className="font-serif italic">Researchers</span>
+              Graduate Researchers
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {graduates.map((person: any, i: number) => (
@@ -204,7 +203,7 @@ const CoWorkers = () => {
 
           <div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter">
-              Under Graduate <span className="font-serif italic">Researchers</span>
+              Under Graduate Researchers
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {undergrads.map((person: any, i: number) => (

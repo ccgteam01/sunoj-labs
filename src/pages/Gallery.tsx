@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
-import SectionHeading from "@/components/SectionHeading";
 import AlbumCover from "@/components/AlbumCover";
 import AlbumCarousel from "@/components/AlbumCarousel";
 import { useAlbums } from "@/hooks/use-sanity";
@@ -34,13 +33,15 @@ const Gallery = () => {
 
   return (
     <PageLayout>
-      <section className="py-24 bg-background">
+      <section className="pt-32 pb-12 bg-background">
         <div className="container max-w-6xl">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
-             <span className="font-serif italic">Group Life</span>
-          </h2>
-          <p className="text-center text-muted-foreground mb-8">A glimpse into our research environment, conferences, collaborations, and group activities.</p>
-          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter mb-2">Group Life</h1>
+          <p className="text-lg text-muted-foreground">A glimpse into our research environment, conferences, collaborations, and group activities.</p>
+        </div>
+      </section>
+
+      <section className="py-12 bg-background">
+        <div className="container max-w-6xl">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {albums.map((album: any) => (
               <AlbumCover

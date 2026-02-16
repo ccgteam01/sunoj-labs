@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Twitter, Mail } from "lucide-react";
 import { useState } from "react";
 
 const FooterLink = ({ to, children }: { to: string; children: string }) => {
@@ -51,10 +51,10 @@ const Footer = () => (
         <div>
           <h4 className="text-white font-semibold mb-2 text-sm md:text-base">Socials</h4>
           <div className="flex items-center gap-2 md:gap-1">
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors">
-              <Linkedin size={18} />
+            <a href="https://github.com/Sunojlab" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors">
+              <Github size={18} />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors">
+            <a href="https://x.com/sunojchemlab" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors">
               <Twitter size={18} />
             </a>
             <a href="mailto:sunoj@chem.iitb.ac.in" className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center hover:bg-white/10 transition-colors">
@@ -66,14 +66,14 @@ const Footer = () => (
       
       <div className="text-center mb-4 mt-8 md:mt-0">
         <Link to="/" className="inline-block">
-          <div className="text-4xl sm:text-6xl md:text-8xl lg:text-[250px] font-semibold text-white/90 hover:text-white transition-colors -tracking-widest" >RBS Group</div>
-          {/* <div className="text-sm sm:text-base md:text-xl text-white/70 tracking-tighter">Computational Chemistry and Machine Learning Group</div> */}
+          <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white/90 hover:text-white transition-colors tracking-tight">RBS Group</div>
+          <div className="text-xs sm:text-sm md:text-base text-white/70 tracking-tight">Computational Chemistry and Machine Learning Group</div>
         </Link>
       </div>
 
       <div className="border-t border-white/10 pt-4 md:pt-8">
         <div className="flex flex-col md:flex-row justify-center items-center gap-1 text-xs md:text-sm text-white/70">
-          <div>© {new Date().getFullYear()} CCML Group, IIT Bombay. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} The RBS Group, IIT Bombay. All rights reserved.</div>
         </div>
       </div>
     </div>

@@ -233,19 +233,21 @@ const Index = () => {
             className="text-center mb-16"
           >
             <h2 className="text-5xl md:text-6xl font-semibold mb-3 tracking-tighter">
-              <span className="font-serif italic">Research</span> Interests
+              Research Interests
             </h2>
             <div className="section-divider mx-auto" />
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-lg mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-lg mx-auto" style={{ perspective: '1500px' }}>
             {researchCards.map((card, i) => (
               <motion.div
                 key={card.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02, rotateY: 2, rotateX: 2 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="bg-primary rounded-xl p-6 sm:p-8 border border-border card-hover flex flex-col min-h-[280px] sm:min-h-[320px]"
+                style={{ transformStyle: 'preserve-3d' }}
+                className="bg-primary rounded-xl p-6 sm:p-8 border border-border flex flex-col min-h-[280px] sm:min-h-[320px] cursor-pointer shadow-lg hover:shadow-2xl transition-shadow"
               >
                 <div className="bg-background rounded-full p-3 sm:p-4 mb-3 sm:mb-4 w-fit">
                   <card.icon className="text-accent" size={28} />
@@ -260,114 +262,111 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Recent Publications & News */}
+      {/* Recent News */}
       <section className="py-24 bg-background">
         <div className="container">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Recent Publications - 2/3 on large screens */}
-            <div className="lg:col-span-2">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-5xl md:text-6xl font-semibold mb-3 tracking-tighter">
+              Recent News
+            </h2>
+            <div className="section-divider mx-auto" />
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-lg mx-auto">
+            {newsItems.map((item, i) => (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-8"
+                transition={{ delay: i * 0.1 }}
+                className="bg-card rounded-xl p-6 border border-border card-hover"
               >
-                <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tighter">
-                  Recent <span className="font-serif italic">Publications</span>
-                </h2>
-                <div className="section-divider" />
-              </motion.div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {recentPublications.map((pub, i) => (
-                  <motion.a
-                    key={pub.doi}
-                    href={`https://doi.org/${pub.doi}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="bg-card rounded-xl border border-border overflow-hidden card-hover flex flex-col"
-                  >
-                    <img
-                      src={pub.imageUrl}
-                      alt={pub.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-5 flex flex-col flex-1">
-                      <span className="text-xs font-medium text-accent mb-2">
-                        {pub.year}
-                      </span>
-                      <h3 className="font-semibold text-foreground mb-2 line-clamp-2 leading-snug">
-                        {pub.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-auto">
-                        {pub.journal}
-                      </p>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-              <div className="mt-8">
-                <Link
-                  to="/publications"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter"
-                >
-                  View All Publications
-                  <div className="bg-white rounded-full text-accent p-2 transition-transform group-hover:translate-x-1">
-                    <ArrowRight size={20} />
+                <div className="flex items-start gap-3">
+                  <div className="bg-accent/10 rounded-full p-2 mt-1">
+                    <Newspaper className="text-accent" size={20} />
                   </div>
-                </Link>{" "}
-              </div>
-            </div>
+                  <div className="flex-1">
+                    <span className="text-xs font-medium text-accent">
+                      {item.year}
+                    </span>
+                    <p className="text-foreground mt-1 leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Latest News - 1/3 on large screens */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
+      {/* Recent Publications */}
+      <section className="py-24 bg-background">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-5xl md:text-6xl font-semibold mb-3 tracking-tighter">
+              Recent Publications
+            </h2>
+            <div className="section-divider mx-auto" />
+          </motion.div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
+            {recentPublications.map((pub, i) => (
+              <motion.a
+                key={pub.doi}
+                href={`https://doi.org/${pub.doi}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mb-8"
+                transition={{ delay: i * 0.1 }}
+                className="bg-card rounded-xl border border-border overflow-hidden card-hover flex flex-col"
               >
-                <h2 className="text-4xl md:text-5xl font-semibold mb-3 tracking-tighter">
-                  Latest <span className="font-serif italic">News</span>
-                </h2>
-                <div className="section-divider" />
-              </motion.div>
-              <div className="flex flex-col gap-6">
-                {newsItems.map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="bg-card rounded-xl p-6 border border-border card-hover"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="bg-accent/10 rounded-full p-2 mt-1">
-                        <Newspaper className="text-accent" size={20} />
-                      </div>
-                      <div className="flex-1">
-                        <span className="text-xs font-medium text-accent">
-                          {item.year}
-                        </span>
-                        <p className="text-foreground mt-1 leading-relaxed">
-                          {item.text}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+                <img
+                  src={pub.imageUrl}
+                  alt={pub.title}
+                  className="w-full h-56 object-cover"
+                />
+                <div className="p-6 flex flex-col flex-1">
+                  <span className="text-sm font-medium text-accent mb-2">
+                    {pub.year}
+                  </span>
+                  <h3 className="text-lg font-semibold text-foreground mb-3 line-clamp-3 leading-snug">
+                    {pub.title}
+                  </h3>
+                  <p className="text-base text-muted-foreground mt-auto">
+                    {pub.journal}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link
+              to="/publications"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter"
+            >
+              View All Publications
+              <div className="bg-white rounded-full text-accent p-2 transition-transform group-hover:translate-x-1">
+                <ArrowRight size={20} />
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Quote */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="container">
           <motion.blockquote
             initial={{ opacity: 0 }}
@@ -389,10 +388,10 @@ const Index = () => {
             </cite>
           </motion.blockquote>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-      <section className="relative min-h-[400px] md:min-h-[500px] w-[90%] mx-auto overflow-hidden mb-12 sm:mb-16 md:mb-24 rounded-xl md:rounded-2xl">
+      {/* <section className="relative min-h-[400px] md:min-h-[500px] w-[90%] mx-auto overflow-hidden mb-12 sm:mb-16 md:mb-24 rounded-xl md:rounded-2xl">
         <img
           src="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68ad9dd3f880ff51227d29cd_cta_banner-min.webp"
           alt=""
@@ -425,7 +424,7 @@ const Index = () => {
             </Link>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </PageLayout>
   );
 };
