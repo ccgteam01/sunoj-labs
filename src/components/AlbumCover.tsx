@@ -21,10 +21,10 @@ const AlbumCover = ({ photos, title, onClick }: AlbumCoverProps) => {
         {displayPhotos.map((photo, i) => (
           <motion.div
             key={i}
-            className="absolute inset-0 bg-white rounded-xl shadow-lg overflow-hidden border border-border"
+            className="absolute inset-0 bg-white rounded-3xl shadow-lg overflow-hidden"
             style={{
               zIndex: displayPhotos.length - i,
-              rotate: `${(i - 1) * 5}deg`,
+              rotate: `${(i - 1) * 6}deg`,
               scale: 1 - i * 0.03,
             }}
             whileHover={{ y: -i * 8 }}

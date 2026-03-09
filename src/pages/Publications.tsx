@@ -1,7 +1,9 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 import { ExternalLink, ChevronRight, FileText, Search } from "lucide-react";
+import { PublicationsSkeleton } from "@/components/Skeleton";
 import { usePublications } from "@/hooks/use-sanity";
 
 const researchThemes = [
@@ -25,88 +27,8 @@ const themeColors: Record<string, string> = {
   "Computational Chemistry": "bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300",
 };
 
-const fallbackPublications = [
-  { 
-    title: "Chemo-, regio- and enantioselective hydroformylation of trisubstituted cyclopropenes: access to chiral quaternary cyclopropanes", 
-    journal: "Nature Communications", 
-    doi: "10.1038/s41467-024-50689-z", 
-    authors: "Li S, Zhang D, Purushothaman A, Lv H, Shilpa S, Sunoj RB, Li X, Zhang X", 
-    year: 2024,
-    themes: ["Asymmetric Catalysis", "Transition Metal Catalysis"],
-    pdfUrl: "https://example.com/paper1.pdf",
-    imageUrl: "https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
-  },
-  { 
-    title: "Role of Noncovalent Interactions in Inducing High Enantioselectivity in an Alcohol Desymmetrization Reaction", 
-    journal: "J. Am. Chem. Soc.", 
-    doi: "10.1021/jacs.3c06131", 
-    authors: "Ghosh S, Changotra A, Petrone DA, Isomura M, Carreira EM, Sunoj RB", 
-    year: 2023,
-    themes: ["Noncovalent Interactions", "Asymmetric Catalysis"]
-  },
-  { 
-    title: "A unified machine-learning protocol for asymmetric catalysis as a proof of concept demonstration using asymmetric hydrogenation", 
-    journal: "Proc. Natl. Acad. Sci. USA", 
-    doi: "10.1073/pnas.1916392117", 
-    authors: "Ahneman DT, Estrada JG, Lin S, Dreher SD, Doyle AG", 
-    year: 2020,
-    themes: ["Machine Learning", "Asymmetric Catalysis"],
-    pdfUrl: "https://example.com/paper3.pdf",
-    imageUrl: "https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
-  },
-  { 
-    title: "Two chiral catalysts in action: insights into cooperativity and stereoselectivity in proline and cinchona-thiourea dual organocatalysis", 
-    journal: "Chemical Science", 
-    doi: "10.1039/C8SC03078B", 
-    authors: "Bhaskararao B, Sunoj RB", 
-    year: 2018,
-    themes: ["Organocatalysis", "Asymmetric Catalysis"]
-  },
-  { 
-    title: "Directing group assisted meta-hydroxylation by C–H activation", 
-    journal: "Chemical Science", 
-    doi: "10.1039/C5SC04060C", 
-    authors: "Maji A, Bhaskararao B, Singha S, Sunoj RB, Maiti D", 
-    year: 2016,
-    themes: ["C-H Activation", "Transition Metal Catalysis"],
-    pdfUrl: "https://example.com/paper5.pdf"
-  },
-  { 
-    title: "What Is the Intrinsic Reactivity of a Diazo Compound in Catalytic Insertion into C–H Bonds?", 
-    journal: "J. Am. Chem. Soc.", 
-    doi: "10.1021/jacs.6b05834", 
-    authors: "Changotra A, Sunoj RB", 
-    year: 2016,
-    themes: ["C-H Activation", "Computational Chemistry"]
-  },
-  { 
-    title: "Origin of Stereodivergence in Cooperative Asymmetric Catalysis with Simultaneous Involvement of Two Chiral Catalysts", 
-    journal: "J. Am. Chem. Soc.", 
-    doi: "10.1021/jacs.5b05902", 
-    authors: "Bhaskararao B, Sunoj RB", 
-    year: 2015,
-    themes: ["Asymmetric Catalysis", "Organocatalysis"]
-  },
-  { 
-    title: "Transition-State Models for Understanding the Origin of Chiral Induction in Asymmetric Catalysis", 
-    journal: "Acc. Chem. Res.", 
-    doi: "10.1021/ar2002906", 
-    authors: "Sunoj RB", 
-    year: 2012,
-    themes: ["Computational Chemistry", "Asymmetric Catalysis"]
-  },
-  { 
-    title: "Organoselenium chemistry: role of intramolecular interactions", 
-    journal: "Chemical Reviews", 
-    doi: "10.1021/cr900352j", 
-    authors: "Mukherjee AJ, Zade SS, Singh HB, Sunoj RB", 
-    year: 2010,
-    themes: ["Noncovalent Interactions", "Computational Chemistry"]
-  },
-];
-
 const Publications = () => {
-  const { data: papers } = usePublications(fallbackPublications);
+  const { data: papers, isFetching } = usePublications([]);
   const [filterTheme, setFilterTheme] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -145,12 +67,10 @@ const Publications = () => {
 
   return (
     <PageLayout>
-      <section className="pt-32 pb-12 bg-background">
-        <div className="container max-w-5xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter mb-2">Publications</h1>
-          <p className="text-lg text-muted-foreground">Our research appears in leading journals including JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, and Chemical Reviews.</p>
-        </div>
-      </section>
+      <PageHero 
+        title="Publications" 
+        description="Our research appears in leading journals including JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, and Chemical Reviews." 
+      />
 
       <section className="py-12 bg-background">
         <div className="container max-w-5xl">
@@ -195,108 +115,114 @@ const Publications = () => {
             Showing {filtered.length} publication{filtered.length !== 1 ? "s" : ""}
           </p>
 
-          {grouped.map((group) => (
-            <div key={group.year} className="mb-12">
-              <h3 className="text-2xl font-heading font-bold mb-6 text-accent">{group.year}</h3>
-              <div className="flex flex-col gap-6">
-                {group.papers.map((paper: any) => (
-                  <motion.div
-                    key={paper.doi}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="bg-card rounded-xl border border-border card-hover overflow-hidden"
-                  >
-                    {paper.imageUrl ? (
-                      <div className="grid md:grid-cols-3 gap-6">
-                        <div className="md:col-span-1">
-                          <img
-                            src={paper.imageUrl}
-                            alt={paper.title}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="md:col-span-2 p-6">
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {paper.themes?.map((theme: string) => (
-                              <span key={theme} className={`px-3 py-1 text-xs font-medium rounded-full ${themeColors[theme] || "bg-accent/10 text-accent"}`}>
-                                {theme}
-                              </span>
-                            ))}
+          {isFetching && papers.length === 0 ? (
+            <PublicationsSkeleton />
+          ) : (
+            <>
+              {grouped.map((group) => (
+                <div key={group.year} className="mb-12">
+                  <h3 className="text-2xl font-heading font-bold mb-6 text-accent">{group.year}</h3>
+                  <div className="flex flex-col gap-6">
+                    {group.papers.map((paper: any) => (
+                      <motion.div
+                        key={paper.doi}
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="bg-card rounded-xl border border-border card-hover overflow-hidden"
+                      >
+                        {paper.imageUrl ? (
+                          <div className="grid md:grid-cols-3 gap-6">
+                            <div className="md:col-span-1">
+                              <img
+                                src={paper.imageUrl}
+                                alt={paper.title}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                            <div className="md:col-span-2 p-6">
+                              <div className="flex flex-wrap gap-2 mb-3">
+                                {paper.themes?.map((theme: string) => (
+                                  <span key={theme} className={`px-3 py-1 text-xs font-medium rounded-full ${themeColors[theme] || "bg-accent/10 text-accent"}`}>
+                                    {theme}
+                                  </span>
+                                ))}
+                              </div>
+                              <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
+                              <p className="text-sm text-muted-foreground mb-1">{paper.authors}</p>
+                              <p className="text-sm text-accent font-medium mb-4">{paper.journal}</p>
+                              <div className="flex flex-wrap gap-2">
+                                <a
+                                  href={`https://doi.org/${paper.doi}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
+                                >
+                                  <ExternalLink size={16} /> View Publication
+                                </a>
+                                {paper.pdfUrl && (
+                                  <a
+                                    href={paper.pdfUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-foreground rounded-lg text-sm font-medium hover:bg-muted transition-colors"
+                                  >
+                                    <FileText size={16} /> View PDF
+                                  </a>
+                                )}
+                              </div>
+                            </div>
                           </div>
-                          <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
-                          <p className="text-sm text-muted-foreground mb-1">{paper.authors}</p>
-                          <p className="text-sm text-accent font-medium mb-4">{paper.journal}</p>
-                          <div className="flex flex-wrap gap-2">
-                            <a
-                              href={`https://doi.org/${paper.doi}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
-                            >
-                              <ExternalLink size={16} /> View Publication
-                            </a>
-                            {paper.pdfUrl && (
+                        ) : (
+                          <div className="p-6">
+                            <div className="flex flex-wrap gap-2 mb-3">
+                              {paper.themes?.map((theme: string) => (
+                                <span key={theme} className={`px-3 py-1 text-xs font-medium rounded-full ${themeColors[theme] || "bg-accent/10 text-accent"}`}>
+                                  {theme}
+                                </span>
+                              ))}
+                            </div>
+                            <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
+                            <p className="text-sm text-muted-foreground mb-1">{paper.authors}</p>
+                            <p className="text-sm text-accent font-medium mb-4">{paper.journal}</p>
+                            <div className="flex flex-wrap gap-2">
                               <a
-                                href={paper.pdfUrl}
+                                href={`https://doi.org/${paper.doi}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-foreground rounded-lg text-sm font-medium hover:bg-muted transition-colors"
+                                className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
                               >
-                                <FileText size={16} /> View PDF
+                                <ExternalLink size={16} /> View Publication
                               </a>
-                            )}
+                              {paper.pdfUrl && (
+                                <a
+                                  href={paper.pdfUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-foreground rounded-lg text-sm font-medium hover:bg-muted transition-colors"
+                                >
+                                  <FileText size={16} /> View PDF
+                                </a>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="p-6">
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {paper.themes?.map((theme: string) => (
-                            <span key={theme} className={`px-3 py-1 text-xs font-medium rounded-full ${themeColors[theme] || "bg-accent/10 text-accent"}`}>
-                              {theme}
-                            </span>
-                          ))}
-                        </div>
-                        <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
-                        <p className="text-sm text-muted-foreground mb-1">{paper.authors}</p>
-                        <p className="text-sm text-accent font-medium mb-4">{paper.journal}</p>
-                        <div className="flex flex-wrap gap-2">
-                          <a
-                            href={`https://doi.org/${paper.doi}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
-                          >
-                            <ExternalLink size={16} /> View Publication
-                          </a>
-                          {paper.pdfUrl && (
-                            <a
-                              href={paper.pdfUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-foreground rounded-lg text-sm font-medium hover:bg-muted transition-colors"
-                            >
-                              <FileText size={16} /> View PDF
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          ))}
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ))}
 
-          <div className="text-center mt-8">
-            <a href="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter">
-              View Full List on Google Scholar
-              <div className="bg-white rounded-full text-accent p-2 transition-transform group-hover:translate-x-1">
-                <ChevronRight size={25} />
+              <div className="text-center mt-8">
+                <a href="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter">
+                  View Full List on Google Scholar
+                  <div className="bg-white rounded-full text-accent p-2 transition-transform group-hover:translate-x-1">
+                    <ChevronRight size={25} />
+                  </div>
+                </a>
               </div>
-            </a>
-          </div>
+            </>
+          )}
         </div>
       </section>
     </PageLayout>

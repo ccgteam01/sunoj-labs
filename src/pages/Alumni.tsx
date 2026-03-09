@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 import { useAlumni } from "@/hooks/use-sanity";
 
 const alumni = [
@@ -72,11 +73,7 @@ const Alumni = () => {
   const { data: alumni } = useAlumni([]);
   return (
     <PageLayout>
-      <section className="pt-32 pb-12 bg-background">
-        <div className="container max-w-7xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter">Alumni</h1>
-        </div>
-      </section>
+      <PageHero title="Alumni" />
 
       <section className="py-12 bg-background">
         <div className="container max-w-7xl">

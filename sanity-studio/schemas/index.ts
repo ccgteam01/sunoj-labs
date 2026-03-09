@@ -9,6 +9,7 @@ import galleryItem from './galleryItem'
 import contactInfo from './contactInfo'
 import aboutPage from './aboutPage'
 import siteSettings from './siteSettings'
+import homepage from './homepage'
 
 export const schemaTypes = [
   heroSlide,
@@ -22,4 +23,5 @@ export const schemaTypes = [
   contactInfo,
   aboutPage,
   siteSettings,
+  homepage,
 ]

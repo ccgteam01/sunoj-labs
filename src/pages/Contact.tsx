@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 import { Mail, MapPin, ExternalLink, GraduationCap, Microscope, BookOpen, ChevronRight } from "lucide-react";
 
 const contact = {
   email: "sunoj@chem.iitb.ac.in",
-  address: "CCML Group (Prof. R. B. Sunoj)\nDepartment of Chemistry, 3rd Floor, Room 418-A\nIndian Institute of Technology Bombay\nPowai, Mumbai 400076, India",
+  address: "RBS Group (Prof. R. B. Sunoj)\nDepartment of Chemistry, 3rd Floor, Room 418-A\nIndian Institute of Technology Bombay\nPowai, Mumbai 400076, India",
   googleScholarUrl: "https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en",
   githubUrl: "https://github.com/Sunojlab",
   officialWebsiteUrl: "https://www.chem.iitb.ac.in/~sunoj/",
@@ -35,18 +36,16 @@ const Contact = () => {
 
   return (
     <PageLayout>
-      <section className="pt-32 pb-12 bg-background">
-        <div className="container max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter mb-2">Contact Us</h1>
-          <p className="text-lg text-muted-foreground">Connect with the CCML Group at IIT Bombay. We welcome inquiries about research collaborations, publications, and open positions.</p>
-        </div>
-      </section>
+      <PageHero 
+        title="Contact Us" 
+        description="Connect with the RBS Group at IIT Bombay. We welcome inquiries about research collaborations, publications, and open positions." 
+      />
 
       {/* Open Positions */}
-      <section id="positions" className="py-12 bg-background">
+      <section id="positions" className="py-12 bg-background scroll-mt-24">
         <div className="container max-w-4xl">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
-            Join the CCML Group
+            Join the RBS Group
           </h2>
           <p className="text-center text-muted-foreground mb-8">We are always interested in highly motivated candidates with backgrounds in organic chemistry, physical chemistry, computational modeling, and data science for chemistry.</p>
 

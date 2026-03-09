@@ -1,14 +1,11 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 
 const Seminars = () => {
   return (
     <PageLayout>
-      <section className="pt-32 pb-12 bg-background">
-        <div className="container max-w-4xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter">Group Seminars</h1>
-        </div>
-      </section>
+      <PageHero title="Group Seminars" />
 
       <section className="py-12 bg-background">
         <div className="container max-w-4xl">

@@ -52,7 +52,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between h-14 px-6">
         
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src={logo} alt="CCML @ IITB" className="h-12 w-auto" />
+          <img src={logo} alt="RBS Group(CCML) @ IITB" className="h-12 w-auto" />
         </Link>
 
         {/* Desktop */}

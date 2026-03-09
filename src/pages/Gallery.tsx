@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 import AlbumCover from "@/components/AlbumCover";
 import AlbumCarousel from "@/components/AlbumCarousel";
 import { useAlbums } from "@/hooks/use-sanity";
@@ -8,23 +9,16 @@ import { useAlbums } from "@/hooks/use-sanity";
 const fallbackAlbums = [
   {
     _id: "1",
-    title: "Lab Events",
+    title: "RBS Group",
     description: "Team gatherings and celebrations",
     photos: [
       "https://cdn.sanity.io/images/m2fbgni0/production/392ffb473a5a29be068a84ca60d9c69f32ee5b7f-618x410.jpg",
       "https://cdn.sanity.io/images/m2fbgni0/production/1087ec51543631a75ecb63a45e4a9c064dab8796-618x410.jpg",
       "https://cdn.sanity.io/images/m2fbgni0/production/9ef8e259acb8b87d2672e4d67ed618ec61dc6baf-620x465.jpg",
+            "https://cdn.sanity.io/images/m2fbgni0/production/f10e49c4f6d5c5b53ac682534b32e508d58f9ce6-620x465.jpg",
+
     ],
-  },
-  {
-    _id: "2",
-    title: "Conferences",
-    description: "Research presentations and networking",
-    photos: [
-      "https://cdn.sanity.io/images/m2fbgni0/production/f10e49c4f6d5c5b53ac682534b32e508d58f9ce6-620x465.jpg",
-      
-    ],
-  },
+  }
 ];
 
 const Gallery = () => {
@@ -33,12 +27,10 @@ const Gallery = () => {
 
   return (
     <PageLayout>
-      <section className="pt-32 pb-12 bg-background">
-        <div className="container max-w-6xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter mb-2">Group Life</h1>
-          <p className="text-lg text-muted-foreground">A glimpse into our research environment, conferences, collaborations, and group activities.</p>
-        </div>
-      </section>
+      <PageHero 
+        title="Group Life" 
+        description="A glimpse into our research environment, conferences, collaborations, and group activities." 
+      />
 
       <section className="py-12 bg-background">
         <div className="container max-w-6xl">

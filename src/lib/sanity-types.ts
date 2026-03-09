@@ -59,6 +59,8 @@ export interface SanityPublication {
   journal: string;
   doi: string;
   year: number;
+  image?: SanityImage;
+  featured?: boolean;
 }
 
 export interface SanityNewsItem {
@@ -66,6 +68,17 @@ export interface SanityNewsItem {
   text: string;
   year: number;
   order: number;
+}
+
+export interface SanityHomepage {
+  _type: "homepage";
+  quote: string;
+  quoteAuthor: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaButtonText: string;
+  ctaButtonLink: string;
+  ctaBackgroundImage?: SanityImage;
 }
 
 export interface SanityOpportunity {

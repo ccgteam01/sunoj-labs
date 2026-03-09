@@ -10,7 +10,7 @@ const iconMap: Record<string, any> = {
 };
 
 const data = {
-  groupDescription: "The CCML Group (Computational Chemistry & Machine Learning) at the Department of Chemistry, IIT Bombay focuses on understanding chemical reactivity through computational modeling and mechanistic exploration. Located on the 3rd floor, Room No. 418-A, our group has been at the forefront of computational organic chemistry research in India.",
+  groupDescription: "The RBS Group (Computational Chemistry & Machine Learning) at the Department of Chemistry, IIT Bombay focuses on understanding chemical reactivity through computational modeling and mechanistic exploration. Located on the 3rd floor, Room No. 418-A, our group has been at the forefront of computational organic chemistry research in India.",
   researchAreas: [
     "Asymmetric multi-catalytic reactions",
     "Transition metal catalysis (C–H activation, cross-coupling)",
@@ -57,9 +57,9 @@ const About = () => {
   return (
     <PageLayout>
       <PageHero
-        tagline="CCML Group · IIT Bombay"
+        tagline="RBS Group · IIT Bombay"
         title="About the Group"
-        description="The CCML Group focuses on understanding chemical reactivity through computational modeling, mechanistic exploration, and machine learning-driven molecular discovery."
+        description="The RBS Group focuses on understanding chemical reactivity through computational modeling, mechanistic exploration, and machine learning-driven molecular discovery."
         bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
       />
       <section className="py-24 bg-background">

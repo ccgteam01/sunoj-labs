@@ -10,5 +10,7 @@ export default defineType({
     defineField({name: 'journal', title: 'Journal', type: 'string'}),
     defineField({name: 'doi', title: 'DOI', type: 'string'}),
     defineField({name: 'year', title: 'Year', type: 'number'}),
+    defineField({name: 'image', title: 'Cover Image', type: 'image', options: {hotspot: true}}),
+    defineField({name: 'featured', title: 'Featured on Homepage', type: 'boolean', initialValue: false}),
   ],
 })

@@ -9,6 +9,20 @@ export const RESEARCH_AREAS_QUERY = `*[_type == "researchArea"] | order(order as
   title, description, focusAreas, icon
 }`;
 
+export const NEWS_QUERY = `*[_type == "newsItem"] | order(year desc, order asc) {
+  text, year
+}`;
+
+export const RECENT_PUBLICATIONS_QUERY = `*[_type == "publication" && featured == true] | order(year desc) [0...3] {
+  title, journal, doi, year, authors,
+  "imageUrl": image.asset->url
+}`;
+
+export const HOMEPAGE_QUERY = `*[_type == "homepage"][0] {
+  quote, quoteAuthor, ctaTitle, ctaDescription, ctaButtonText, ctaButtonLink,
+  "ctaBackgroundImageUrl": ctaBackgroundImage.asset->url
+}`;
+
 export const COLLABORATORS_QUERY = `*[_type == "collaborator"] {
   name, institution, topic
 }`;
@@ -19,11 +33,8 @@ export const PEOPLE_QUERY = `*[_type == "person"] | order(order asc) {
 }`;
 
 export const PUBLICATIONS_QUERY = `*[_type == "publication"] | order(year desc) {
-  title, authors, journal, doi, year
-}`;
-
-export const NEWS_QUERY = `*[_type == "newsItem"] | order(year desc, order asc) {
-  text, year
+  title, authors, journal, doi, year, themes, pdfUrl,
+  "imageUrl": image.asset->url
 }`;
 
 export const ALBUMS_QUERY = `*[_type == "album"] | order(order asc) {
@@ -50,4 +61,16 @@ export const ALUMNI_QUERY = `*[_type == "alumni"] | order(no asc) {
 
 export const AWARDS_QUERY = `*[_type == "award"] | order(order asc) {
   text, year
+}`;
+
+export const HARDWARE_QUERY = `*[_type == "hardware"] {
+  name, description, link
+}`;
+
+export const SOFTWARE_QUERY = `*[_type == "software"] | order(name asc) {
+  name, version
+}`;
+
+export const GENERAL_RESEARCH_QUERY = `*[_type == "generalResearch"][0] {
+  "imageUrl": image.asset->url
 }`;

@@ -30,7 +30,7 @@ const People = () => {
   return (
     <PageLayout>
       <PageHero
-        tagline="CCML Group"
+        tagline="RBS Group"
         title="Our Team"
         description="Meet the researchers driving innovation in computational chemistry and machine learning at IIT Bombay."
         ctaText="Join Our Team"

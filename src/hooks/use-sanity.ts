@@ -69,3 +69,15 @@ export function useCourses() {
 export function useLectures() {
   return useSanityQuery("lectures", queries.LECTURES_QUERY, []);
 }
+
+export function useHardware() {
+  return useSanityQuery("hardware", queries.HARDWARE_QUERY, []);
+}
+
+export function useSoftware() {
+  return useSanityQuery("software", queries.SOFTWARE_QUERY, []);
+}
+
+export function useGeneralResearch() {
+  return useSanityQuery("generalResearch", queries.GENERAL_RESEARCH_QUERY, null);
+}

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PageLayout from "@/components/PageLayout";
+import PageHero from "@/components/PageHero";
 import { Mail } from "lucide-react";
 import { useCoworkers } from "@/hooks/use-sanity";
 import { urlFor } from "@/lib/sanity";
@@ -182,11 +183,7 @@ const CoWorkers = () => {
   const undergrads = coworkers.filter((p: any) => p.type === 'undergraduate');
   return (
     <PageLayout>
-      <section className="pt-32 pb-12 bg-background">
-        <div className="container max-w-6xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground tracking-tighter">Co-Workers</h1>
-        </div>
-      </section>
+      <PageHero title="Co-Workers" />
 
       <section className="py-12 bg-background">
         <div className="container max-w-6xl">
