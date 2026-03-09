@@ -63,15 +63,19 @@ const HeroSection = ({ slides }: HeroSectionProps) => {
               <p className="text-white/70 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
                 {slides[current].desc}
               </p>
-              <Link
-                to={slides[current].link}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter"
-              >
-                {slides[current].linkLabel}
-                <div className="bg-white rounded-full text-accent p-2 transition-transform group-hover:translate-x-1">
-                  <ChevronRight size={25} />
-                </div>
-              </Link>
+
+              {slides[current].link && (
+  <Link
+    to={slides[current].link}
+    className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter"
+  >
+    {slides[current].linkLabel}
+    <div className="bg-white rounded-full text-accent p-2 transition-transform group-hover:translate-x-1">
+      <ChevronRight size={25} />
+    </div>
+  </Link>
+)}
+              
             </motion.div>
           </AnimatePresence>
         </div>
