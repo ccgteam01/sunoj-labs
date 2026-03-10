@@ -23,7 +23,7 @@ const HeroSection = ({ slides }: HeroSectionProps) => {
   const prev = useCallback(() => setCurrent((c) => (c - 1 + slides.length) % slides.length), [slides.length]);
 
   useEffect(() => {
-    const timer = setInterval(next, 5000);
+    const timer = setInterval(next, 10000);
     return () => clearInterval(timer);
   }, [next]);
 
@@ -96,7 +96,7 @@ const HeroSection = ({ slides }: HeroSectionProps) => {
                     className="absolute inset-0 bg-accent rounded-full origin-left"
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
-                    transition={{ duration: 5, ease: "linear" }}
+                    transition={{ duration: 10, ease: "linear" }}
                   />
                 )}
               </button>

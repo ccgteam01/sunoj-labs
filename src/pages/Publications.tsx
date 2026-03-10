@@ -54,16 +54,7 @@ const Publications = () => {
     return result.sort((a: any, b: any) => b.year - a.year);
   }, [papers, filterTheme, searchQuery]);
 
-  const grouped = useMemo(() => {
-    const groups: Record<number, any[]> = {};
-    filtered.forEach((p: any) => {
-      if (!groups[p.year]) groups[p.year] = [];
-      groups[p.year].push(p);
-    });
-    return Object.entries(groups)
-      .map(([year, paps]) => ({ year: Number(year), papers: paps }))
-      .sort((a, b) => b.year - a.year);
-  }, [filtered]);
+
 
   return (
     <PageLayout>
@@ -119,11 +110,8 @@ const Publications = () => {
             <PublicationsSkeleton />
           ) : (
             <>
-              {grouped.map((group) => (
-                <div key={group.year} className="mb-12">
-                  <h3 className="text-2xl font-heading font-bold mb-6 text-accent">{group.year}</h3>
-                  <div className="flex flex-col gap-6">
-                    {group.papers.map((paper: any) => (
+              <div className="flex flex-col gap-6">
+                {filtered.map((paper: any) => (
                       <motion.div
                         key={paper.doi}
                         initial={{ opacity: 0, y: 12 }}
@@ -208,10 +196,8 @@ const Publications = () => {
                           </div>
                         )}
                       </motion.div>
-                    ))}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
 
               <div className="text-center mt-8">
                 <a href="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter">

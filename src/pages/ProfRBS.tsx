@@ -151,7 +151,7 @@ const ProfRBS = () => {
                   <div className="text-sm text-muted-foreground">2001*</div>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground mt-4">
+              <p className="text-md font-semibold text-muted-foreground mt-4">
                 *Advisor: Professor J. Chandrasekhar
               </p>
             </div>
