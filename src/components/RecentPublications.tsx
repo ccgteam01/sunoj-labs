@@ -32,10 +32,11 @@ const RecentPublications = ({ publications }: RecentPublicationsProps) => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {publications.map((pub, i) => (
             <motion.a
-              key={pub.doi}
-              href={`https://doi.org/${pub.doi}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              key={pub.title || i}
+              href={pub.doi ? `https://doi.org/${pub.doi}` : undefined}
+              target={pub.doi ? "_blank" : undefined}
+              rel={pub.doi ? "noopener noreferrer" : undefined}
+              style={{ cursor: pub.doi ? "pointer" : "default" }}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

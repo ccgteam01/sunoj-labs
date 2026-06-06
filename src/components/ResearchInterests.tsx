@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, LucideIcon } from "lucide-react";
 
@@ -16,15 +17,21 @@ const ResearchInterests = ({ cards }: ResearchInterestsProps) => {
   const [carouselDeg, setCarouselDeg] = useState(0);
   const [cardIndex, setCardIndex] = useState(0);
 
-  const rotateNext = () => {
+  const rotateNext = useCallback(() => {
     setCarouselDeg((d) => d - 40);
     setCardIndex((i) => (i + 1) % cards.length);
-  };
+  }, [cards.length]);
 
   const rotatePrev = () => {
     setCarouselDeg((d) => d + 40);
     setCardIndex((i) => (i - 1 + cards.length) % cards.length);
   };
+
+  // Auto-rotate every 2 seconds
+  useEffect(() => {
+    const timer = setInterval(rotateNext, 2000);
+    return () => clearInterval(timer);
+  }, [rotateNext]);
 
   return (
     <section className="py-24 bg-background">
@@ -57,7 +64,7 @@ const ResearchInterests = ({ cards }: ResearchInterestsProps) => {
                     className="w-full max-w-[280px] h-[280px] bg-primary rounded-xl p-5 flex flex-col shadow-2xl"
                   >
                     <div className="bg-background rounded-full p-2 mb-3 w-fit">
-                      <CardIcon className="text-accent" size={20} />
+                      <CardIcon className="text-white" size={20} />
                     </div>
                     <h3 className="text-base font-semibold mb-2 text-white tracking-tighter">
                       {cards[cardIndex].title}
@@ -102,7 +109,7 @@ const ResearchInterests = ({ cards }: ResearchInterestsProps) => {
               }}
             >
               {[...Array(9)].map((_, i) => {
-                const card = cards[i % 3];
+                const card = cards[i % cards.length];
                 const currentIndex = Math.round(-carouselDeg / 40);
                 const normalizedCurrent = ((currentIndex % 9) + 9) % 9;
                 const isVisible =
@@ -119,7 +126,7 @@ const ResearchInterests = ({ cards }: ResearchInterestsProps) => {
                     }}
                   >
                     <div className="bg-background rounded-full p-2 mb-2 w-fit">
-                      <card.icon className="text-accent" size={18} />
+                      <card.icon className="text-white" size={18} />
                     </div>
                     <h3 className="text-md font-semibold mb-1 text-white tracking-tighter">
                       {card.title}

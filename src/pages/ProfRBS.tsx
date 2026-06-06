@@ -284,7 +284,7 @@ const ProfRBS = () => {
                     </div>
                   ))}
                 </div>
-                <p className="text-xs text-muted-foreground mt-6 pt-4 border-t border-border">
+                <p className="text-md font-semibold text-foreground mt-6 pt-4 border-t border-border">
                   * Awarded by the President of India
                 </p>
               </div>

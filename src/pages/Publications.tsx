@@ -113,17 +113,17 @@ const Publications = () => {
               <div className="flex flex-col gap-6">
                 {filtered.map((paper: any) => (
                       <motion.div
-                        key={paper.doi}
+                        key={paper.doi || paper.title}
                         initial={{ opacity: 0, y: 12 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         className="bg-card rounded-xl border border-border card-hover overflow-hidden"
                       >
-                        {paper.imageUrl ? (
+                        {(paper.graphicalAbstractUrl || paper.imageUrl) ? (
                           <div className="grid md:grid-cols-3 gap-6">
                             <div className="md:col-span-1">
                               <img
-                                src={paper.imageUrl}
+                                src={paper.graphicalAbstractUrl || paper.imageUrl}
                                 alt={paper.title}
                                 className="w-full h-full object-cover"
                               />

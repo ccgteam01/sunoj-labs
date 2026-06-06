@@ -14,7 +14,7 @@ export const NEWS_QUERY = `*[_type == "newsItem"] | order(year desc, order asc) 
 }`;
 
 export const RECENT_PUBLICATIONS_QUERY = `*[_type == "publication" && featured == true] | order(year desc) [0...3] {
-  title, journal, doi, year, authors,
+  title, journal, doi, year, authors, graphicalAbstractUrl,
   "imageUrl": image.asset->url
 }`;
 
@@ -33,7 +33,7 @@ export const PEOPLE_QUERY = `*[_type == "person"] | order(order asc) {
 }`;
 
 export const PUBLICATIONS_QUERY = `*[_type == "publication"] | order(year desc) {
-  title, authors, journal, doi, year, themes, pdfUrl,
+  title, authors, journal, doi, year, themes, pdfUrl, graphicalAbstractUrl,
   "imageUrl": image.asset->url
 }`;
 
