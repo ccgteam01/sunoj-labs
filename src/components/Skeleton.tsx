@@ -33,7 +33,7 @@ export const RecentNewsSkeleton = () => (
         <Skeleton className="h-12 w-64 mx-auto mb-3" />
         <Skeleton className="h-1 w-24 mx-auto" />
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-lg mx-auto">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {[1, 2, 3].map((i) => (
           <div key={i} className="bg-card rounded-xl p-6 border border-border">
             <div className="flex items-start gap-3">
@@ -58,7 +58,7 @@ export const RecentPublicationsSkeleton = () => (
         <Skeleton className="h-12 w-80 mx-auto mb-3" />
         <Skeleton className="h-1 w-24 mx-auto" />
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {[1, 2, 3].map((i) => (
           <div key={i} className="bg-card rounded-xl border border-border overflow-hidden">
             <Skeleton className="w-full h-56" />

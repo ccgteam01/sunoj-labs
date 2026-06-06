@@ -15,7 +15,7 @@ const Lectures = () => {
       <PageHero title="Lectures" />
 
       <section className="py-12 bg-background">
-        <div className="container max-w-4xl">
+        <div className="container">
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-6 tracking-tighter">Invited Lectures</h2>
           {isFetching && lectures.length === 0 ? (
             <LecturesSkeleton />
@@ -40,7 +40,7 @@ const Lectures = () => {
       </section>
 
       <section className="py-12 bg-background">
-        <div className="container max-w-4xl">
+        <div className="container">
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-6 tracking-tighter">Public Lectures</h2>
           {isFetching && lectures.length === 0 ? (
             <LecturesSkeleton />

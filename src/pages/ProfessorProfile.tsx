@@ -16,7 +16,7 @@ const ProfessorProfile = () => {
       />
 
       <section className="py-24 bg-background">
-        <div className="container max-w-5xl">
+        <div className="container">
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-1">
               <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>

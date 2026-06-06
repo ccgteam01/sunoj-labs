@@ -35,7 +35,7 @@ const navLinks = [
       { label: "Seminars", path: "/seminars" },
     ]
   },
-  { label: "News", path: "/news" },
+  // { label: "News", path: "/news" },
   { label: "Gallery", path: "/gallery" },
   { label: "Contact", path: "/contact" },
 ];

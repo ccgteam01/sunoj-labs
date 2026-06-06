@@ -60,11 +60,11 @@ const Publications = () => {
     <PageLayout>
       <PageHero 
         title="Publications" 
-        description="Our research appears in leading journals including JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, and Chemical Reviews." 
+        // description="Our research appears in leading journals including JACS, Nature Communications, Angewandte Chemie, Chemical Science, PNAS, ACS Catalysis, and Chemical Reviews." 
       />
 
       <section className="py-12 bg-background">
-        <div className="container max-w-5xl">
+        <div className="container">
           {/* Search Bar */}
           <div className="mb-8">
             <div className="relative">

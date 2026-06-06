@@ -33,7 +33,7 @@ const Gallery = () => {
       />
 
       <section className="py-12 bg-background">
-        <div className="container max-w-6xl">
+        <div className="container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {albums.map((album: any) => (
               <AlbumCover

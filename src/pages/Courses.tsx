@@ -12,7 +12,7 @@ const Courses = () => {
       <PageHero title="Courses Taught" />
 
       <section className="py-12 bg-background">
-        <div className="container max-w-4xl">
+        <div className="container">
           {isFetching && courses.length === 0 ? (
             <CoursesSkeleton />
           ) : (

@@ -8,7 +8,7 @@ const Seminars = () => {
       <PageHero title="Group Seminars" />
 
       <section className="py-12 bg-background">
-        <div className="container max-w-4xl">
+        <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

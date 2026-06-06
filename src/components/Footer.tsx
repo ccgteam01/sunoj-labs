@@ -17,7 +17,7 @@ const FooterLink = ({ to, children }: { to: string; children: string }) => {
 const Footer = () => (
   <footer className="bg-primary text-white">
     <div className="container py-6 md:py-8 px-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 max-w-screen-lg mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
         <div>
           <h4 className="text-white font-semibold mb-2 text-sm md:text-base">Navigation</h4>
           <div className="flex flex-col gap-1 text-sm md:text-base">

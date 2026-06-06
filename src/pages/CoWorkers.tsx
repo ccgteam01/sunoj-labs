@@ -186,7 +186,7 @@ const CoWorkers = () => {
       <PageHero title="Co-Workers" />
 
       <section className="py-12 bg-background">
-        <div className="container max-w-6xl">
+        <div className="container">
           <div className="mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter">
               Graduate Researchers

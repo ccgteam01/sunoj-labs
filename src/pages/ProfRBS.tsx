@@ -11,12 +11,12 @@ const ProfRBS = () => {
   return (
     <PageLayout>
       <PageHero 
-        title="Prof. Raghavan B. Sunoj" 
-        description="Convenor for High Performance Computing @ IITB, and Associate Faculty at Centre for Machine Intelligence and Data Science (C-MInDS)" 
+        title="Prof. Raghavan B. Sunoj"
+        description="Professor, Department of Chemistry, IIT Bombay · Convenor for High Performance Computing @ IITB · Associate Faculty at Centre for Machine Intelligence and Data Science (C-MInDS)"
       />
 
       <section className="py-12 bg-background">
-        <div className="container max-w-5xl">
+        <div className="container">
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-1">
               <motion.div
@@ -126,9 +126,10 @@ const ProfRBS = () => {
                   <tr>
                     <td className="py-3 px-4 text-foreground">Ph.D</td>
                     <td className="py-3 px-4 text-muted-foreground">
-                      Indian Institute of Science Bangalore
+                      Indian Institute of Science Bangalore{" "}
+                      <span className="font-semibold text-foreground">(Advisor: Prof. J. Chandrasekhar)</span>
                     </td>
-                    <td className="py-3 px-4 text-muted-foreground">2001*</td>
+                    <td className="py-3 px-4 text-muted-foreground">2001</td>
                   </tr>
                 </tbody>
               </table>
@@ -146,14 +147,12 @@ const ProfRBS = () => {
                 <div className="border border-border rounded-lg p-4">
                   <div className="font-semibold text-foreground mb-2">Ph.D</div>
                   <div className="text-sm text-muted-foreground mb-1">
-                    Indian Institute of Science Bangalore
+                    Indian Institute of Science Bangalore{" "}
+                    <span className="font-semibold text-foreground">(Advisor: Prof. J. Chandrasekhar)</span>
                   </div>
-                  <div className="text-sm text-muted-foreground">2001*</div>
+                  <div className="text-sm text-muted-foreground">2001</div>
                 </div>
               </div>
-              <p className="text-md font-semibold text-muted-foreground mt-4">
-                *Advisor: Professor J. Chandrasekhar
-              </p>
             </div>
           </motion.div>
 
@@ -188,7 +187,8 @@ const ProfRBS = () => {
                       Post Doctoral Research Associate
                     </td>
                     <td className="py-3 px-4 text-muted-foreground">
-                      The Ohio State University, Columbus
+                      The Ohio State University, Columbus{" "}
+                      <span className="font-semibold text-foreground">(Advisor: Prof. Christopher M. Hadad)</span>
                     </td>
                     <td className="py-3 px-4 text-muted-foreground">
                       2001-2003
@@ -199,7 +199,7 @@ const ProfRBS = () => {
                       Assistant Professor
                     </td>
                     <td className="py-3 px-4 text-muted-foreground">
-                      IIT Bombay
+                      Department of Chemistry, IIT Bombay
                     </td>
                     <td className="py-3 px-4 text-muted-foreground">2003</td>
                   </tr>
@@ -208,16 +208,16 @@ const ProfRBS = () => {
                       Associate Professor
                     </td>
                     <td className="py-3 px-4 text-muted-foreground">
-                      IIT Bombay
+                      Department of Chemistry, IIT Bombay
                     </td>
                     <td className="py-3 px-4 text-muted-foreground">2007</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 text-foreground">Professor</td>
                     <td className="py-3 px-4 text-muted-foreground">
-                      IIT Bombay
+                      Department of Chemistry, IIT Bombay
                     </td>
-                    <td className="py-3 px-4 text-muted-foreground">2012</td>
+                    <td className="py-3 px-4 text-muted-foreground">2012–present</td>
                   </tr>
                 </tbody>
               </table>
@@ -228,7 +228,8 @@ const ProfRBS = () => {
                     Post Doctoral Research Associate
                   </div>
                   <div className="text-sm text-muted-foreground mb-1">
-                    The Ohio State University, Columbus
+                    The Ohio State University, Columbus{" "}
+                    <span className="font-semibold text-foreground">(Advisor: Prof. Christopher M. Hadad)</span>
                   </div>
                   <div className="text-sm text-muted-foreground">2001-2003</div>
                 </div>
@@ -237,7 +238,7 @@ const ProfRBS = () => {
                     Assistant Professor
                   </div>
                   <div className="text-sm text-muted-foreground mb-1">
-                    IIT Bombay
+                    Department of Chemistry, IIT Bombay
                   </div>
                   <div className="text-sm text-muted-foreground">2003</div>
                 </div>
@@ -246,7 +247,7 @@ const ProfRBS = () => {
                     Associate Professor
                   </div>
                   <div className="text-sm text-muted-foreground mb-1">
-                    IIT Bombay
+                    Department of Chemistry, IIT Bombay
                   </div>
                   <div className="text-sm text-muted-foreground">2007</div>
                 </div>
@@ -255,9 +256,9 @@ const ProfRBS = () => {
                     Professor
                   </div>
                   <div className="text-sm text-muted-foreground mb-1">
-                    IIT Bombay
+                    Department of Chemistry, IIT Bombay
                   </div>
-                  <div className="text-sm text-muted-foreground">2012</div>
+                  <div className="text-sm text-muted-foreground">2012–present</div>
                 </div>
               </div>
             </div>
@@ -283,6 +284,9 @@ const ProfRBS = () => {
                     </div>
                   ))}
                 </div>
+                <p className="text-xs text-muted-foreground mt-6 pt-4 border-t border-border">
+                  * Awarded by the President of India
+                </p>
               </div>
             )}
           </motion.div>

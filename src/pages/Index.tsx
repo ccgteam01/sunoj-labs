@@ -1,6 +1,7 @@
 import { Beaker, Leaf, BrainCircuit, Atom, FlaskConical } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import HeroSection from "@/components/HeroSection";
+import ProfIntroSection from "@/components/ProfIntroSection";
 import ResearchInterests from "@/components/ResearchInterests";
 import RecentNews from "@/components/RecentNews";
 import RecentPublications from "@/components/RecentPublications";
@@ -64,9 +65,10 @@ const Index = () => {
   return (
     <PageLayout>
       {heroSlides.length > 0 && <HeroSection slides={heroSlides} />}
-      {researchCards.length > 0 && <ResearchInterests cards={researchCards} />}
+      <ProfIntroSection />
       {newsItems.length > 0 && <RecentNews items={newsItems} />}
       {publications.length > 0 && <RecentPublications publications={publications} />}
+      {researchCards.length > 0 && <ResearchInterests cards={researchCards} />}
       {/* {data.homepage?.quote && (
         <QuoteSection quote={data.homepage.quote} author={data.homepage.quoteAuthor} />
       )}

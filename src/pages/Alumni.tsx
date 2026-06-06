@@ -76,7 +76,7 @@ const Alumni = () => {
       <PageHero title="Alumni" />
 
       <section className="py-12 bg-background">
-        <div className="container max-w-7xl">
+        <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
