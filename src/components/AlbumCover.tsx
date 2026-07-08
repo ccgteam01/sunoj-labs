@@ -7,7 +7,7 @@ interface AlbumCoverProps {
 }
 
 const AlbumCover = ({ photos, title, onClick }: AlbumCoverProps) => {
-  const displayPhotos = photos.slice(0, 3);
+  const displayPhotos = (photos ?? []).slice(0, 3);
   
   return (
     <motion.div

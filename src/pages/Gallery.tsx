@@ -24,6 +24,7 @@ const fallbackAlbums = [
 const Gallery = () => {
   const { data: albums } = useAlbums(fallbackAlbums);
   const [selectedAlbum, setSelectedAlbum] = useState<any>(null);
+  const visibleAlbums = (albums as any[]).filter((album) => album.photos?.length > 0);
 
   return (
     <PageLayout>
@@ -35,7 +36,7 @@ const Gallery = () => {
       <section className="py-12 bg-background">
         <div className="container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {albums.map((album: any) => (
+            {visibleAlbums.map((album) => (
               <AlbumCover
                 key={album._id}
                 photos={album.photos}
@@ -50,7 +51,7 @@ const Gallery = () => {
       <AnimatePresence>
         {selectedAlbum && (
           <AlbumCarousel
-            photos={selectedAlbum.photos}
+            photos={selectedAlbum.photos ?? []}
             title={selectedAlbum.title}
             onClose={() => setSelectedAlbum(null)}
           />
