@@ -1,3 +1,4 @@
+import album from './album'
 import heroSlide from './heroSlide'
 import researchArea from './researchArea'
 import collaborator from './collaborator'
@@ -12,6 +13,7 @@ import siteSettings from './siteSettings'
 import homepage from './homepage'
 
 export const schemaTypes = [
+  album,
   heroSlide,
   researchArea,
   collaborator,

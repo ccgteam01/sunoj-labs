@@ -58,7 +58,7 @@ export const RecentPublicationsSkeleton = () => (
         <Skeleton className="h-12 w-80 mx-auto mb-3" />
         <Skeleton className="h-1 w-24 mx-auto" />
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {[1, 2, 3].map((i) => (
           <div key={i} className="bg-card rounded-xl border border-border overflow-hidden">
             <Skeleton className="w-full h-56" />
