@@ -40,6 +40,8 @@ export const PUBLICATIONS_QUERY = `*[_type == "publication"] | order(year desc) 
 
 export const THEMES_QUERY = `*[_type == "theme"] | order(order asc) { _id, title, color }`;
 
+export const COMPUTE_PLATFORMS_QUERY = `*[_type == "computePlatform"] | order(order asc) { _id, name, specs }`;
+
 export const ALBUMS_QUERY = `*[_type == "album"] | order(order asc) {
   _id, title, description,
   "photos": photos[].asset->url

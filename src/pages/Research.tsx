@@ -2,9 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
-import { Server, Code, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { Server, Code, ChevronLeft, ChevronRight } from "lucide-react";
 import { ResearchSpecificsSkeleton, CollaboratorsSkeleton, ResourcesSkeleton } from "@/components/Skeleton";
-import { useResearchAreas, useCollaborators, useHardware, useSoftware, usePublications } from "@/hooks/use-sanity";
+import { useResearchAreas, useCollaborators, useComputePlatforms, useSoftware, usePublications } from "@/hooks/use-sanity";
 import { sizedImage } from "@/lib/sanity";
 
 const FALLBACK_IMG = "https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif";
@@ -98,7 +98,7 @@ const RelevantPapersCarousel = ({ rel }: { rel: any[] }) => {
 const Research = () => {
   const { data: sections, isFetching: sectionsLoading } = useResearchAreas([]);
   const { data: collaborators, isFetching: collabLoading } = useCollaborators([]);
-  const { data: hardware, isFetching: hardwareLoading } = useHardware();
+  const { data: platforms, isFetching: platformsLoading } = useComputePlatforms([]);
   const { data: software, isFetching: softwareLoading } = useSoftware();
   const papers = (usePublications([]).data ?? []) as any[];
 
@@ -247,132 +247,46 @@ const Research = () => {
             </p>
           </motion.div>
 
-          {(hardwareLoading && (hardware as any[])?.length === 0) || (softwareLoading && (software as any[])?.length === 0) ? (
+          {(platformsLoading && (platforms as any[])?.length === 0) || (softwareLoading && (software as any[])?.length === 0) ? (
             <ResourcesSkeleton />
           ) : (
             <div className="space-y-8">
-              {/* Hardware - Swastik-style showcase */}
-              {(hardware as any[])?.map((hw: any, i: number) => (
-                <motion.div
-                  key={hw.name}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="relative overflow-hidden bg-primary rounded-2xl p-8 md:p-10 text-white"
-                >
-                  {/* background grid decoration */}
-                  <div className="absolute inset-0 opacity-5 pointer-events-none"
-                    style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
-                  <div className="relative z-10 grid lg:grid-cols-3 gap-8 items-center">
-                    <div className="lg:col-span-2">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center">
-                          <Server size={24} className="text-white" />
+              {/* Compute platforms - 3 vertical cards */}
+              <div className="grid md:grid-cols-3 gap-6">
+                {(platforms as any[])?.map((pf: any, i: number) => (
+                  <motion.div
+                    key={pf._id || pf.name}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="relative overflow-hidden bg-primary rounded-2xl p-6 md:p-7 text-white flex flex-col"
+                  >
+                    {/* background grid decoration */}
+                    <div className="absolute inset-0 opacity-5 pointer-events-none"
+                      style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+                    <div className="relative z-10 flex flex-col flex-1">
+                      <div className="flex items-center gap-3 mb-5">
+                        <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
+                          <Server size={22} className="text-white" />
                         </div>
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-widest text-white/60">Hardware</p>
-                          <h3 className="text-2xl md:text-3xl font-bold tracking-tighter">{hw.name}</h3>
+                          <p className="text-[11px] font-semibold uppercase tracking-widest text-white/60">Platform</p>
+                          <h3 className="text-xl font-bold tracking-tighter leading-tight">{pf.name}</h3>
                         </div>
                       </div>
-                      <p className="text-white/80 leading-relaxed text-base mb-4">{hw.description}</p>
-                      {hw.link && (
-                        <a
-                          href={hw.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-sm font-semibold text-white/90 hover:text-white underline underline-offset-4 transition-colors"
-                        >
-                          <ExternalLink size={14} />
-                          {hw.link}
-                        </a>
-                      )}
-                    </div>
-                    <div className="flex flex-col gap-3">
-                      {[
-                        { label: "Cluster Type", value: "High-Performance Computing" },
-                        { label: "Location", value: "IIT Bombay" },
-                        { label: "Primary Use", value: "DFT & MD Simulations" },
-                      ].map(({ label, value }) => (
-                        <div key={label} className="bg-white/10 rounded-xl px-5 py-3">
-                          <p className="text-xs text-white/50 mb-0.5">{label}</p>
-                          <p className="text-sm font-semibold text-white">{value}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* SWASTIK featured card */}
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-card rounded-2xl border border-border overflow-hidden"
-              >
-                <div className="grid lg:grid-cols-3">
-                  <div className="lg:col-span-2 p-8 md:p-10">
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center">
-                        <Code size={24} className="text-violet-500" />
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">In-house Software</p>
-                        <h3 className="text-2xl font-bold tracking-tighter">SWASTIK</h3>
+                      <div className="flex flex-col gap-2.5">
+                        {(pf.specs || []).map((sp: any, si: number) => (
+                          <div key={si} className="bg-white/10 rounded-lg px-4 py-2.5">
+                            <p className="text-[11px] text-white/50 mb-0.5">{sp.label}</p>
+                            <p className="text-sm font-semibold text-white">{sp.value}</p>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                    <p className="text-xs font-medium text-muted-foreground mb-3 italic">
-                      Software With A STatistical Inductive Kernel
-                    </p>
-                    <p className="text-muted-foreground leading-relaxed mb-6">
-                      SWASTIK was developed at IIT Bombay as a multilingual statistical machine translation system for Indian languages. The core research, lexical resources, and system developments are accessible via the IIT Bombay Natural Language Processing (CFILT) research group.
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      <a
-                        href="https://www.cfilt.iitb.ac.in"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-violet-500/10 text-violet-700 dark:text-violet-300 rounded-full text-sm font-medium hover:bg-violet-500/20 transition-colors"
-                      >
-                        <ExternalLink size={14} />
-                        CFILT Research Group
-                      </a>
-                      <a
-                        href="https://www.cfilt.iitb.ac.in/resources/tools"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-muted rounded-full text-sm font-medium hover:bg-muted/70 transition-colors"
-                      >
-                        <ExternalLink size={14} />
-                        Language Tools
-                      </a>
-                      <a
-                        href="https://www.cse.iitb.ac.in/~pb/papers"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-muted rounded-full text-sm font-medium hover:bg-muted/70 transition-colors"
-                      >
-                        <ExternalLink size={14} />
-                        Publications
-                      </a>
-                    </div>
-                  </div>
-                  <div className="bg-muted/30 p-8 flex flex-col gap-3 justify-center border-t lg:border-t-0 lg:border-l border-border">
-                    {[
-                      { label: "Type", value: "Statistical MT System" },
-                      { label: "Language Coverage", value: "Indian Languages" },
-                      { label: "Developed at", value: "IIT Bombay" },
-                      { label: "Group", value: "CFILT / NLP" },
-                    ].map(({ label, value }) => (
-                      <div key={label} className="bg-card rounded-xl px-4 py-3 border border-border">
-                        <p className="text-xs text-muted-foreground mb-0.5">{label}</p>
-                        <p className="text-sm font-semibold text-foreground">{value}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
+                  </motion.div>
+                ))}
+              </div>
 
               {/* Software */}
               <motion.div

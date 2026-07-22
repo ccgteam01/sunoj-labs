@@ -58,6 +58,10 @@ export function useThemes(fallback: any[] = []) {
   return useSanityQuery("themes", queries.THEMES_QUERY, fallback);
 }
 
+export function useComputePlatforms(fallback: any[] = []) {
+  return useSanityQuery("computePlatforms", queries.COMPUTE_PLATFORMS_QUERY, fallback);
+}
+
 export function useNews(fallback: any[]) {
   return useSanityQuery("news", queries.NEWS_QUERY, fallback);
 }
