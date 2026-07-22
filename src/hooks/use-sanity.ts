@@ -2,12 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import { sanityClient } from "@/lib/sanity";
 import * as queries from "@/lib/sanity-queries";
 
-function useSanityQuery<T>(key: string, query: string, fallback: T) {
+function useSanityQuery<T>(key: string, query: string, fallback: T, params?: Record<string, any>) {
   return useQuery<T>({
-    queryKey: ["sanity", key],
+    queryKey: ["sanity", key, params],
     queryFn: async () => {
       try {
-        const data = await sanityClient.fetch<T>(query);
+        const data = await sanityClient.fetch<T>(query, params ?? {});
         if (data === null || data === undefined) return fallback;
         if (Array.isArray(data) && data.length === 0) return fallback;
         return data;
@@ -60,6 +60,18 @@ export function useThemes(fallback: any[] = []) {
 
 export function useComputePlatforms(fallback: any[] = []) {
   return useSanityQuery("computePlatforms", queries.COMPUTE_PLATFORMS_QUERY, fallback);
+}
+
+export function usePageBanner(page: string) {
+  return useSanityQuery<{ images?: string[] } | null>(`pageBanner:${page}`, queries.PAGE_BANNER_QUERY, null, { page });
+}
+
+export function useBlogPosts(fallback: any[] = []) {
+  return useSanityQuery("blogPosts", queries.BLOG_POSTS_QUERY, fallback);
+}
+
+export function useBlogPost(slug: string) {
+  return useSanityQuery<any>(`blogPost:${slug}`, queries.BLOG_POST_QUERY, null, { slug });
 }
 
 export function useNews(fallback: any[]) {

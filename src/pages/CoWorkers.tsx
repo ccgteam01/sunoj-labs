@@ -5,6 +5,8 @@ import PageHero from "@/components/PageHero";
 import { Mail } from "lucide-react";
 import { useCoworkers } from "@/hooks/use-sanity";
 
+const DEFAULT_AVATAR = "https://i.pinimg.com/736x/b9/3b/b3/b93bb32c57ff0c6bba7f0d9e7f502b2d.jpg";
+
 const coWorkers = [
   {
     name: "Manajit Das",
@@ -136,11 +138,12 @@ const FlipCard = ({ person, delay, isUndergrad = false }: { person: any; delay: 
       <div className={`relative w-full h-full transition-transform duration-700 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
         {/* Front */}
         <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden border border-border cursor-pointer">
-          {person.imageUrl ? (
-            <img src={person.imageUrl} alt={person.name} className="w-full h-full object-cover" />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20" />
-          )}
+          <img
+            src={person.imageUrl || DEFAULT_AVATAR}
+            alt={person.name}
+            className="w-full h-full object-cover"
+            onError={(e) => { e.currentTarget.src = DEFAULT_AVATAR; }}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6">
             <h4 className="font-heading font-bold text-xl text-white">{person.name}</h4>

@@ -6,7 +6,7 @@ import { ACADEMIC_BANNER } from "@/lib/sanity";
 const Seminars = () => {
   return (
     <PageLayout>
-      <PageHero title="Group Seminars" banner={ACADEMIC_BANNER} />
+      <PageHero title="Group Seminars" banner={ACADEMIC_BANNER} tall />
 
       <section className="py-12 bg-transparent">
         <div className="container">

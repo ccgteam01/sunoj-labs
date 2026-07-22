@@ -42,6 +42,15 @@ export const THEMES_QUERY = `*[_type == "theme"] | order(order asc) { _id, title
 
 export const COMPUTE_PLATFORMS_QUERY = `*[_type == "computePlatform"] | order(order asc) { _id, name, specs }`;
 
+export const PAGE_BANNER_QUERY = `*[_type == "pageBanner" && page == $page][0]{ "images": images[].asset->url }`;
+
+export const BLOG_POSTS_QUERY = `*[_type == "blogPost"] | order(order asc) { _id, title, body, "slug": slug.current, "imageUrl": image.asset->url }`;
+
+export const BLOG_POST_QUERY = `*[_type == "blogPost" && slug.current == $slug][0]{
+  title, body, "imageUrl": image.asset->url,
+  content[]{ ..., _type == "image" => { "url": asset->url } }
+}`;
+
 export const ALBUMS_QUERY = `*[_type == "album"] | order(order asc) {
   _id, title, description,
   "photos": photos[].asset->url

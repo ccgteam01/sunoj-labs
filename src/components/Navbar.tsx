@@ -26,6 +26,7 @@ const navLinks = [
     ]
   },
   { label: "Publications", path: "/publications" },
+  { label: "About Me", path: "/about-me" },
   { 
     label: "Academic", 
     path: "/academic",

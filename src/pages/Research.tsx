@@ -78,9 +78,9 @@ const RelevantPapersCarousel = ({ rel }: { rel: any[] }) => {
                 onError={(e) => { e.currentTarget.src = FALLBACK_IMG; }}
               />
               <div className="p-3 flex flex-col flex-1">
-                <span className="text-[11px] font-medium text-accent mb-1">{p.year}</span>
-                <h4 className="text-xs font-semibold text-foreground leading-snug line-clamp-4">{p.title}</h4>
-                <p className="text-[11px] text-muted-foreground mt-auto pt-2">{p.journal}</p>
+                <span className="text-xs font-medium text-accent mb-1">{p.year}</span>
+                <h4 className="text-sm font-semibold text-foreground leading-snug line-clamp-4">{p.title}</h4>
+                <p className="text-xs text-muted-foreground mt-auto pt-2">{p.journal}</p>
               </div>
             </a>
           ))}
@@ -146,7 +146,7 @@ const Research = () => {
                           <h3 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4 text-foreground">
                             {s.title}
                           </h3>
-                          <p className="text-muted-foreground leading-relaxed text-base">
+                          <p className="text-foreground/80 leading-relaxed text-base">
                             {s.description || s.desc}
                           </p>
                         </div>
@@ -170,7 +170,7 @@ const Research = () => {
                       {/* Detail panel - relevant publications */}
                       <div className="lg:col-span-2 p-8 md:p-10 bg-background/50">
                         <div className="h-full flex flex-col">
-                          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
+                          <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground mb-6">
                             Relevant Papers
                           </p>
                           {(() => {

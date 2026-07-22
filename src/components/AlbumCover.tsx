@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { sizedImage } from "@/lib/sanity";
 
 interface AlbumCoverProps {
   photos: string[];
@@ -30,7 +31,7 @@ const AlbumCover = ({ photos, title, onClick }: AlbumCoverProps) => {
             whileHover={{ y: -i * 8 }}
             transition={{ duration: 0.2 }}
           >
-            <img src={photo} alt="" className="w-full h-full object-cover" />
+            <img src={sizedImage(photo, 600)} alt="" loading="lazy" className="w-full h-full object-cover" />
           </motion.div>
         ))}
       </div>

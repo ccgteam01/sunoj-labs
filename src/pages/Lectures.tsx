@@ -13,7 +13,7 @@ const Lectures = () => {
 
   return (
     <PageLayout>
-      <PageHero title="Lectures" banner={ACADEMIC_BANNER} />
+      <PageHero title="Lectures" banner={ACADEMIC_BANNER} tall />
 
       <section className="py-12 bg-transparent">
         <div className="container">

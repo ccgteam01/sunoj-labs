@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { sizedImage } from "@/lib/sanity";
 
 interface AlbumCarouselProps {
   photos: string[];
@@ -38,7 +39,7 @@ const AlbumCarousel = ({ photos, title, onClose, initialIndex = 0 }: AlbumCarous
         <AnimatePresence mode="wait">
           <motion.img
             key={currentIndex}
-            src={photos[currentIndex]}
+            src={sizedImage(photos[currentIndex], 1600)}
             alt=""
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -63,7 +64,7 @@ const AlbumCarousel = ({ photos, title, onClose, initialIndex = 0 }: AlbumCarous
                 i === currentIndex ? "border-white scale-105" : "border-transparent opacity-60 hover:opacity-100"
               }`}
             >
-              <img src={photo} alt="" className="w-full h-full object-cover" />
+              <img src={sizedImage(photo, 160)} alt="" loading="lazy" className="w-full h-full object-cover" />
             </button>
           ))}
         </div>

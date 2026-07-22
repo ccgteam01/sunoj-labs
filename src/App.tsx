@@ -14,6 +14,8 @@ import Courses from "./pages/Courses";
 import Lectures from "./pages/Lectures";
 import Seminars from "./pages/Seminars";
 import News from "./pages/News";
+import AboutMe from "./pages/AboutMe";
+import Article from "./pages/Article";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -38,6 +40,8 @@ const App = () => (
           <Route path="/lectures" element={<Lectures />} />
           <Route path="/seminars" element={<Seminars />} />
           <Route path="/news" element={<News />} />
+          <Route path="/about-me" element={<AboutMe />} />
+          <Route path="/about-me/:slug" element={<Article />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/positions" element={<Navigate to="/contact" replace />} />
