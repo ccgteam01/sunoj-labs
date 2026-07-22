@@ -1,29 +1,106 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
-import { Atom, Leaf, BrainCircuit, FlaskConical, Server, Code, ExternalLink, ChevronRight } from "lucide-react";
+import { Server, Code, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { ResearchSpecificsSkeleton, CollaboratorsSkeleton, ResourcesSkeleton } from "@/components/Skeleton";
-import { useResearchAreas, useCollaborators, useHardware, useSoftware } from "@/hooks/use-sanity";
+import { useResearchAreas, useCollaborators, useHardware, useSoftware, usePublications } from "@/hooks/use-sanity";
+import { sizedImage } from "@/lib/sanity";
 
-const iconMap: Record<string, any> = { Atom, FlaskConical, Leaf, BrainCircuit };
+const FALLBACK_IMG = "https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif";
+
+// ponytail: keyword match - no theme link on publications yet. Assign themes in Studio for exact mapping.
+const AREA_KEYWORDS: Record<string, string[]> = {
+  "Machine Learning in Catalysis": ["machine learning", "deep learning", "neural", "reinforcement", "generative", "transfer learning", "reactaivate", "deepmech", "predict"],
+  "Asymmetric Multi-Catalytic Reactions": ["asymmetric", "cooperative", "dual", "organocatal", "enantios", "stereodiverg", "n-heterocyclic", "chiral"],
+  "Mechanistic Studies on C-H Bond Activation": ["c-h", "c–h", "c(sp", "activation", "borylation", "functionaliz", "allylation", "fluorination"],
+};
+const relevantPapers = (title: string, papers: any[], focus: string[] = []) => {
+  const keys = (AREA_KEYWORDS[title] || []).concat(focus.map((f) => f.toLowerCase()));
+  if (!keys.length) return [];
+  return papers
+    .filter((p) => keys.some((k) => (p.title || "").toLowerCase().includes(k)))
+    .sort((a, b) => (b.year || 0) - (a.year || 0))
+    .slice(0, 6);
+};
 
 const accentColors = [
   "from-blue-500/10 to-indigo-500/10 border-blue-500/20",
   "from-emerald-500/10 to-teal-500/10 border-emerald-500/20",
   "from-violet-500/10 to-purple-500/10 border-violet-500/20",
 ];
-const iconColors = ["text-blue-500", "text-emerald-500", "text-violet-500"];
 const tagColors = [
   "bg-blue-500/10 text-blue-700 dark:text-blue-300",
   "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
   "bg-violet-500/10 text-violet-700 dark:text-violet-300",
 ];
 
+const paperImg = (p: any) =>
+  p.imageUrl ? (sizedImage(p.imageUrl, 600) as string) : (p.graphicalAbstractUrl || FALLBACK_IMG);
+
+// One relevant paper at a time, horizontal card, with prev/next.
+const PER_PAGE = 3;
+// One row of vertical paper cards, paged with prev/next.
+const RelevantPapersCarousel = ({ rel }: { rel: any[] }) => {
+  const [page, setPage] = useState(0);
+  const pages = Math.ceil(rel.length / PER_PAGE);
+  const go = (d: number) => setPage((n) => (n + d + pages) % pages);
+  const shown = rel.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
+  return (
+    <div className="flex items-stretch gap-2 flex-1">
+      {pages > 1 && (
+        <button onClick={() => go(-1)} aria-label="Previous papers" className="shrink-0 self-center w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
+          <ChevronLeft size={18} />
+        </button>
+      )}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={page}
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -24 }}
+          transition={{ duration: 0.25 }}
+          className="grid grid-cols-2 sm:grid-cols-3 gap-3 flex-1"
+        >
+          {shown.map((p: any) => (
+            <a
+              key={p._id || p.title}
+              href={p.doi ? `https://doi.org/${p.doi}` : p.pdfUrl || undefined}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-card rounded-xl border border-border overflow-hidden card-hover flex flex-col"
+            >
+              <img
+                src={paperImg(p)}
+                alt={p.title}
+                loading="lazy"
+                className="w-full h-28 object-cover bg-background"
+                onError={(e) => { e.currentTarget.src = FALLBACK_IMG; }}
+              />
+              <div className="p-3 flex flex-col flex-1">
+                <span className="text-[11px] font-medium text-accent mb-1">{p.year}</span>
+                <h4 className="text-xs font-semibold text-foreground leading-snug line-clamp-4">{p.title}</h4>
+                <p className="text-[11px] text-muted-foreground mt-auto pt-2">{p.journal}</p>
+              </div>
+            </a>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+      {pages > 1 && (
+        <button onClick={() => go(1)} aria-label="Next papers" className="shrink-0 self-center w-9 h-9 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors">
+          <ChevronRight size={18} />
+        </button>
+      )}
+    </div>
+  );
+};
+
 const Research = () => {
   const { data: sections, isFetching: sectionsLoading } = useResearchAreas([]);
   const { data: collaborators, isFetching: collabLoading } = useCollaborators([]);
   const { data: hardware, isFetching: hardwareLoading } = useHardware();
   const { data: software, isFetching: softwareLoading } = useSoftware();
+  const papers = (usePublications([]).data ?? []) as any[];
 
   return (
     <PageLayout>
@@ -52,7 +129,6 @@ const Research = () => {
           ) : (
             <div className="flex flex-col gap-10">
               {sections.map((s: any, i: number) => {
-                const IconComponent = iconMap[s.icon] || Atom;
                 const isEven = i % 2 === 0;
                 return (
                   <motion.div
@@ -63,13 +139,10 @@ const Research = () => {
                     transition={{ delay: i * 0.12, duration: 0.5 }}
                     className={`bg-gradient-to-br ${accentColors[i % 3]} border rounded-2xl overflow-hidden`}
                   >
-                    <div className={`grid lg:grid-cols-5 gap-0`}>
-                      {/* Icon + Title panel */}
-                      <div className={`lg:col-span-2 p-8 md:p-10 flex flex-col justify-between border-b lg:border-b-0 ${isEven ? "lg:border-r" : "lg:border-l lg:order-last"} border-border/40`}>
+                    <div className={`grid lg:grid-cols-3 gap-0`}>
+                      {/* Text panel (1/3) */}
+                      <div className={`lg:col-span-1 p-8 md:p-10 flex flex-col justify-between border-b lg:border-b-0 ${isEven ? "lg:border-r" : "lg:border-l lg:order-last"} border-border/40`}>
                         <div>
-                          <div className={`w-16 h-16 rounded-2xl bg-transparent flex items-center justify-center mb-6 shadow-sm`}>
-                            <IconComponent size={32} className={iconColors[i % 3]} />
-                          </div>
                           <h3 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4 text-foreground">
                             {s.title}
                           </h3>
@@ -94,27 +167,17 @@ const Research = () => {
                         </div>
                       </div>
 
-                      {/* Detail panel */}
-                      <div className="lg:col-span-3 p-8 md:p-10 bg-background/50">
+                      {/* Detail panel - relevant publications */}
+                      <div className="lg:col-span-2 p-8 md:p-10 bg-background/50">
                         <div className="h-full flex flex-col">
                           <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
-                            Research Detail
+                            Relevant Papers
                           </p>
-                          <div className="grid sm:grid-cols-2 gap-4 flex-1">
-                            {(s.focusAreas || s.focus || []).map((f: string, fi: number) => (
-                              <motion.div
-                                key={f}
-                                initial={{ opacity: 0, y: 12 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 + fi * 0.06 }}
-                                className="bg-card border border-border rounded-xl p-5 flex items-start gap-3"
-                              >
-                                <ChevronRight size={16} className={`${iconColors[i % 3]} shrink-0 mt-0.5`} />
-                                <span className="text-sm text-foreground font-medium leading-snug">{f}</span>
-                              </motion.div>
-                            ))}
-                          </div>
+                          {(() => {
+                            const rel = relevantPapers(s.title, papers, s.focusAreas || s.focus);
+                            if (!rel.length) return <p className="text-sm text-muted-foreground">Publications coming soon.</p>;
+                            return <RelevantPapersCarousel rel={rel} />;
+                          })()}
                         </div>
                       </div>
                     </div>
@@ -166,7 +229,7 @@ const Research = () => {
         </div>
       </section>
 
-      {/* Resources — Swastik + Software */}
+      {/* Resources - Swastik + Software */}
       <section id="resources" className="py-16 md:py-24 bg-transparent scroll-mt-12">
         <div className="container px-4 sm:px-6">
           <motion.div
@@ -188,7 +251,7 @@ const Research = () => {
             <ResourcesSkeleton />
           ) : (
             <div className="space-y-8">
-              {/* Hardware — Swastik-style showcase */}
+              {/* Hardware - Swastik-style showcase */}
               {(hardware as any[])?.map((hw: any, i: number) => (
                 <motion.div
                   key={hw.name}

@@ -9,7 +9,7 @@ export const sanityClient = createClient({
   perspective: 'published',
 });
 
-// Picks width/quality from the browser's own connection estimate — a synchronous
+// Picks width/quality from the browser's own connection estimate - a synchronous
 // read of navigator.connection, so no probe, no extra request, no slowdown.
 // Unsupported (Safari/Firefox) → falls through to the fast-connection defaults.
 const tierForConnection = () => {

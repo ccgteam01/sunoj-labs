@@ -44,12 +44,12 @@ const data = {
     "INSA Medal for Young Scientists",
   ],
   coursesTaught: [
-    "CY 101 — Chemistry (General, for B.Tech.)",
-    "CY 224 — Organic Chemistry II",
-    "CY 336 — Quantum Chemistry",
-    "CY 612 — Stereochemistry",
-    "CY 703 — Computational Chemistry",
-    "CY 813 — Reaction Mechanisms in Organic Chemistry",
+    "CY 101 - Chemistry (General, for B.Tech.)",
+    "CY 224 - Organic Chemistry II",
+    "CY 336 - Quantum Chemistry",
+    "CY 612 - Stereochemistry",
+    "CY 703 - Computational Chemistry",
+    "CY 813 - Reaction Mechanisms in Organic Chemistry",
   ],
 };
 
@@ -96,7 +96,7 @@ const About = () => {
                   <GraduationCap size={18} className="text-accent mt-0.5 shrink-0" />
                   <div>
                     <span className="font-medium text-foreground text-sm">{e.degree}</span>
-                    <span className="text-muted-foreground text-sm"> — {e.institution}</span>
+                    <span className="text-muted-foreground text-sm"> - {e.institution}</span>
                     <p className="text-xs text-muted-foreground">Advisor: {e.advisor}</p>
                   </div>
                 </div>

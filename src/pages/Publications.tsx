@@ -71,7 +71,7 @@ const Publications = () => {
             </div>
           </div>
 
-          {/* Theme Filter — driven by the theme documents in Sanity */}
+          {/* Theme Filter - driven by the theme documents in Sanity */}
           <div className="flex flex-wrap gap-2 mb-12">
             <button
               onClick={() => setFilterTheme("All")}
@@ -106,7 +106,7 @@ const Publications = () => {
           ) : (
             <>
               <div className="flex flex-col gap-6">
-                {filtered.map((paper: any) => (
+                {filtered.map((paper: any, idx: number) => (
                       <motion.div
                         key={paper.doi || paper.title}
                         initial={{ opacity: 0, y: 12 }}
@@ -116,11 +116,11 @@ const Publications = () => {
                       >
                         {(paper.graphicalAbstractUrl || paper.imageUrl) ? (
                           <div className="grid md:grid-cols-3 gap-6">
-                            <div className="md:col-span-1">
+                            <div className={`md:col-span-1 p-4 ${idx % 2 === 1 ? "md:order-last" : ""}`}>
                               <img
                                 src={paper.graphicalAbstractUrl || paper.imageUrl}
                                 alt={paper.title}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-contain rounded-lg border border-border bg-background"
                               />
                             </div>
                             <div className="md:col-span-2 p-6">
@@ -132,9 +132,10 @@ const Publications = () => {
                                 ))}
                               </div>
                               <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
-                              <p className="text-sm text-muted-foreground mb-1">{paper.authors}</p>
+                              <p className="text-sm text-foreground mb-1">{paper.authors}</p>
                               <p className="text-sm text-accent font-medium mb-4">{paper.journal}</p>
                               <div className="flex flex-wrap gap-2">
+                                {paper.doi && (
                                 <a
                                   href={`https://doi.org/${paper.doi}`}
                                   target="_blank"
@@ -143,6 +144,7 @@ const Publications = () => {
                                 >
                                   <ExternalLink size={16} /> View Publication
                                 </a>
+                                )}
                                 {paper.pdfUrl && (
                                   <a
                                     href={paper.pdfUrl}
@@ -166,9 +168,10 @@ const Publications = () => {
                               ))}
                             </div>
                             <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
-                            <p className="text-sm text-muted-foreground mb-1">{paper.authors}</p>
+                            <p className="text-sm text-foreground mb-1">{paper.authors}</p>
                             <p className="text-sm text-accent font-medium mb-4">{paper.journal}</p>
                             <div className="flex flex-wrap gap-2">
+                              {paper.doi && (
                               <a
                                 href={`https://doi.org/${paper.doi}`}
                                 target="_blank"
@@ -177,6 +180,7 @@ const Publications = () => {
                               >
                                 <ExternalLink size={16} /> View Publication
                               </a>
+                              )}
                               {paper.pdfUrl && (
                                 <a
                                   href={paper.pdfUrl}

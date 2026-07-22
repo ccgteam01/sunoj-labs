@@ -70,7 +70,7 @@ const Index = () => {
             {publications.length > 0 && <RecentPublications publications={publications} />}
           </div>
 
-          {/* Right: Sticky news panel — sticks until end of publications */}
+          {/* Right: Sticky news panel - sticks until end of publications */}
           {newsItems.length > 0 && (
             <div className="hidden lg:block lg:sticky lg:top-24 lg:self-start mt-20">
               <motion.div

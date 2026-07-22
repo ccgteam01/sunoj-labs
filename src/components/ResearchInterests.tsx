@@ -52,29 +52,21 @@ const ResearchInterests = ({ cards }: ResearchInterestsProps) => {
         <div className="md:hidden flex flex-col items-center">
           <div className="relative w-full max-w-sm h-[375px] flex items-center justify-center overflow-hidden">
             <AnimatePresence mode="wait">
-              {(() => {
-                const CardIcon = cards[cardIndex].icon;
-                return (
-                  <motion.div
-                    key={cardIndex}
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full max-w-[280px] h-[280px] bg-primary rounded-xl p-5 flex flex-col shadow-2xl"
-                  >
-                    <div className="bg-background rounded-full p-2 mb-3 w-fit">
-                      <CardIcon className="text-white" size={20} />
-                    </div>
-                    <h3 className="text-base font-semibold mb-2 text-white tracking-tighter">
-                      {cards[cardIndex].title}
-                    </h3>
-                    <p className="text-sm text-white/70 leading-relaxed">
-                      {cards[cardIndex].desc}
-                    </p>
-                  </motion.div>
-                );
-              })()}
+              <motion.div
+                key={cardIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.3 }}
+                className="w-full max-w-[280px] h-[280px] bg-primary rounded-xl p-5 flex flex-col justify-center shadow-2xl"
+              >
+                <h3 className="text-base font-semibold mb-2 text-white tracking-tighter">
+                  {cards[cardIndex].title}
+                </h3>
+                <p className="text-sm text-white/70 leading-relaxed">
+                  {cards[cardIndex].desc}
+                </p>
+              </motion.div>
             </AnimatePresence>
           </div>
           <div className="flex items-center gap-6 mt-6">
@@ -119,15 +111,12 @@ const ResearchInterests = ({ cards }: ResearchInterestsProps) => {
                 return (
                   <div
                     key={i}
-                    className="absolute left-0 top-0 w-[240px] h-[240px] bg-primary rounded-xl p-5 flex flex-col shadow-2xl transition-opacity duration-500"
+                    className="absolute left-0 top-0 w-[240px] h-[240px] bg-primary rounded-xl p-5 flex flex-col justify-center shadow-2xl transition-opacity duration-500"
                     style={{
                       transform: `rotateY(${i * 40}deg) translateZ(400px)`,
                       opacity: isVisible ? 1 : 0,
                     }}
                   >
-                    <div className="bg-background rounded-full p-2 mb-2 w-fit">
-                      <card.icon className="text-white" size={18} />
-                    </div>
                     <h3 className="text-md font-semibold mb-1 text-white tracking-tighter">
                       {card.title}
                     </h3>

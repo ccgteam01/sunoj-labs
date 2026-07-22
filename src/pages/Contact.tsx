@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
+import { sizedImage } from "@/lib/sanity";
 import { Mail, MapPin, ExternalLink, GraduationCap, Microscope, BookOpen, ChevronRight } from "lucide-react";
 
 const contact = {
@@ -36,18 +37,19 @@ const Contact = () => {
 
   return (
     <PageLayout>
-      <PageHero 
-        title="Contact Us" 
-        description="Connect with the RBS Group at IIT Bombay. We welcome inquiries about research collaborations, publications, and open positions." 
+      <PageHero
+        title="Get in touch with us"
+        description="Connect with the RBS Group at IIT Bombay. We welcome inquiries about research collaborations, publications, and open positions."
+
       />
 
       {/* Open Positions */}
       <section id="positions" className="py-12 bg-transparent scroll-mt-24">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
-            Join the RBS Group
+          {/* <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
+            Get in touch with us
           </h2>
-          <p className="text-center text-muted-foreground mb-8">We are always interested in highly motivated candidates with backgrounds in organic chemistry, physical chemistry, computational modeling, and data science for chemistry.</p>
+          <p className="text-center text-muted-foreground mb-8">We are always interested in highly motivated candidates with backgrounds in organic chemistry, physical chemistry, computational modeling, and data science for chemistry.</p> */}
 
           <div className="grid sm:grid-cols-3 gap-6 mb-16">
             {opportunities.map((o: any, i: number) => {
@@ -104,7 +106,7 @@ const Contact = () => {
                     <p className="text-sm font-medium text-foreground">Resources</p>
                     <div className="flex flex-col gap-1">
                       <a href={contact.googleScholarUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-accent hover:underline">Google Scholar</a>
-                      <a href={contact.githubUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-accent hover:underline">GitHub — Sunojlab</a>
+                      <a href={contact.githubUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-accent hover:underline">GitHub - Sunojlab</a>
                       <a href={contact.officialWebsiteUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-accent hover:underline">Official Group Website</a>
                     </div>
                   </div>

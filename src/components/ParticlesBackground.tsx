@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-// Lightweight canvas take on the particles.js "connected dots" look — zero deps.
+// Lightweight canvas take on the particles.js "connected dots" look - zero deps.
 // Colors come from the --primary CSS var, so it tracks the brand + light/dark theme.
 const ParticlesBackground = ({ className = "" }: { className?: string }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

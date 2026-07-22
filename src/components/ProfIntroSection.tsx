@@ -92,7 +92,7 @@ const ProfIntroSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-2">
+            <p className="text-md font-semibold text-accent uppercase tracking-widest mb-2">
               Professor of Chemistry
             </p>
             <h3 className="text-3xl lg:text-4xl font-bold tracking-tighter mb-2 text-foreground">
@@ -133,13 +133,13 @@ const ProfIntroSection = () => {
             >
               <div className="flex items-center gap-3 mb-4">
                 <Icon size={20} className="text-accent" />
-                <h4 className="text-base font-semibold tracking-tight">{category} Highlights</h4>
+                <h4 className="text-md font-semibold text-accent uppercase tracking-widests">{category} Highlights</h4>
               </div>
               <ul className="space-y-2.5">
                 {items.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <Award size={13} className="text-gold shrink-0 mt-0.5" />
-                    <span className="text-xs text-foreground leading-relaxed">{item}</span>
+                    <span className="text-base text-foreground leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
