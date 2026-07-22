@@ -23,7 +23,7 @@ const News = () => {
     <PageLayout>
       <PageHero title="News & Updates" />
 
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-transparent">
         <div className="container">
           {isFetching && newsItems.length === 0 ? (
             <NewsSkeleton />

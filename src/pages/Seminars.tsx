@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
+import { ACADEMIC_BANNER } from "@/lib/sanity";
 
 const Seminars = () => {
   return (
     <PageLayout>
-      <PageHero title="Group Seminars" />
+      <PageHero title="Group Seminars" banner={ACADEMIC_BANNER} />
 
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-transparent">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

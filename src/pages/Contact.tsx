@@ -42,7 +42,7 @@ const Contact = () => {
       />
 
       {/* Open Positions */}
-      <section id="positions" className="py-12 bg-background scroll-mt-24">
+      <section id="positions" className="py-12 bg-transparent scroll-mt-24">
         <div className="container">
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter text-center">
             Join the RBS Group
@@ -78,7 +78,7 @@ const Contact = () => {
       </section>
 
           {/* Contact Information */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-transparent">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>

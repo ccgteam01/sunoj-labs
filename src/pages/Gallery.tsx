@@ -33,7 +33,7 @@ const Gallery = () => {
         description="A glimpse into our research environment, conferences, collaborations, and group activities." 
       />
 
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-transparent">
         <div className="container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {visibleAlbums.map((album) => (

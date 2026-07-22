@@ -33,7 +33,7 @@ const Research = () => {
       />
 
       {/* Specific Research Areas */}
-      <section id="specifics" className="py-16 md:py-24 bg-background scroll-mt-12">
+      <section id="specifics" className="py-16 md:py-24 bg-transparent scroll-mt-12">
         <div className="container px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ const Research = () => {
                       {/* Icon + Title panel */}
                       <div className={`lg:col-span-2 p-8 md:p-10 flex flex-col justify-between border-b lg:border-b-0 ${isEven ? "lg:border-r" : "lg:border-l lg:order-last"} border-border/40`}>
                         <div>
-                          <div className={`w-16 h-16 rounded-2xl bg-background flex items-center justify-center mb-6 shadow-sm`}>
+                          <div className={`w-16 h-16 rounded-2xl bg-transparent flex items-center justify-center mb-6 shadow-sm`}>
                             <IconComponent size={32} className={iconColors[i % 3]} />
                           </div>
                           <h3 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4 text-foreground">
@@ -167,7 +167,7 @@ const Research = () => {
       </section>
 
       {/* Resources — Swastik + Software */}
-      <section id="resources" className="py-16 md:py-24 bg-background scroll-mt-12">
+      <section id="resources" className="py-16 md:py-24 bg-transparent scroll-mt-12">
         <div className="container px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -335,7 +335,7 @@ const Research = () => {
                     >
                       <span className="text-sm font-semibold text-foreground">{sw.name}</span>
                       {sw.version && (
-                        <span className="text-xs text-muted-foreground ml-2 font-mono bg-background rounded px-1.5 py-0.5">
+                        <span className="text-xs text-muted-foreground ml-2 font-mono bg-transparent rounded px-1.5 py-0.5">
                           {sw.version}
                         </span>
                       )}

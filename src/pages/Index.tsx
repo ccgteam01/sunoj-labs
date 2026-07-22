@@ -8,6 +8,7 @@ import ResearchInterests from "@/components/ResearchInterests";
 import RecentPublications from "@/components/RecentPublications";
 import { HeroSkeleton, ResearchInterestsSkeleton, RecentNewsSkeleton, RecentPublicationsSkeleton } from "@/components/Skeleton";
 import { useHomepageData } from "@/hooks/useHomepageData";
+import { sizedImage } from "@/lib/sanity";
 
 const iconMap: Record<string, any> = { Beaker, Leaf, BrainCircuit, Atom, FlaskConical };
 
@@ -28,7 +29,7 @@ const Index = () => {
   if (!data) return null;
 
   const heroSlides = data.heroSlides?.map((slide: any) => ({
-    image: slide.imageUrl,
+    image: sizedImage(slide.imageUrl),
     tagline: slide.tagline,
     title: slide.title,
     desc: slide.description,

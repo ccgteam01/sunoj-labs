@@ -4,7 +4,6 @@ import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { Mail } from "lucide-react";
 import { useCoworkers } from "@/hooks/use-sanity";
-import { urlFor } from "@/lib/sanity";
 
 const coWorkers = [
   {
@@ -185,7 +184,7 @@ const CoWorkers = () => {
     <PageLayout>
       <PageHero title="Co-Workers" />
 
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-transparent">
         <div className="container">
           <div className="mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground mb-4 sm:mb-5 md:mb-6 tracking-tighter">

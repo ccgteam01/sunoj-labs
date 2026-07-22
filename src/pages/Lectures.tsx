@@ -3,6 +3,7 @@ import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { LecturesSkeleton } from "@/components/Skeleton";
 import { useLectures } from "@/hooks/use-sanity";
+import { ACADEMIC_BANNER } from "@/lib/sanity";
 
 const Lectures = () => {
   const { data: lectures = [], isFetching } = useLectures();
@@ -12,9 +13,9 @@ const Lectures = () => {
 
   return (
     <PageLayout>
-      <PageHero title="Lectures" />
+      <PageHero title="Lectures" banner={ACADEMIC_BANNER} />
 
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-transparent">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-6 tracking-tighter">Invited Lectures</h2>
           {isFetching && lectures.length === 0 ? (
@@ -39,7 +40,7 @@ const Lectures = () => {
         </div>
       </section>
 
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-transparent">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-6 tracking-tighter">Public Lectures</h2>
           {isFetching && lectures.length === 0 ? (

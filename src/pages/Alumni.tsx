@@ -75,7 +75,7 @@ const Alumni = () => {
     <PageLayout>
       <PageHero title="Alumni" />
 
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-transparent">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

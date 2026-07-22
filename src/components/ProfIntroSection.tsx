@@ -46,7 +46,7 @@ const ProfIntroSection = () => {
   }, []);
 
   return (
-    <section className="relative py-20 bg-background overflow-hidden">
+    <section className="relative py-20 bg-transparent overflow-hidden">
       {/* Subtle particle layer */}
       <Particles
         id="prof-particles"

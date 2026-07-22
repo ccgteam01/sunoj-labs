@@ -62,7 +62,7 @@ const About = () => {
         description="The RBS Group focuses on understanding chemical reactivity through computational modeling, mechanistic exploration, and machine learning-driven molecular discovery."
         bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
       />
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-transparent">
         <div className="container">
           <SectionHeading title="About the Group" />
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
@@ -137,7 +137,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-transparent">
         <div className="container">
           <SectionHeading title="Courses Taught" />
           <div className="grid sm:grid-cols-2 gap-3">

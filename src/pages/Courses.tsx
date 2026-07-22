@@ -3,15 +3,16 @@ import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { CoursesSkeleton } from "@/components/Skeleton";
 import { useCourses } from "@/hooks/use-sanity";
+import { ACADEMIC_BANNER } from "@/lib/sanity";
 
 const Courses = () => {
   const { data: courses = [], isFetching } = useCourses();
 
   return (
     <PageLayout>
-      <PageHero title="Courses Taught" />
+      <PageHero title="Courses Taught" banner={ACADEMIC_BANNER} />
 
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-transparent">
         <div className="container">
           {isFetching && courses.length === 0 ? (
             <CoursesSkeleton />

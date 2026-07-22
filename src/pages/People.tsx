@@ -37,7 +37,7 @@ const People = () => {
         ctaLink="/positions"
         bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
       />
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-transparent">
         <div className="container">
           {pi && (
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-primary rounded-xl p-8 md:p-10 text-center mb-16">

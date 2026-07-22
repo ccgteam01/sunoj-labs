@@ -15,7 +15,7 @@ const ProfessorProfile = () => {
         bgImage="https://cdn.prod.website-files.com/68a2db4c5dd3ad2de5b3cf0f/68b01cb5237a8c9ca2ca6bad_Abstract%20Fluid%20Forms.avif"
       />
 
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-transparent">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-1">

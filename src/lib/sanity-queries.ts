@@ -33,9 +33,12 @@ export const PEOPLE_QUERY = `*[_type == "person"] | order(order asc) {
 }`;
 
 export const PUBLICATIONS_QUERY = `*[_type == "publication"] | order(year desc) {
-  title, authors, journal, doi, year, themes, pdfUrl, graphicalAbstractUrl,
+  title, authors, journal, doi, year, pdfUrl, graphicalAbstractUrl,
+  "themes": themes[]->{ _id, title, color },
   "imageUrl": image.asset->url
 }`;
+
+export const THEMES_QUERY = `*[_type == "theme"] | order(order asc) { _id, title, color }`;
 
 export const ALBUMS_QUERY = `*[_type == "album"] | order(order asc) {
   _id, title, description,

@@ -7,7 +7,7 @@ interface QuoteSectionProps {
 
 const QuoteSection = ({ quote, author }: QuoteSectionProps) => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-transparent">
       <div className="container">
         <motion.blockquote
           initial={{ opacity: 0 }}

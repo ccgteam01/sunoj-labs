@@ -51,8 +51,11 @@ const Navbar = () => {
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-6xl bg-background/95 backdrop-blur-md border border-border rounded-2xl shadow-lg">
       <div className="flex items-center justify-between h-14 px-6">
         
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src={logo} alt="RBS Group(CCML) @ IITB" aria-label="Computational Chemistry and Machine Learning" className="h-12 w-auto" />
+        <Link to="/" className="group relative flex items-center gap-2 shrink-0">
+          <img src={logo} alt="RBS Group(CCML) @ IITB" className="h-12 w-auto" />
+          <span className="pointer-events-none absolute left-0 top-full mt-2 whitespace-nowrap rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100">
+            Computational Chemistry and Machine Learning
+          </span>
         </Link>
 
         {/* Desktop */}

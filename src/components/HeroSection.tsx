@@ -29,21 +29,25 @@ const HeroSection = ({ slides }: HeroSectionProps) => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={current}
-          initial={{ opacity: 0, scale: 1.08 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="absolute inset-0"
-        >
-          <img src={slides[current].image} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/50" />
-        </motion.div>
-      </AnimatePresence>
+      {/* phone: 16:9 frame below the floating navbar. md+: full-bleed cover (original hero) */}
+      <div className="absolute inset-x-0 top-0 px-4 pt-24 md:inset-0 md:px-0 md:pt-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="relative w-full aspect-video overflow-hidden rounded-2xl ring-1 ring-white/15 shadow-2xl md:h-full md:aspect-auto md:rounded-none md:ring-0 md:shadow-none"
+          >
+            <img src={slides[current].image} alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent md:via-black/30 md:to-black/50" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-      <div className="relative z-10 h-full flex flex-col justify-end mt-16 pb-24 md:pb-32">
+      {/* content pinned to the bottom; on phone long text rides up over the frame */}
+      <div className="relative z-10 h-full flex flex-col justify-end pb-16 md:mt-16 md:pb-32">
         <div className="container">
           <AnimatePresence mode="wait">
             <motion.div

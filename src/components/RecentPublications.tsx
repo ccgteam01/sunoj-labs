@@ -16,7 +16,7 @@ interface RecentPublicationsProps {
 
 const RecentPublications = ({ publications }: RecentPublicationsProps) => {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-transparent">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

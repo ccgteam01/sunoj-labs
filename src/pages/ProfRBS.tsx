@@ -15,7 +15,7 @@ const ProfRBS = () => {
         description="Professor, Department of Chemistry, IIT Bombay · Convenor for High Performance Computing @ IITB · Associate Faculty at Centre for Machine Intelligence and Data Science (C-MInDS)"
       />
 
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-transparent">
         <div className="container">
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="md:col-span-1">
