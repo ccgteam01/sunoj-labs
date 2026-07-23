@@ -38,7 +38,7 @@ const Article = () => {
   return (
     <PageLayout>
       <article className="pt-28 pb-16">
-        <div className="container max-w-3xl mx-auto px-4 sm:px-6">
+        <div className="container w-full md:w-[90%] mx-auto px-4 sm:px-6">
           <Link to="/about-me" className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-8">
             <ArrowLeft size={18} /> Back to About Me
           </Link>
@@ -46,7 +46,7 @@ const Article = () => {
           {!post ? (
             <p className="text-muted-foreground">Loading…</p>
           ) : (
-            <>
+            <div className="bg-card border border-border rounded-3xl shadow-sm p-6 sm:p-10 md:p-12">
               <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-foreground mb-6 leading-tight">{post.title}</h1>
               {post.imageUrl && (
                 <img src={sizedImage(post.imageUrl, 1200)} alt={post.title} className="w-full h-64 md:h-96 object-cover rounded-2xl border border-border mb-10" />
@@ -54,7 +54,7 @@ const Article = () => {
               <div>
                 <PortableText value={post.content || []} components={components} />
               </div>
-            </>
+            </div>
           )}
         </div>
       </article>

@@ -19,8 +19,8 @@ const AboutMe = () => {
       />
 
       <section className="py-12 bg-transparent">
-        <div className="container">
-          <div className="flex flex-col gap-10 w-full md:w-4/5 mx-auto">
+        <div className="px-4 sm:px-6">
+          <div className="flex flex-col gap-10 w-full md:w-[90%] mx-auto">
             {posts.map((post: any, i: number) => (
               <motion.article
                 key={post._id || i}
