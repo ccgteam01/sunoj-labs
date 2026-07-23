@@ -90,14 +90,15 @@ const ResearchInterests = ({ cards }: ResearchInterestsProps) => {
         {/* Desktop: 3D Carousel */}
         <div className="hidden md:flex flex-col items-center">
           <div
-            className="relative w-full h-[350px] flex items-center justify-center"
+            className="relative w-full h-[420px] flex items-center justify-center"
             style={{ perspective: "1500px" }}
           >
             <div
-              className="relative w-[260px] h-[300px] transition-transform duration-1000 ease-out"
+              className="relative w-[320px] h-[320px] transition-transform duration-1000 ease-out"
               style={{
                 transformStyle: "preserve-3d",
-                transform: `rotateY(${carouselDeg}deg)`,
+                /* push ring back so the front card sits at z=0 -> scale 1 -> no blur */
+                transform: `translateZ(-500px) rotateY(${carouselDeg}deg)`,
               }}
             >
               {[...Array(9)].map((_, i) => {
@@ -111,10 +112,11 @@ const ResearchInterests = ({ cards }: ResearchInterestsProps) => {
                 return (
                   <div
                     key={i}
-                    className="absolute left-0 top-0 w-[240px] h-[240px] bg-primary rounded-xl p-5 flex flex-col justify-center shadow-2xl transition-opacity duration-500"
+                    className="absolute left-0 top-0 w-[320px] h-[320px] bg-primary rounded-xl p-6 flex flex-col justify-center shadow-2xl transition-opacity duration-500"
                     style={{
-                      transform: `rotateY(${i * 40}deg) translateZ(400px)`,
+                      transform: `rotateY(${i * 40}deg) translateZ(500px)`,
                       opacity: isVisible ? 1 : 0,
+                      backfaceVisibility: "hidden",
                     }}
                   >
                     <h3 className="text-md font-semibold mb-1 text-white tracking-tighter">
