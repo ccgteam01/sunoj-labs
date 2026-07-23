@@ -23,8 +23,15 @@ export const RECENT_PUBLICATIONS_QUERY = `*[_type == "publication" && featured =
 }`;
 
 export const HOMEPAGE_QUERY = `*[_type == "homepage"][0] {
-  quote, quoteAuthor, ctaTitle, ctaDescription, ctaButtonText, ctaButtonLink,
-  "ctaBackgroundImageUrl": ctaBackgroundImage.asset->url
+  profRole, profName, profAffiliations, profBio,
+  "profImageUrl": profImage.asset->url,
+  researchHighlights, pedagogyHighlights,
+  publicationsTotal, googleScholarUrl
+}`;
+
+export const CONTACT_QUERY = `*[_type == "contact"][0] {
+  email, address, googleScholarUrl, githubUrl, officialWebsiteUrl, mapEmbedUrl,
+  joinTitle, joinDescription, opportunities, applyEmail
 }`;
 
 export const COLLABORATORS_QUERY = `*[_type == "collaborator"] {

@@ -4,7 +4,7 @@ import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { ExternalLink, ChevronRight, FileText, Search } from "lucide-react";
 import { PublicationsSkeleton } from "@/components/Skeleton";
-import { usePublications, useThemes } from "@/hooks/use-sanity";
+import { usePublications, useThemes, useHomepage } from "@/hooks/use-sanity";
 import { sizedImage } from "@/lib/sanity";
 
 // Maps a theme's `color` value (set in Sanity) to its badge classes.
@@ -22,6 +22,9 @@ const themeClass = (color?: string) => colorClasses[color ?? ""] || "bg-accent/1
 const Publications = () => {
   const { data: papers, isFetching } = usePublications([]);
   const themes = (useThemes([]).data ?? []) as any[];
+  const home = useHomepage().data as any;
+  const totalPubs = home?.publicationsTotal || 236;
+  const scholarUrl = home?.googleScholarUrl || "https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en";
   const [filterTheme, setFilterTheme] = useState<string>("All"); // "All" or a theme _id
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -100,9 +103,9 @@ const Publications = () => {
           {/* Count + Google Scholar link */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <p className="text-sm text-muted-foreground">
-              (Selected list from a total of 236 publications)
+              (Selected list from a total of {totalPubs} publications)
             </p>
-            <a href="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-2 pl-5 pr-2 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors group tracking-tighter">
+            <a href={scholarUrl} target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-2 pl-5 pr-2 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors group tracking-tighter">
               View Full List on Google Scholar
               <div className="bg-white rounded-full text-accent p-1.5 transition-transform group-hover:translate-x-1">
                 <ChevronRight size={20} />

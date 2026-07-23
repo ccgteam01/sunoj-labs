@@ -4,9 +4,10 @@ import { useLocation } from "react-router-dom";
 import PageLayout from "@/components/PageLayout";
 import PageHero from "@/components/PageHero";
 import { sizedImage } from "@/lib/sanity";
+import { useContact } from "@/hooks/use-sanity";
 import { Mail, MapPin, ExternalLink, GraduationCap, Microscope, BookOpen, ChevronRight } from "lucide-react";
 
-const contact = {
+const DEFAULT_CONTACT = {
   email: "sunoj@chem.iitb.ac.in",
   address: "RBS Group (Prof. R. B. Sunoj)\nDepartment of Chemistry, 3rd Floor, Room 418-A\nIndian Institute of Technology Bombay\nPowai, Mumbai 400076, India",
   googleScholarUrl: "https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en",
@@ -17,7 +18,7 @@ const contact = {
 
 const iconMap: Record<string, any> = { GraduationCap, Microscope, BookOpen };
 
-const opportunities = [
+const DEFAULT_OPPORTUNITIES = [
   { icon: "GraduationCap", title: "PhD Positions (IIT Bombay)", description: "Through GATE / CSIR-NET / direct PhD admission to the Department of Chemistry." },
   { icon: "Microscope", title: "Postdoctoral Fellowships", description: "Funded positions for independent researchers in computational chemistry & ML." },
   { icon: "BookOpen", title: "Research Internships", description: "Short-term project-based positions for motivated students." },
@@ -25,6 +26,16 @@ const opportunities = [
 
 const Contact = () => {
   const location = useLocation();
+  const c = useContact().data as any;
+  const contact = {
+    email: c?.email || DEFAULT_CONTACT.email,
+    address: c?.address || DEFAULT_CONTACT.address,
+    googleScholarUrl: c?.googleScholarUrl || DEFAULT_CONTACT.googleScholarUrl,
+    githubUrl: c?.githubUrl || DEFAULT_CONTACT.githubUrl,
+    officialWebsiteUrl: c?.officialWebsiteUrl || DEFAULT_CONTACT.officialWebsiteUrl,
+    mapEmbedUrl: c?.mapEmbedUrl || DEFAULT_CONTACT.mapEmbedUrl,
+  };
+  const opportunities = c?.opportunities?.length ? c.opportunities : DEFAULT_OPPORTUNITIES;
 
   useEffect(() => {
     if (location.hash === "#positions") {
@@ -69,8 +80,8 @@ const Contact = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-primary rounded-xl p-8 md:p-10 text-center">
             <h3 className="text-xl font-heading font-bold text-primary-foreground mb-3">How to Apply</h3>
             <p className="text-primary-foreground/80 mb-6">Email your CV and research interests to:</p>
-            <a href="mailto:sunoj@chem.iitb.ac.in" className="inline-flex items-center gap-2 px-4 py-2 bg-white text-accent font-semibold rounded-full shadow-lg hover:bg-white/90 transition-colors text-lg group tracking-tighter">
-              sunoj@chem.iitb.ac.in
+            <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-2 px-4 py-2 bg-white text-accent font-semibold rounded-full shadow-lg hover:bg-white/90 transition-colors text-lg group tracking-tighter">
+              {contact.email}
               <div className="bg-accent rounded-full text-white p-2 transition-transform group-hover:translate-x-1">
                 <ChevronRight size={25} />
               </div>

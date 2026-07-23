@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Award, GraduationCap, FlaskConical, ChevronRight } from "lucide-react";
 import sunojImage from "@/assets/sunoj-sir.jpg";
+import { sizedImage } from "@/lib/sanity";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import type { Engine } from "@tsparticles/engine";
@@ -37,8 +38,13 @@ const particlesOptions: any = {
   detectRetina: true,
 };
 
-const ProfIntroSection = () => {
+const ProfIntroSection = ({ intro }: { intro?: any }) => {
   const [ready, setReady] = useState(false);
+
+  const role = intro?.profRole || "Professor of Chemistry";
+  const name = intro?.profName || "Prof. Raghavan B. Sunoj";
+  const affiliations = intro?.profAffiliations || "Department of Chemistry, IIT Bombay · Convenor, HPC @ IITB · Associate Faculty, C-MInDS";
+  const bio = intro?.profBio || "Prof. Sunoj leads one of India's foremost computational chemistry groups, blending quantum mechanics, machine learning, and data-driven tools to decode the molecular origins of selectivity in catalysis. His research has shaped how chemists understand asymmetric reactions and has trained an entire generation of computational chemists across India.";
 
   const initParticles = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
@@ -79,8 +85,8 @@ const ProfIntroSection = () => {
             transition={{ duration: 0.5 }}
           >
             <img
-              src={sunojImage}
-              alt="Prof. Raghavan B. Sunoj"
+              src={intro?.profImageUrl ? (sizedImage(intro.profImageUrl, 800) as string) : sunojImage}
+              alt={name}
               className="w-full rounded-2xl shadow-xl object-cover"
             />
           </motion.div>
@@ -93,20 +99,16 @@ const ProfIntroSection = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <p className="text-md font-semibold text-accent uppercase tracking-widest mb-2">
-              Professor of Chemistry
+              {role}
             </p>
             <h3 className="text-3xl lg:text-4xl font-bold tracking-tighter mb-2 text-foreground">
-              Prof. Raghavan B. Sunoj
+              {name}
             </h3>
             <p className="text-muted-foreground text-sm mb-5">
-              Department of Chemistry, IIT Bombay &nbsp;·&nbsp; Convenor, HPC @ IITB
-              &nbsp;·&nbsp; Associate Faculty, C-MInDS
+              {affiliations}
             </p>
-            <p className="text-foreground text-base leading-relaxed mb-6">
-              Prof. Sunoj leads one of India's foremost computational chemistry groups, blending quantum
-              mechanics, machine learning, and data-driven tools to decode the molecular origins of
-              selectivity in catalysis. His research has shaped how chemists understand asymmetric
-              reactions and has trained an entire generation of computational chemists across India.
+            <p className="text-foreground text-base leading-relaxed mb-6 whitespace-pre-line">
+              {bio}
             </p>
             <Link
               to="/prof-rbs"
@@ -122,7 +124,11 @@ const ProfIntroSection = () => {
 
         {/* Research + Pedagogic Highlights */}
         <div className="grid sm:grid-cols-2 gap-5">
-          {highlights.map(({ category, icon: Icon, items }, ci) => (
+          {highlights.map(({ category, icon: Icon, items: defItems }, ci) => {
+            const items = category === "Research"
+              ? (intro?.researchHighlights?.length ? intro.researchHighlights : defItems)
+              : (intro?.pedagogyHighlights?.length ? intro.pedagogyHighlights : defItems);
+            return (
             <motion.div
               key={category}
               className="bg-card border border-border rounded-2xl p-6"
@@ -136,7 +142,7 @@ const ProfIntroSection = () => {
                 <h4 className="text-md font-semibold text-accent uppercase tracking-widests">{category} Highlights</h4>
               </div>
               <ul className="space-y-2.5">
-                {items.map((item) => (
+                {items.map((item: string) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <Award size={13} className="text-gold shrink-0 mt-0.5" />
                     <span className="text-base text-foreground leading-relaxed">{item}</span>
@@ -144,7 +150,8 @@ const ProfIntroSection = () => {
                 ))}
               </ul>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

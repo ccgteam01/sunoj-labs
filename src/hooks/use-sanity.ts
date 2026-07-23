@@ -70,6 +70,14 @@ export function useBlogPosts(fallback: any[] = []) {
   return useSanityQuery("blogPosts", queries.BLOG_POSTS_QUERY, fallback);
 }
 
+export function useHomepage() {
+  return useSanityQuery<any>("homepage", queries.HOMEPAGE_QUERY, null);
+}
+
+export function useContact() {
+  return useSanityQuery<any>("contact", queries.CONTACT_QUERY, null);
+}
+
 export function useBlogPost(slug: string) {
   return useSanityQuery<any>(`blogPost:${slug}`, queries.BLOG_POST_QUERY, null, { slug });
 }

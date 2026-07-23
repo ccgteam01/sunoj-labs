@@ -43,7 +43,7 @@ const Index = () => {
     desc: area.description,
   })) || [];
 
-  const newsItems = data.news?.slice(0, 8).map((item: any) => ({
+  const newsItems = data.news?.slice(0, 6).map((item: any) => ({
     text: item.text,
     year: String(item.year),
   })) || [];
@@ -66,13 +66,13 @@ const Index = () => {
 
           {/* Left: Prof intro + Recent publications stacked */}
           <div className="lg:col-span-2">
-            <ProfIntroSection />
+            <ProfIntroSection intro={data.homepage} />
             {publications.length > 0 && <RecentPublications publications={publications} />}
           </div>
 
           {/* Right: Sticky news panel - sticks until end of publications */}
           {newsItems.length > 0 && (
-            <div className="hidden lg:block lg:sticky lg:top-24 lg:self-start mt-20">
+            <div className="lg:sticky lg:top-24 lg:self-start mt-4 lg:mt-20">
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
