@@ -5,6 +5,7 @@ import PageHero from "@/components/PageHero";
 import { ExternalLink, ChevronRight, FileText, Search } from "lucide-react";
 import { PublicationsSkeleton } from "@/components/Skeleton";
 import { usePublications, useThemes } from "@/hooks/use-sanity";
+import { sizedImage } from "@/lib/sanity";
 
 // Maps a theme's `color` value (set in Sanity) to its badge classes.
 const colorClasses: Record<string, string> = {
@@ -96,115 +97,78 @@ const Publications = () => {
             ))}
           </div>
 
-          {/* Results Count */}
-          <p className="text-sm text-muted-foreground mb-6">
-            Showing {filtered.length} publication{filtered.length !== 1 ? "s" : ""}
-          </p>
+          {/* Count + Google Scholar link */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <p className="text-sm text-muted-foreground">
+              (Selected list from a total of 236 publications)
+            </p>
+            <a href="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="shrink-0 inline-flex items-center gap-2 pl-5 pr-2 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors group tracking-tighter">
+              View Full List on Google Scholar
+              <div className="bg-white rounded-full text-accent p-1.5 transition-transform group-hover:translate-x-1">
+                <ChevronRight size={20} />
+              </div>
+            </a>
+          </div>
 
           {isFetching && papers.length === 0 ? (
             <PublicationsSkeleton />
           ) : (
             <>
               <div className="flex flex-col gap-6">
-                {filtered.map((paper: any, idx: number) => (
-                      <motion.div
-                        key={paper.doi || paper.title}
-                        initial={{ opacity: 0, y: 12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="bg-card rounded-xl border border-border card-hover overflow-hidden"
-                      >
-                        {(paper.graphicalAbstractUrl || paper.imageUrl) ? (
-                          <div className="grid md:grid-cols-3 gap-6">
-                            <div className={`md:col-span-1 p-4 ${idx % 2 === 1 ? "md:order-last" : ""}`}>
-                              <img
-                                src={paper.graphicalAbstractUrl || paper.imageUrl}
-                                alt={paper.title}
-                                className="w-full h-full object-contain rounded-lg border border-border bg-background"
-                              />
-                            </div>
-                            <div className="md:col-span-2 p-6">
-                              <div className="flex flex-wrap gap-2 mb-3">
-                                {paper.themes?.map((theme: any) => (
-                                  <span key={theme._id} className={`px-3 py-1 text-xs font-medium rounded-full ${themeClass(theme.color)}`}>
-                                    {theme.title}
-                                  </span>
-                                ))}
-                              </div>
-                              <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
-                              <p className="text-sm text-foreground mb-1">{paper.authors}</p>
-                              <p className="text-sm text-accent font-medium mb-4">{paper.journal}</p>
-                              <div className="flex flex-wrap gap-2">
-                                {paper.doi && (
-                                <a
-                                  href={`https://doi.org/${paper.doi}`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
-                                >
-                                  <ExternalLink size={16} /> View Publication
-                                </a>
-                                )}
-                                {paper.pdfUrl && (
-                                  <a
-                                    href={paper.pdfUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-foreground rounded-lg text-sm font-medium hover:bg-muted transition-colors"
-                                  >
-                                    <FileText size={16} /> View PDF
-                                  </a>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="p-6">
-                            <div className="flex flex-wrap gap-2 mb-3">
-                              {paper.themes?.map((theme: any) => (
-                                <span key={theme._id} className={`px-3 py-1 text-xs font-medium rounded-full ${themeClass(theme.color)}`}>
-                                  {theme.title}
-                                </span>
-                              ))}
-                            </div>
-                            <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
-                            <p className="text-sm text-foreground mb-1">{paper.authors}</p>
-                            <p className="text-sm text-accent font-medium mb-4">{paper.journal}</p>
-                            <div className="flex flex-wrap gap-2">
-                              {paper.doi && (
-                              <a
-                                href={`https://doi.org/${paper.doi}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
-                              >
-                                <ExternalLink size={16} /> View Publication
-                              </a>
-                              )}
-                              {paper.pdfUrl && (
-                                <a
-                                  href={paper.pdfUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-foreground rounded-lg text-sm font-medium hover:bg-muted transition-colors"
-                                >
-                                  <FileText size={16} /> View PDF
-                                </a>
-                              )}
-                            </div>
-                          </div>
+                {filtered.map((paper: any, idx: number) => {
+                  const hasImage = paper.imageUrl || paper.graphicalAbstractUrl;
+                  const meta = (
+                    <div className={hasImage ? "md:col-span-2 p-6" : "p-6"}>
+                      <div className="flex flex-wrap gap-2 mb-3">
+                        {paper.themes?.map((theme: any) => (
+                          <span key={theme._id} className={`px-3 py-1 text-xs font-medium rounded-full ${themeClass(theme.color)}`}>
+                            {theme.title}
+                          </span>
+                        ))}
+                      </div>
+                      <h4 className="font-heading font-semibold text-foreground mb-2">{paper.title}</h4>
+                      <p className="text-sm text-foreground mb-1">{paper.authors}</p>
+                      <p className="text-sm text-accent font-medium mb-4">{paper.journal}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {paper.doi && (
+                          <a href={`https://doi.org/${paper.doi}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors">
+                            <ExternalLink size={16} /> View Publication
+                          </a>
                         )}
-                      </motion.div>
-                ))}
-              </div>
-
-              <div className="text-center mt-8">
-                <a href="https://scholar.google.com/citations?user=hboZd1AAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white font-semibold rounded-full shadow-lg hover:bg-accent/90 transition-colors text-lg group tracking-tighter">
-                  View Full List on Google Scholar
-                  <div className="bg-white rounded-full text-accent p-2 transition-transform group-hover:translate-x-1">
-                    <ChevronRight size={25} />
-                  </div>
-                </a>
+                        {paper.pdfUrl && (
+                          <a href={paper.pdfUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-foreground rounded-lg text-sm font-medium hover:bg-muted transition-colors">
+                            <FileText size={16} /> View PDF
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  );
+                  return (
+                    <motion.div
+                      key={paper.doi || paper.title}
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      className="bg-card rounded-xl border border-border card-hover overflow-hidden"
+                    >
+                      {hasImage ? (
+                        <div className="grid md:grid-cols-3 gap-6">
+                          <div className={`md:col-span-1 p-4 ${idx % 2 === 1 ? "md:order-last" : ""}`}>
+                            <img
+                              src={paper.imageUrl ? (sizedImage(paper.imageUrl, 600) as string) : paper.graphicalAbstractUrl}
+                              alt={paper.title}
+                              loading="lazy"
+                              className="w-full h-full md:h-72 object-contain rounded-lg border border-border bg-white"
+                            />
+                          </div>
+                          {meta}
+                        </div>
+                      ) : (
+                        meta
+                      )}
+                    </motion.div>
+                  );
+                })}
               </div>
             </>
           )}

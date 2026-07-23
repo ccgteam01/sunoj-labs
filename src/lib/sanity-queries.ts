@@ -6,7 +6,11 @@ export const HERO_SLIDES_QUERY = `*[_type == "heroSlide"] | order(order asc) {
 }`;
 
 export const RESEARCH_AREAS_QUERY = `*[_type == "researchArea"] | order(order asc) {
-  title, description, focusAreas, icon
+  title, description, focusAreas, icon,
+  "papers": (
+    publications[]->{ _id, title, journal, year, doi, pdfUrl, "imageUrl": image.asset->url, graphicalAbstractUrl }
+    + *[_type == "publication" && references(^._id)]{ _id, title, journal, year, doi, pdfUrl, "imageUrl": image.asset->url, graphicalAbstractUrl }
+  )
 }`;
 
 export const NEWS_QUERY = `*[_type == "newsItem"] | order(year desc, order asc) {

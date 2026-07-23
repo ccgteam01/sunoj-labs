@@ -174,7 +174,13 @@ const Research = () => {
                             Relevant Papers
                           </p>
                           {(() => {
-                            const rel = relevantPapers(s.title, papers, s.focusAreas || s.focus);
+                            // Papers linked in Sanity (from either side, deduped); else keyword match.
+                            const picked = Array.from(
+                              new Map((s.papers || []).filter(Boolean).map((p: any) => [p._id, p])).values()
+                            );
+                            const rel = picked.length
+                              ? picked
+                              : relevantPapers(s.title, papers, s.focusAreas || s.focus);
                             if (!rel.length) return <p className="text-sm text-muted-foreground">Publications coming soon.</p>;
                             return <RelevantPapersCarousel rel={rel} />;
                           })()}
